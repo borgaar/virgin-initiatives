@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virgin Unite - Create New Initiative</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+:root {
+    --virgin-red: #e10a0a;
+    --virgin-red-dark: #b30808;
+    --virgin-white: #ffffff;
+    --virgin-black: #000000;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #17a2b8;
+    --border-radius: 6px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-100);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--gray-900);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--virgin-white);
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--gray-800);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--virgin-red);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Main Content */
+main {
+    padding: 40px 0;
+}
+
+.page-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin-bottom: 10px;
+    color: var(--virgin-red);
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: var(--gray-700);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Form Styling */
+.form-section {
+    background-color: var(--virgin-white);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+input[type="text"],
+input[type="date"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--virgin-red);
+    box-shadow: 0 0 0 3px rgba(225, 10, 10, 0.1);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* File Upload */
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-upload label {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--gray-200);
+    border-radius: var(--border-radius);
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.file-upload label:hover {
+    background-color: var(--gray-300);
+}
+
+.file-info {
+    display: block;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Goals Styling */
+.goal-item {
+    background-color: var(--gray-100);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.goal-header h3 {
+    margin-bottom: 0;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.btn-remove:hover {
+    color: var(--danger);
+}
+
+/* Checkbox Group */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.btn-primary {
+    background-color: var(--virgin-red);
+    color: var(--virgin-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--virgin-red-dark);
+}
+
+.btn-secondary {
+    background-color: var(--gray-200);
+    color: var(--gray-700);
+}
+
+.btn-secondary:hover {
+    background-color: var(--gray-300);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--virgin-red);
+    color: var(--virgin-red);
+}
+
+.btn-outline:hover {
+    background-color: var(--virgin-red);
+    color: var(--virgin-white);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--gray-800);
+    color: var(--gray-300);
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-column h3 {
+    color: var(--virgin-white);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-column ul li a:hover {
+    color: var(--virgin-white);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--gray-700);
+    padding-top: 20px;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/api/placeholder/200/60" alt="Virgin Unite Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Initiatives</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Impact</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+            <div class="profile">
+                <img src="/api/placeholder/40/40" alt="Profile Picture">
+                <span>Jane Smith</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Create New Initiative</h1>
+                <p>Share your project with the Virgin community to drive collaboration and impact.</p>
+            </div>
+
+            <form id="initiative-form">
+                <div class="form-section">
+                    <h2>Basic Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="initiative-name">Initiative Name*</label>
+                        <input type="text" id="initiative-name" required placeholder="Enter a clear, descriptive name">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="virgin-company">Primary Virgin Company*</label>
+                            <select id="virgin-company" required>
+                                <option value="" disabled selected>Select company</option>
+                                <option value="virgin-atlantic">Virgin Atlantic</option>
+                                <option value="virgin-media">Virgin Media</option>
+                                <option value="virgin-hotels">Virgin Hotels</option>
+                                <option value="virgin-voyages">Virgin Voyages</option>
+                                <option value="virgin-unite">Virgin Unite</option>
+                                <option value="virgin-orbit">Virgin Orbit</option>
+                                <option value="virgin-active">Virgin Active</option>
+                                <option value="virgin-other">Other (specify)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">Category*</label>
+                            <select id="category" required>
+                                <option value="" disabled selected>Select category</option>
+                                <option value="environmental">Environmental</option>
+                                <option value="social">Social Impact</option>
+                                <option value="educational">Educational</option>
+                                <option value="humanitarian">Humanitarian</option>
+                                <option value="technological">Technological</option>
+                                <option value="economic">Economic Development</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Initiative Description*</label>
+                        <textarea id="description" rows="4" required placeholder="Describe your initiative, its purpose, and expected impact"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Primary Location</label>
+                            <input type="text" id="location" placeholder="City, Country or Global">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="start-date">Start Date*</label>
+                            <input type="date" id="start-date" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Initiative Image</label>
+                        <div class="file-upload">
+                            <input type="file" id="initiative-image" accept="image/*">
+                            <label for="initiative-image">
+                                <i class="fas fa-cloud-upload-alt"></i> Upload Image
+                            </label>
+                            <span class="file-info">Recommended size: 1200x800px, Max: 5MB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-header">
+                        <h2>Initiative Goals</h2>
+                        <button type="button" id="add-goal" class="btn btn-secondary">
+                            <i class="fas fa-plus"></i> Add Goal
+                        </button>
+                    </div>
+                    <p>Set specific, measurable goals with timeframes to track your initiative's progress.</p>
+                    
+                    <div id="goals-container">
+                        <!-- Goal 1 -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <h3>Goal 1</h3>
+                                <button type="button" class="btn-remove"><i class="fas fa-times"></i></button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="goal-title-1">Goal Title*</label>
+                                <input type="text" id="goal-title-1" required placeholder="E.g., Reduce carbon emissions, Plant 1000 trees">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="goal-description-1">Goal Description</label>
+                                <textarea id="goal-description-1" rows="2" placeholder="Provide details about this specific goal"></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="target-date-1">Target Completion Date*</label>
+                                    <input type="date" id="target-date-1" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="goal-status-1">Current Status</label>
+                                    <select id="goal-status-1">
+                                        <option value="planning">Planning</option>
+                                        <option value="in-progress">In Progress</option>
+                                        <option value="on-hold">On Hold</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="metrics-1">Success Metrics*</label>
+                                <input type="text" id="metrics-1" required placeholder="How will you measure success? E.g., kg of CO2 reduced, number of people affected">
+                            </div>
+                        </div>
+                        
+                        <!-- Goal 2 -->
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <h3>Goal 2</h3>
+                                <button type="button" class="btn-remove"><i class="fas fa-times"></i></button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="goal-title-2">Goal Title*</label>
+                                <input type="text" id="goal-title-2" required placeholder="E.g., Engage local community, Develop educational materials">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="goal-description-2">Goal Description</label>
+                                <textarea id="goal-description-2" rows="2" placeholder="Provide details about this specific goal"></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="target-date-2">Target Completion Date*</label>
+                                    <input type="date" id="target-date-2" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="goal-status-2">Current Status</label>
+                                    <select id="goal-status-2">
+                                        <option value="planning">Planning</option>
+                                        <option value="in-progress">In Progress</option>
+                                        <option value="on-hold">On Hold</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="metrics-2">Success Metrics*</label>
+                                <input type="text" id="metrics-2" required placeholder="How will you measure success? E.g., number of participants, survey results">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Collaboration Opportunities</h2>
+                    
+                    <div class="form-group">
+                        <label for="resources-needed">Resources Needed</label>
+                        <textarea id="resources-needed" rows="2" placeholder="What resources would help this initiative succeed? (funding, expertise, volunteers, etc.)"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="partnership-opportunities">Partnership Opportunities</label>
+                        <textarea id="partnership-opportunities" rows="2" placeholder="Describe potential ways other Virgin companies or external partners could contribute"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-involvement">How Customers Can Get Involved</label>
+                        <textarea id="customer-involvement" rows="2" placeholder="Suggest ways Virgin customers could participate or contribute to this initiative"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Additional Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="sdgs">UN Sustainable Development Goals Alignment</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sdg-1" name="sdgs" value="1">
+                                <label for="sdg-1">1. No Poverty</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sdg-2" name="sdgs" value="2">
+                                <label for="sdg-2">2. Zero Hunger</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sdg-3" name="sdgs" value="3">
+                                <label for="sdg-3">3. Good Health & Well-being</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sdg-4" name="sdgs" value="4">
+                                <label for="sdg-4">4. Quality Education</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sdg-5" name="sdgs" value="5">
+                                <label for="sdg-5">5. Gender Equality</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sdg-13" name="sdgs" value="13">
+                                <label for="sdg-13">13. Climate Action</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sdg-14" name="sdgs" value="14">
+                                <label for="sdg-14">14. Life Below Water</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sdg-15" name="sdgs" value="15">
+                                <label for="sdg-15">15. Life on Land</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="team-members">Team Members</label>
+                        <input type="text" id="team-members" placeholder="Enter team member names or emails, separated by commas">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additional-notes">Additional Notes</label>
+                        <textarea id="additional-notes" rows="3" placeholder="Any other relevant information about your initiative"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline">Save as Draft</button>
+                    <button type="submit" class="btn btn-primary">Submit Initiative</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/api/placeholder/150/45" alt="Virgin Unite Logo">
+                    <p>Changing Business for Good</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Platform</h3>
+                        <ul>
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Initiatives</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Impact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Guidelines</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Virgin Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
