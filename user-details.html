@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Impact Profile - Virgin Impact</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gotham', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Layout */
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            background-color: #e10a0a;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-bar input {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px 8px 35px;
+            width: 220px;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-bar::before {
+            content: "🔍";
+            position: absolute;
+            left: 12px;
+            top: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        
+        .notification-icon {
+            color: white;
+            font-size: 18px;
+            position: relative;
+        }
+        
+        .notification-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #0076c5;
+            color: white;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e10a0a;
+            font-weight: bold;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0 30px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-link {
+            padding: 15px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-link.active {
+            border-bottom-color: #e10a0a;
+            color: #e10a0a;
+        }
+        
+        .nav-link:hover:not(.active) {
+            border-bottom-color: #ccc;
+        }
+        
+        .red-points {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .red-points-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #e10a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background-color: white;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .breadcrumbs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-item {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumb-item a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item a:hover {
+            color: #e10a0a;
+        }
+        
+        .breadcrumb-separator {
+            margin: 0 10px;
+            color: #ccc;
+        }
+        
+        /* Profile header */
+        .profile-header {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            padding: 40px 0;
+        }
+        
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background-color: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #e10a0a;
+            flex-shrink: 0;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .profile-member {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .member-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f3f4f6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        
+        .badge-icon {
+            color: #0076c5;
+            margin-right: 4px;
+        }
+        
+        .profile-stats {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .profile-stat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .profile-action {
+            flex-shrink: 0;
+        }
+        
+        .edit-profile-btn {
+            background-color: transparent;
+            border: 1px solid #e10a0a;
+            color: #e10a0a;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .edit-profile-btn:hover {
+            background-color: rgba(225, 10, 10, 0.05);
+        }
+        
+        /* Main content */
+        .main-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            gap: 30px;
+        }
+        
+        /* Primary content column */
+        .primary-content {
+            flex: 1;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .section-action {
+            color: #0076c5;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        .section-body {
+            padding: 20px;
+        }
+        
+        /* Badges grid */
+        .badges-section .section-body {
+            padding: 20px;
+        }
+        
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        
+        .badge-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .badge-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 30px;
+            position: relative;
+        }
+        
+        .badge-locked {
+            opacity: 0.5;
+        }
+        
+        .badge-locked::after {
+            content: "🔒";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 24px;
+            height: 24px;
+            background-color: #f3f4f6;
+            border-radius: 50%;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+        
+        .badge-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .badge-description {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        /* Activity feed */
+        .activity-feed .section-body {
+            padding: 0;
+        }
+        
+        .activity-item {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .activity-icon.badge {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+        
+        .activity-icon.donation {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+        
+        .activity-icon.joined {
+            background-color: #dbeafe;
+            color: #2563eb;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .activity-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .activity-date {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .activity-initiative {
+            display: flex;
+            padding: 10px;
+            background-color: #f9fafb;
+            border-radius: 6px;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .initiative-thumb {
+            width: 50px;
+            height: 50px;
+            background-color: #eee;
+            border-radius: 4px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+        
+        .initiative-info {
+            flex: 1;
+        }
+        
+        .initiative-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .initiative-company {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* Initiatives grid */
+        .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .initiative-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .initiative-image {
+            height: 140px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .initiative-category {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .initiative-content {
+            padding: 15px;
+        }
+        
+        .initiative-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .initiative-company {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .company-icon {
+            width: 16px;
+            height: 16px;
+            background-color: #e10a0a;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 8px;
+            font-weight: bold;
+        }
+        
+        .initiative-role {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .initiative-description {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .initiative-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* Leaderboard */
+        .leaderboard-list {
+            list-style: none;
+        }
+        
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .leaderboard-item:last-child {
+            border-bottom: none;
+        }
+        
+        .leaderboard-rank {
+            width: 30px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        
+        .rank-1 {
+            color: #fbbf24;
+        }
+        
+        .rank-2 {
+            color: #94a3b8;
+        }
+        
+        .rank-3 {
+            color: #d97706;
+        }
+        
+        .leaderboard-user {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .user-avatar-small {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e10a0a;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .leaderboard-score {
+            font-weight: 600;
+            color: #e10a0a;
+        }
+        
+        .current-user {
+            background-color: #f9fafb;
+            border-radius: 6px;
+        }
+        
+        /* Impact metrics */
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .impact-metric {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .metric-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #e0f2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #0284c7;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Secondary content column */
+        .secondary-content {
+            width: 300px;
+            flex-shrink: 0;
+        }
+        
+        /* Point summary card */
+        .points-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .points-header {
+            background-color: #e10a0a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .points-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .points-value {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .points-level {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        
+        .points-body {
+            padding: 20px;
+        }
+        
+        .points-progress {
+            margin-bottom: 20px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #f3f4f6;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #e10a0a;
+            width: 65%;
+        }
+        
+        .points-breakdown {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .points-breakdown-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .points-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .points-item:last-child {
+            border-bottom: none;
+        }
+        
+        .points-source {
+            color: #666;
+        }
+        
+        .points-amount {
+            font-weight: 600;
+        }
+        
+        /* Milestones card */
+        .milestones-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .milestones-list {
+            margin-top: 15px;
+        }
+        
+        .milestone-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .milestone-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .milestone-status {
+            width: 24px;
+            margin-right: 12px;
+        }
+        
+        .milestone-complete {
+            width: 18px;
+            height: 18px;
+            background-color: #34d399;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+        
+        .milestone-incomplete {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+        }
+        
+        .milestone-content {
+            flex: 1;
+        }
+        
+        .milestone-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        
+        .milestone-points {
+            font-size: 12px;
+            color: #e10a0a;
+            font-weight: 500;
+        }
+        
+        /* Suggestions card */
+        .suggestion-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .suggestion-item:first-child {
+            padding-top: 0;
+        }
+        
+        .suggestion-item:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .suggestion-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .suggestion-description {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .suggestion-link {
+            color: #e10a0a;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 0C8.954 0 0 8.954 0 20C0 31.046 8.954 40 20 40C31.046 40 40 31.046 40 20C40 8.954 31.046 0 20 0ZM20 36C11.163 36 4 28.837 4 20C4 11.163 11.163 4 20 4C28.837 4 36 11.163 36 20C36 28.837 28.837 36 20 36Z" fill="white"/>
+                    <path d="M25 15H15V25H25V15Z" fill="white"/>
+                </svg>
+                <span class="logo-text">VIRGIN IMPACT</span>
+            </div>
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search initiatives...">
+                </div>
+                <div class="notification-icon">
+                    🔔
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar">JB</div>
+                    <span>Jane Branson</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-links">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Initiatives</a>
+                    <a href="#" class="nav-link">Companies</a>
+                    <a href="#" class="nav-link active">My Impact</a>
+                    <a href="#" class="nav-link">Community</a>
+                </div>
+                <div class="red-points">
+                    <div class="red-points-icon">V</div>
+                    <span>1,250 Virgin Red Points</span>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-container">
+                <span class="breadcrumb-item"><a href="#">Home</a></span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item">My Impact</span>
+            </div>
+        </div>
+        
+        <!-- Profile header -->
+        <div class="profile-header">
+            <div class="profile-container">
+                <div class="profile-avatar">JB</div>
+                <div class="profile-info">
+                    <h1 class="profile-name">Jane Branson</h1>
+                    <div class="profile-member">
+                        <span>Member since October 2022</span>
+                        <span class="member-badge">
+                            <span class="badge-icon">⭐</span>
+                            <span>Virgin Red Member</span>
+                        </span>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <span class="stat-value">8</span>
+                            <span class="stat-label">Initiatives</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">Badges</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-value">1,250</span>
+                            <span class="stat-label">Virgin Red Points</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-value">£345</span>
+                            <span class="stat-label">Impact Generated</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-action">
+                    <button class="edit-profile-btn">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Primary content column -->
+            <div class="primary-content">
+                <!-- Badges section -->
+                <div class="content-section badges-section">
+                    <div class="section-header">
+                        <h2 class="section-title">My Badges</h2>
+                        <a href="#" class="section-action">View All Badges</a>
+                    </div>
+                    <div class="section-body">
+                        <div class="badges-grid">
+                            <div class="badge-card">
+                                <div class="badge-icon">🌱</div>
+                                <div class="badge-name">Green Starter</div>
+                                <div class="badge-description">Joined first environmental initiative</div>
+                            </div>
+                            
+                            <div class="badge-card">
+                                <div class="badge-icon">🌊</div>
+                                <div class="badge-name">Ocean Guardian</div>
+                                <div class="badge-description">Supported marine conservation efforts</div>
+                            </div>
+                            
+                            <div class="badge-card">
+                                <div class="badge-icon">♻️</div>
+                                <div class="badge-name">Recycling Champion</div>
+                                <div class="badge-description">Participated in waste reduction programs</div>
+                            </div>
+                            
+                            <div class="badge-card">
+                                <div class="badge-icon">🔋</div>
+                                <div class="badge-name">Energy Saver</div>
+                                <div class="badge-description">Contributed to carbon reduction efforts</div>
+                            </div>
+                            
+                            <div class="badge-card">
+                                <div class="badge-icon">💸</div>
+                                <div class="badge-name">First Donation</div>
+                                <div class="badge-description">Made first financial contribution</div>
+                            </div>
+                            
+                            <div class="badge-card">
+                                <div class="badge-icon">📱</div>
+                                <div class="badge-name">Digital Inclusion</div>

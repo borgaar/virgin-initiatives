@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virgin Impact - Changing Business for Good</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gotham', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Layout */
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            background-color: #e10a0a;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-bar input {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px 8px 35px;
+            width: 220px;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-bar::before {
+            content: "🔍";
+            position: absolute;
+            left: 12px;
+            top: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        
+        .notification-icon {
+            color: white;
+            font-size: 18px;
+            position: relative;
+        }
+        
+        .notification-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #0076c5;
+            color: white;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e10a0a;
+            font-weight: bold;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0 30px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-link {
+            padding: 15px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-link.active {
+            border-bottom-color: #e10a0a;
+            color: #e10a0a;
+        }
+        
+        .nav-link:hover:not(.active) {
+            border-bottom-color: #ccc;
+        }
+        
+        .login-signup {
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-btn, .signup-btn {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .login-btn {
+            border: 1px solid #e10a0a;
+            background-color: white;
+            color: #e10a0a;
+        }
+        
+        .signup-btn {
+            background-color: #e10a0a;
+            color: white;
+            border: none;
+        }
+        
+        /* Hero section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://via.placeholder.com/1500x500');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background-color: #e10a0a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .hero-cta:hover {
+            background-color: #c40909;
+        }
+        
+        /* Stats bar */
+        .stats-bar {
+            background-color: #0076c5;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Main content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        /* Categories section */
+        .categories-section {
+            margin-bottom: 60px;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-image {
+            height: 150px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-content {
+            padding: 20px;
+        }
+        
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .category-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .category-stats {
+            display: flex;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .category-stat {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .category-stat-icon {
+            margin-right: 5px;
+        }
+        
+        /* Featured initiatives */
+        .featured-section {
+            margin-bottom: 60px;
+        }
+        
+        .featured-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .featured-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .featured-image {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .featured-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #e10a0a;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .featured-company {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .company-logo {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 6px;
+            color: #e10a0a;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .featured-content {
+            padding: 20px;
+        }
+        
+        .featured-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .featured-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .featured-progress {
+            margin-bottom: 15px;
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #0076c5;
+        }
+        
+        .featured-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .featured-participants {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .participant-avatars {
+            display: flex;
+            margin-right: 5px;
+        }
+        
+        .participant-avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ddd;
+            border: 2px solid white;
+            margin-left: -5px;
+        }
+        
+        .featured-action {
+            color: #e10a0a;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        /* Virgin companies section */
+        .companies-section {
+            background-color: white;
+            padding: 50px 0;
+            margin-bottom: 60px;
+        }
+        
+        .companies-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .companies-logos {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .company-item {
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .company-item:hover {
+            opacity: 1;
+        }
+        
+        .company-logo-large {
+            height: 50px;
+            max-width: 150px;
+        }
+        
+        /* Join section */
+        .join-section {
+            background-color: #0076c5;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .join-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .join-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .join-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .join-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .join-button {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .join-primary {
+            background-color: white;
+            color: #0076c5;
+        }
+        
+        .join-primary:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .join-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .join-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Latest news section */
+        .news-section {
+            margin-bottom: 60px;
+        }
+        
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .news-image {
+            height: 180px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .news-excerpt {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .read-more {
+            color: #e10a0a;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 10px;
+        }
+        
+        .footer-link a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer-link a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: #e10a0a;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 0C8.954 0 0 8.954 0 20C0 31.046 8.954 40 20 40C31.046 40 40 31.046 40 20C40 8.954 31.046 0 20 0ZM20 36C11.163 36 4 28.837 4 20C4 11.163 11.163 4 20 4C28.837 4 36 11.163 36 20C36 28.837 28.837 36 20 36Z" fill="white"/>
+                    <path d="M25 15H15V25H25V15Z" fill="white"/>
+                </svg>
+                <span class="logo-text">VIRGIN IMPACT</span>
+            </div>
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search initiatives...">
+                </div>
+                <div class="notification-icon">
+                    🔔
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar">JB</div>
+                    <span>Jane Branson</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-links">
+                    <a href="#" class="nav-link active">Home</a>
+                    <a href="#" class="nav-link">Initiatives</a>
+                    <a href="#" class="nav-link">Companies</a>
+                    <a href="#" class="nav-link">My Impact</a>
+                    <a href="#" class="nav-link">Community</a>
+                </div>
+                <div class="login-signup">
+                    <button class="login-btn">Log In with Virgin Red</button>
+                    <button class="signup-btn">Sign Up</button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Changing Business for Good</h1>
+                <p class="hero-subtitle">Join our global community of Virgin companies and customers working together on initiatives that create positive environmental and social impact.</p>
+                <a href="#" class="hero-cta">Explore Initiatives</a>
+            </div>
+        </section>
+        
+        <!-- Stats bar -->
+        <section class="stats-bar">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Active Initiatives</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Virgin Companies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">10,254</div>
+                    <div class="stat-label">Virgin Red Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">£2.4M</div>
+                    <div class="stat-label">Impact Generated</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Categories section -->
+            <section class="categories-section">
+                <h2 class="section-title">Explore by Category</h2>
+                <div class="categories">
+                    <div class="category-card">
+                        <div class="category-image" style="background-image: url('https://via.placeholder.com/300x150?text=Environmental');"></div>
+                        <div class="category-content">
+                            <h3 class="category-title">Environmental</h3>
+                            <p class="category-description">Initiatives focused on protecting our planet, from carbon reduction to conservation efforts.</p>
+                            <div class="category-stats">
+                                <div class="category-stat">
+                                    <span class="category-stat-icon">📊</span>
+                                    <span>18 initiatives</span>
+                                </div>
+                                <div class="category-stat">
+                                    <span class="category-stat-icon">👥</span>
+                                    <span>4,326 participants</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-image" style="background-image: url('https://via.placeholder.com/300x150?text=Social');"></div>
+                        <div class="category-content">
+                            <h3 class="category-title">Social Impact</h3>
+                            <p class="category-description">Projects that empower communities and address social inequality around the world.</p>
+                            <div class="category-stats">
+                                <div class="category-stat">
+                                    <span class="category-stat-icon">📊</span>
+                                    <span>14 initiatives</span>
+                                </div>
+                                <div class="category-stat">
+                                    <span class="category-stat-icon">👥</span>
+                                    <span>3,218 participants</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-image" style="background-image: url('https://via.placeholder.com/300x150?text=Education');"></div>
+                        <div class="category-content">
+                            <h3 class="category-title">Education</h3>
+                            <p class="category-description">Educational programs that provide opportunities and bridge digital divides.</p>
+                            <div class="category-stats">
+                                <div class="category-stat">
+                                    <span class="category-stat-icon">📊</span>
+                                    <span>7 initiatives</span>
+                                </div>
+                                <div class="category-stat">
+                                    <span class="category-stat-icon">👥</span>
+                                    <span>1,845 participants</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-image" style="background-image: url('https://via.placeholder.com/300x150?text=Health');"></div>
+                        <div class="category-content">
+                            <h3 class="category-title">Health & Wellbeing</h3>
+                            <p class="category-description">Initiatives promoting better health outcomes and wellness for all.</p>
+                            <div class="category-stats">
+                                <div class="category-stat">
+                                    <span class="category-stat-icon">📊</span>
+                                    <span>8 initiatives</span>
+                                </div>
+                                <div class="category-stat">
+                                    <span class="category-stat-icon">👥</span>
+                                    <span>2,104 participants</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Featured initiatives -->
+            <section class="featured-section">
+                <h2 class="section-title">Featured Initiatives</h2>
+                <div class="featured-container">
+                    <div class="featured-card">
+                        <div class="featured-image" style="background-image: url('https://via.placeholder.com/400x200?text=Mangrove+Forest');">
+                            <div class="featured-tag">FEATURED</div>
+                            <div class="featured-company">
+                                <div class="company-logo">VA</div>
+                                <span>Virgin Atlantic</span>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <h3 class="featured-title">Caribbean Mangrove Forest Restoration</h3>
+                            <p class="featured-description">Supporting the restoration and protection of mangrove ecosystems in the Caribbean, which provide critical habitat and protect coastlines.</p>
+                            <div class="featured-progress">
+                                <div class="progress-stats">
+                                    <span>£428,500 raised</span>
+                                    <span>75% of target</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="featured-footer">
+                                <div class="featured-participants">
+                                    <div class="participant-avatars">
+                                        <div class="participant-avatar" style="background-image: url('https://via.placeholder.com/40');"></div>
+                                        <div class="participant-avatar" style="background-image: url('https://via.placeholder.com/40');"></div>
+                                        <div class="participant-avatar" style="background-image: url('https://via.placeholder.com/40');"></div>
+                                    </div>
+                                    <span>1,248 participants</span>
+                                </div>
+                                <a href="#" class="featured-action">View Initiative →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-card">
+                        <div class="featured-image" style="background-image: url('https://via.placeholder.com/400x200?text=Digital+Inclusion');">
+                            <div class="featured-tag">TRENDING</div>
+                            <div class="featured-company">
+                                <div class="company-logo">VM</div>
+                                <span>Virgin Media</span>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <h3 class="featured-title">Digital Inclusion: Rehoming Tech</h3>
+                            <p class="featured-description">Tackling digital exclusion by collecting, refurbishing and rehoming smartphones and computers with those who need them most.</p>
+                            <div class="featured-progress">
+                                <div class="progress-stats">
+                                    <span>4,215 devices</span>
+                                    <span>84% of target</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 84%;"></div>
+                                </div>
+                            </div>
+                            <div class="featured-footer">
+                                <div class="featured-participants">
+                                    <div class="participant-avatars">
+                                        <div class="participant-avatar" style="background-image: url('https://via.placeholder.com/40');"></div>
+                                        <div class="participant-avatar" style="background-image: url('https://via.placeholder.com/40');"></div>
+                                        <div class="participant-avatar" style="background-image: url('https://via.placeholder.com/40');"></div>
+                                    </div>
+                                    <span>964 participants</span>
+                                </div>
+                                <a href="#" class="featured-action">View Initiative →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-card">
+                        <div class="featured-image" style="background-image: url('https://via.placeholder.com/400x200
