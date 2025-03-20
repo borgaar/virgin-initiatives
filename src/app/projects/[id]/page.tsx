@@ -29,7 +29,7 @@ export default function ProjectPage() {
             <Button className="w-full bg-primary">Donate points</Button>
             <Button className="w-full bg-primary">Donate cash</Button>
           </div>
-          <Button className="border-2 border-solid border-red-200 bg-red-100 text-black">
+          <Button className="border-2 border-solid border-red-200 bg-red-100 text-red-800">
             Share on social media
           </Button>
           <Button className="border-2 border-solid border-gray-200 bg-white text-gray-600">

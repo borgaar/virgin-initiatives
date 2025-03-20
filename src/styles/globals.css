@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 351 63% 2%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
     --muted: 351 21% 85%;
     --muted-foreground: 351 6% 31%;
     --popover: 351 60% 99%;

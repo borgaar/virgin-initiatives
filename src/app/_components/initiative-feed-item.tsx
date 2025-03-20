@@ -82,7 +82,7 @@ export default function InitiativeFeedItem({
   interested,
 }: FeedItem) {
   return (
-    <div className="flex min-w-full flex-col items-start justify-between rounded-lg border-2 border-solid border-gray-300 p-5">
+    <div className="flex min-w-full flex-col items-start justify-between bg-white bg-opacity-5 p-5">
       <div className="flex items-center justify-start space-x-3">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
@@ -115,7 +115,7 @@ export default function InitiativeFeedItem({
           <p>❤️ {likes} likes</p>
         </div>
         <div className="space-x-3">
-          <Button className="bg-blue-100 text-blue-600">
+          <Button className="rounded-full bg-white text-blue-600">
             👋<span>I&apos;m Interested</span>
           </Button>
           <Button className="bg-gray-100 text-gray-600">

@@ -40,7 +40,7 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="flex flex-col items-center">
+      <main className="flex flex-col items-center text-white">
         <div className="animate-fade-in flex flex-col items-center gap-12 px-4 py-6">
           <h1 className="font-[merriweather] text-5xl leading-[1.4]">
             Where do <span className="italic text-primary">you</span> want to{" "}

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white">
+    <nav>
       <div className="mx-auto max-w-7xl">
         <div className="grid h-[69] grid-cols-3 items-center justify-between">
           <Link href={"/"}>
