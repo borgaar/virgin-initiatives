@@ -35,7 +35,7 @@ export default function InitiativeReference({
           {initiatives.map((item) => (
             <CardContent
               key={item.id}
-              className="flex flex-col gap-2 rounded-xl border-2 border-solid border-gray-200 p-4"
+              className="flex flex-col gap-2 rounded-xl border-2 border-solid border-gray-400 p-4 text-white"
             >
               <div className="flex items-center justify-between pr-4">
                 <div>
@@ -48,10 +48,12 @@ export default function InitiativeReference({
                     </Avatar>
                     <div className="flex flex-col">
                       <h2 className="text-lg font-bold">{item.title}</h2>
-                      <p className="text-sm">{item.author}</p>
+                      <p className="text-sm text-gray-400">{item.author}</p>
                     </div>
                   </div>
-                  <div className="mr-6 mt-6">{item.description}</div>
+                  <div className="mr-6 mt-6 text-gray-200">
+                    {item.description}
+                  </div>
                 </div>
                 <div>
                   <ArrowRight height={30} width={30} />

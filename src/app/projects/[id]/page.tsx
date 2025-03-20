@@ -8,7 +8,7 @@ import ProjectTakeInitiative from "../../_components/project/take-initiative";
 
 export default function ProjectPage() {
   return (
-    <main className="mx-auto mb-64 flex max-w-6xl flex-col gap-6 py-6">
+    <main className="mx-auto mb-64 flex max-w-6xl flex-col gap-6 py-6 pt-20">
       <div className="flex gap-6">
         <ProjectCard
           title={"Clean Ocean Initiative"}
