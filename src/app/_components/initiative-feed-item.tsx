@@ -108,7 +108,7 @@ export default function InitiativeFeedItem({
         </div>
       </div>
       <p className="py-6">{content}</p>
-      <div className="mb-6 h-[0.5] w-full bg-gray-200" />
+      <div className="mb-6 h-[1] w-full bg-gray-200" />
       <div className="flex w-full items-center justify-between">
         <div className="flex space-x-5">
           <p>‼️ {interested} interested</p>
