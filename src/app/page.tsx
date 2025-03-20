@@ -41,8 +41,8 @@ export default async function Home() {
   return (
     <HydrateClient>
       <main className="flex flex-col items-center text-white">
-        <div className="h-[calc(100vh-100px)] pt-44">
-          <div className="flex animate-fade-in flex-col items-center gap-12 px-4 py-6">
+        <div className="h-[calc(100vh-100px)] pt-[calc(20vh-100px)]">
+          <div className="flex animate-fade-in flex-col items-center gap-[calc(16vh-100px)] px-4 py-[calc(14vh-100px)]">
             <h1 className="text-center font-[merriweather] text-5xl leading-[1.4]">
               How do <span className="italic text-primary">you</span> want to{" "}
               <br />
@@ -52,7 +52,7 @@ export default async function Home() {
               Take a look at our projects below
             </p>
           </div>
-          <div className="m-auto flex h-[31rem] gap-2 align-middle">
+          <div className="m-auto flex h-[calc(56vh-100px)] gap-2 align-middle">
             {items.map((item) => (
               <Link
                 href={`/projects/${item.id}`}
@@ -62,7 +62,7 @@ export default async function Home() {
                 key={item.id}
                 className={cn(
                   "my-auto overflow-hidden bg-gradient-to-b from-transparent via-black/40 to-black/60 bg-cover bg-center brightness-[0.4] transition-all duration-300 [&:not(:hover)]:grayscale [&:not(:hover)_>_*]:hidden", // base
-                  "h-[26rem] w-[10rem] flex-col hover:h-full hover:w-[20rem] hover:brightness-75", // Main style
+                  "h-[calc(50vh-100px)] w-[calc(26vh-100px)] flex-col hover:h-full hover:w-[calc(38vh-100px)] hover:brightness-75", // Main style
                   "[&:hover_.the-text-content]:motion-preset-slide-up-lg", // The text content
                 )}
               >
