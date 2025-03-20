@@ -1,6 +1,7 @@
 import InitiativeFeedItem, {
   type FeedItem,
 } from "../_components/initiative-feed-item";
+import PageContainer from "../_components/page-container";
 
 const items: FeedItem[] = [
   {
@@ -63,10 +64,10 @@ const items: FeedItem[] = [
 export default function Feed() {
   console.log(items);
   return (
-    <div className="pt-18 mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-6">
+    <PageContainer className="flex flex-col items-center gap-4 py-6">
       {items.map((item) => (
         <InitiativeFeedItem key={item.id} {...item} />
       ))}
-    </div>
+    </PageContainer>
   );
 }

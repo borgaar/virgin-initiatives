@@ -5,6 +5,7 @@ import ProjectRoadmap from "../../_components/project/roadmap";
 import InitiativeReference from "@/app/_components/project/initiative-reference";
 import ProjectTakeInitiative from "../../_components/project/take-initiative";
 import { projects } from "../../../lib/projects";
+import PageContainer from "@/app/_components/page-container";
 
 export default async function ProjectPage({
   params,
@@ -18,7 +19,7 @@ export default async function ProjectPage({
     return <div>404 not found</div>;
   }
   return (
-    <main className="mx-auto mb-64 flex max-w-6xl flex-col gap-6 py-6 pt-20">
+    <PageContainer className="mx-auto flex flex-col gap-6 py-6 pt-20">
       <div className="flex gap-6">
         <ProjectCard {...project} />
         <ProjectTakeInitiative />
@@ -27,6 +28,6 @@ export default async function ProjectPage({
       <ProjectParticipation companies={project.participants} />
       <InitiativeReference initiatives={project.initiatives} />
       <ProjectComments comments={project.comments} />
-    </main>
+    </PageContainer>
   );
 }

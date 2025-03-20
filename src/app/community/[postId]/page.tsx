@@ -1,6 +1,7 @@
 import { posts } from "@/lib/community";
 import { redirect } from "next/navigation";
 import PostRenderer from "./components/PostRenderer";
+import PageContainer from "@/app/_components/page-container";
 
 type PostPageProps = {
   params: {
@@ -17,10 +18,8 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <div className="flex justify-center pb-6 pt-10">
-      <div className="container">
-        <PostRenderer post={post} />
-      </div>
-    </div>
+    <PageContainer className="mt-20">
+      <PostRenderer post={post} />
+    </PageContainer>
   );
 }
