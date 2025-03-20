@@ -18,14 +18,12 @@ import {
   CardTitle,
 } from "../../../components/ui/card";
 import { moods } from "../../../lib/moods";
+import { Project } from "../../../lib/projects";
+import PersonAvatar from "../user-avatar";
+import { fullName } from "../../../lib/people";
 
 interface ProjectCommentsProps {
-  comments: {
-    author: string;
-    content: string;
-    mood: (typeof moods)[number]["value"];
-    avatar: string;
-  }[];
+  comments: Project["comments"];
 }
 
 export default function ProjectComments({ comments }: ProjectCommentsProps) {
@@ -59,20 +57,15 @@ function Comment({
   author,
   content,
   mood,
-  avatar,
 }: ProjectCommentsProps["comments"][number]) {
   return (
     <div className="flex items-start space-x-4">
       <div className="shrink-0">
-        <img
-          alt={author}
-          src={avatar}
-          className="inline-block size-10 rounded-full"
-        />
+        <PersonAvatar person={author} />
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex items-center space-x-2">
-          <h3 className="text-lg font-bold text-white">{author}</h3>
+          <h3 className="text-lg font-bold text-white">{fullName(author)}</h3>
           {Boolean(mood) && (
             <span
               className={cn(moods.find((m) => m.value === mood)!.text)}

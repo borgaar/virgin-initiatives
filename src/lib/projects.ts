@@ -1,36 +1,36 @@
+import { companies } from "./companies";
 import { Mood, moods } from "./moods";
+import { people, Person } from "./people";
 
 export interface Project {
-  title: string; // short project title
-  description: string; // longer description
+  title: string;
+  description: string;
   stats: {
-    label: string; // ex. companies (number of companies participaing), participants, progress, target year
-    value: string; // 7, 1.2k, 25% etc
+    label: string;
+    value: string;
   }[];
-  callToActions: string[]; // ex. "Join the initiative", "Donate now" etc.
-  tag: "Environment" | "Energy" | "Education" | "Technology" | "Healthcare"; // ex. Environment, Health, Education, Poverty etc.
+  callToActions: string[];
+  tag: "Environment" | "Energy" | "Education" | "Technology" | "Healthcare";
   roadmap: {
-    id: number; // increment from 1
-    time: string; // ex. Q1 2022, Q3 2022, 2025-2026 etc.
+    id: number;
+    time: string;
     title: string;
     description: string;
     status: "completed" | "in-progress" | "todo";
   }[];
   participants: {
-    name: string; // company name
-    logo: string; // path to logo
-    description: string; // short description
-  }[]; // all participants should be daughter companies of Virigin Group
+    name: string;
+    logo: string;
+    description: string;
+  }[];
   initiatives: {
-    id: number; // auto-increment from 1
-    image: string; // image URL
+    id: number;
     title: string;
     description: string;
-    author: string; // Firstname Lastname
+    author: Person;
   }[];
   comments: {
-    author: string; // Firstname Lastname
-    avatar: string; // url
+    author: Person;
     content: string;
     mood: Mood;
   }[];
@@ -82,55 +82,32 @@ export const projects: Project[] = [
         status: "todo",
       },
     ],
-    participants: [
-      {
-        name: "Virgin Voyages",
-        logo: "/logos/virgin-voyages.png",
-        description:
-          "Leading the marine vessel sustainability transformations and providing transport support for research teams.",
-      },
-      {
-        name: "Virgin Active",
-        logo: "/logos/virgin-active.png",
-        description:
-          "Organizing community cleanup events and volunteer recruitment throughout coastal regions.",
-      },
-      {
-        name: "Virgin Hotels",
-        logo: "/logos/virgin-hotels.png",
-        description:
-          "Implementing plastic-free operations across all properties and serving as education hubs in coastal locations.",
-      },
-    ],
+    participants: companies.filter((_, idx) => idx < 3),
     initiatives: [
       {
         id: 1,
-        image: "/images/beach-cleanup.jpg",
         title: "International Coastal Cleanup Day",
         description:
           "Join thousands of volunteers across 35 countries for our largest coordinated cleanup effort of the year.",
-        author: "Emma Thompson",
+        author: people[0]!,
       },
       {
         id: 2,
-        image: "/images/circular-economy.jpg",
         title: "Plastic Circular Economy Hub",
         description:
           "Our new innovation center focused on developing technologies to repurpose recovered ocean plastics into valuable products.",
-        author: "Marcus Chen",
+        author: people[1]!,
       },
     ],
     comments: [
       {
-        author: "Sarah Johnson",
-        avatar: "/avatars/sarah-j.jpg",
+        author: people[2]!,
         content:
           "The coastal cleanup in San Diego was incredible! We collected over 500kg of waste in just one weekend.",
         mood: "excited",
       },
       {
-        author: "James Peterson",
-        avatar: "/avatars/james-p.jpg",
+        author: people[2]!,
         content:
           "The new filtration technology is showing promising results. Initial tests show 95% capture rate for microplastics.",
         mood: "happy",
@@ -187,55 +164,32 @@ export const projects: Project[] = [
         status: "todo",
       },
     ],
-    participants: [
-      {
-        name: "Virgin Unite",
-        logo: "/logos/virgin-unite.png",
-        description:
-          "Providing core funding and strategic oversight for the global healthcare initiative.",
-      },
-      {
-        name: "Virgin Pulse",
-        logo: "/logos/virgin-pulse.png",
-        description:
-          "Developing digital health tracking tools and preventative care protocols for deployment in underserved areas.",
-      },
-      {
-        name: "Virgin Media",
-        logo: "/logos/virgin-media.png",
-        description:
-          "Building telecommunications infrastructure to enable telemedicine in remote regions.",
-      },
-    ],
+    participants: companies.filter((_, idx) => idx % 2 === 0),
     initiatives: [
       {
         id: 1,
-        image: "/images/mobile-clinic.jpg",
         title: "Rural Healthcare Caravan",
         description:
           "Monthly mobile clinic visits to 75 villages providing essential health screenings, vaccinations, and basic treatments.",
-        author: "Dr. Priya Patel",
+        author: people[2]!,
       },
       {
         id: 2,
-        image: "/images/telehealth-training.jpg",
         title: "Community Health Worker Program",
         description:
           "Training local residents to become frontline healthcare advocates equipped with telehealth tools to connect their communities to medical professionals.",
-        author: "Thomas Nelson",
+        author: people[3]!,
       },
     ],
     comments: [
       {
-        author: "Dr. Michelle Wong",
-        avatar: "/avatars/michelle-w.jpg",
+        author: people[4]!,
         content:
           "The mobile clinic program has already detected over 150 cases of diabetes that would have gone undiagnosed. This is truly life-changing work.",
         mood: "loved",
       },
       {
-        author: "Robert Kincaid",
-        avatar: "/avatars/robert-k.jpg",
+        author: people[5]!,
         content:
           "Our community health workers are becoming trusted resources in their villages. Local ownership is key to sustainability.",
         mood: "virgin",
@@ -292,76 +246,45 @@ export const projects: Project[] = [
         status: "in-progress",
       },
     ],
-    participants: [
-      {
-        name: "Virgin Orbit",
-        logo: "/logos/virgin-orbit.png",
-        description:
-          "Providing aerospace engineering mentors and developing STEM curriculum modules.",
-      },
-      {
-        name: "Virgin Galactic",
-        logo: "/logos/virgin-galactic.png",
-        description:
-          "Offering space technology demonstration workshops and innovation challenges for students.",
-      },
-      {
-        name: "Virgin StartUp",
-        logo: "/logos/virgin-startup.png",
-        description:
-          "Leading entrepreneurship training and providing seed funding for student ventures.",
-      },
-      {
-        name: "Virgin Hyperloop",
-        logo: "/logos/virgin-hyperloop.png",
-        description:
-          "Hosting transportation technology internships and supporting engineering projects.",
-      },
-    ],
+    participants: companies.filter((_, idx) => idx > 2),
     initiatives: [
       {
         id: 1,
-        image: "/images/coding-bootcamp.jpg",
         title: "Code Your Future Bootcamp",
         description:
           "Intensive 12-week training program teaching full-stack development skills with guaranteed interview opportunities.",
-        author: "Alex Rivera",
+        author: people[6]!,
       },
       {
         id: 2,
-        image: "/images/entrepreneurship.jpg",
         title: "Young Founders Incubator",
         description:
           "Six-month program supporting student-led startups with mentorship, workspace, and initial funding.",
-        author: "Olivia Washington",
+        author: people[7]!,
       },
       {
         id: 3,
-        image: "/images/girls-tech.jpg",
         title: "Girls in Tech Initiative",
         description:
           "Specialized program addressing gender gaps in technology education with female industry mentors and targeted recruitment.",
-        author: "Sophia Lee",
+        author: people[8]!,
       },
     ],
     comments: [
       {
-        author: "Jamal Wilson",
-        avatar: "/avatars/jamal-w.jpg",
+        author: people[9]!,
         content:
           "The bootcamp completely changed my trajectory. I went from working minimum wage to a junior developer role in 6 months.",
         mood: "excited",
       },
       {
-        author: "Lisa Chen",
-        avatar: "/avatars/lisa-c.jpg",
+        author: people[10]!,
         content:
           "My startup received its first round of funding thanks to the connections made through the Young Founders program!",
         mood: "thumbsy",
       },
       {
-        author: "David Okafor",
-        avatar: "/avatars/david-o.jpg",
+        author: people[11]!,
         content:
           "The mentorship component makes all the difference. Having someone believe in your potential is truly motivating.",
         mood: "happy",
@@ -427,70 +350,45 @@ export const projects: Project[] = [
         status: "todo",
       },
     ],
-    participants: [
-      {
-        name: "Virgin Green Fund",
-        logo: "/logos/virgin-green-fund.png",
-        description:
-          "Providing capital investment for utility-scale renewable energy projects and startup technologies.",
-      },
-      {
-        name: "Virgin Earth",
-        logo: "/logos/virgin-earth.png",
-        description:
-          "Leading carbon accounting and environmental impact assessment for all renewable projects.",
-      },
-      {
-        name: "Virgin Limited Edition",
-        logo: "/logos/virgin-limited-edition.png",
-        description:
-          "Converting all properties to 100% renewable energy as showcase implementations.",
-      },
-    ],
+    participants: companies.filter((_, idx) => idx % 2 === 1),
     initiatives: [
       {
         id: 1,
-        image: "/images/solar-community.jpg",
         title: "Community Power Cooperatives",
         description:
           "Creating locally-owned renewable energy systems that share costs and benefits among neighborhood residents.",
-        author: "Michael Greenberg",
+        author: people[2]!,
       },
       {
         id: 2,
-        image: "/images/training-center.jpg",
         title: "Green Jobs Training Center",
         description:
           "Regional facilities providing hands-on training for renewable energy installation, maintenance, and system design.",
-        author: "Alisha Patel",
+        author: people[12]!,
       },
       {
         id: 3,
-        image: "/images/policy-summit.jpg",
         title: "Energy Transition Policy Summit",
         description:
           "Annual gathering of industry leaders, policymakers, and community advocates to accelerate regulatory support for renewables.",
-        author: "Daniel Martinez",
+        author: people[13]!,
       },
     ],
     comments: [
       {
-        author: "Karen Winters",
-        avatar: "/avatars/karen-w.jpg",
+        author: people[14]!,
         content:
           "Our community solar project has reduced energy bills by an average of 32% for participating households. The economic impact is immediate.",
         mood: "loved",
       },
       {
-        author: "Trevor Jackson",
-        avatar: "/avatars/trevor-j.jpg",
+        author: people[2]!,
         content:
           "I completed the installation training program last month and already have more job offers than I can handle. This is the future.",
         mood: "thumbsy",
       },
       {
-        author: "Maria Gonzalez",
-        avatar: "/avatars/maria-g.jpg",
+        author: people[2]!,
         content:
           "The financing model made it possible for our small business to go 100% renewable without affecting our bottom line. Brilliant approach.",
         mood: "happy",
@@ -556,70 +454,45 @@ export const projects: Project[] = [
         status: "todo",
       },
     ],
-    participants: [
-      {
-        name: "Virgin Wines",
-        logo: "/logos/virgin-wines.png",
-        description:
-          "Supporting agricultural diversification and providing supply chain expertise for food distribution.",
-      },
-      {
-        name: "Virgin Atlantic Cargo",
-        logo: "/logos/virgin-atlantic-cargo.png",
-        description:
-          "Offering logistics support and transportation solutions for food delivery to remote areas.",
-      },
-      {
-        name: "Virgin Produced",
-        logo: "/logos/virgin-produced.png",
-        description:
-          "Creating educational content and documentaries to raise awareness about food security challenges.",
-      },
-    ],
+    participants: companies.filter((_, idx) => idx < 3),
     initiatives: [
       {
         id: 1,
-        image: "/images/vertical-farming.jpg",
         title: "Urban Farming Revolution",
         description:
           "Implementing vertical farming technologies in urban environments to grow food in limited spaces with minimal resources.",
-        author: "Nina Peron",
+        author: people[2]!,
       },
       {
         id: 2,
-        image: "/images/food-rescue.jpg",
         title: "Food Rescue Network",
         description:
           "Coordinated system to collect and redistribute surplus food from restaurants, grocers, and farms to food-insecure communities.",
-        author: "Carlos Mendez",
+        author: people[15]!,
       },
       {
         id: 3,
-        image: "/images/seed-bank.jpg",
         title: "Indigenous Seed Preservation",
         description:
           "Protecting agricultural biodiversity by documenting and preserving traditional crop varieties adapted to local conditions.",
-        author: "Amara Johnson",
+        author: people[16]!,
       },
     ],
     comments: [
       {
-        author: "Fatima Hassan",
-        avatar: "/avatars/fatima-h.jpg",
+        author: people[17]!,
         content:
           "The drought-resistant crop varieties have transformed our community's resilience. We harvested successfully despite the challenging conditions.",
         mood: "excited",
       },
       {
-        author: "George Mbeki",
-        avatar: "/avatars/george-m.jpg",
+        author: people[18]!,
         content:
           "Our food hub has become more than just a distribution center—it's a community gathering space where knowledge is shared and relationships are built.",
         mood: "virgin",
       },
       {
-        author: "Lucia Fernandez",
-        avatar: "/avatars/lucia-f.jpg",
+        author: people[19]!,
         content:
           "The mobile marketplace has reached 15 previously underserved villages, bringing fresh produce to over 8,000 people who previously had no access.",
         mood: "happy",
