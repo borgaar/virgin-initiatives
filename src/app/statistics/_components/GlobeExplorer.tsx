@@ -138,8 +138,8 @@ const items: ProjectCardMarker[] = [
       { label: "Progress", value: "28%" },
       { label: "Target Year", value: "2029" },
     ],
-    lat: 16.7425,
-    lon: -3.0097, // Great Barrier Reef, Australia (approximation)
+    lat: -33.866667,
+    lon: 151.2, // Great Barrier Reef, Australia (approximation)
   },
   {
     id: "7",
