@@ -135,6 +135,7 @@ export default function Statistics() {
 
   function openPopup(info: { data: ProjectCardMarker; viewState: ViewState }) {
     const zoom = mapRef.current?.getZoom() ?? 0;
+    if (!exploring) setExploring(true);
     mapRef.current
       ?.flyTo({
         center: [info.data.lon, info.data.lat],
