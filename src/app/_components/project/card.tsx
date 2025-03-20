@@ -1,4 +1,11 @@
-import { Download, Leaf } from "lucide-react";
+import {
+  AmbulanceIcon,
+  CpuIcon,
+  Download,
+  GraduationCapIcon,
+  Leaf,
+  ZapIcon,
+} from "lucide-react";
 import {
   Card,
   CardContent,
@@ -12,7 +19,7 @@ import { Button } from "../../../components/ui/button";
 export interface ProjectCardProps {
   title: string;
   description: string;
-  tag: "Environment";
+  tag: "Environment" | "Energy" | "Education" | "Technology" | "Healthcare";
   stats: { value: string; label: string }[];
 }
 
@@ -20,6 +27,29 @@ const tagToIcon = (tag: ProjectCardProps["tag"]) => {
   switch (tag) {
     case "Environment":
       return <Leaf size={15} />;
+    case "Energy":
+      return <ZapIcon size={15} />;
+    case "Education":
+      return <GraduationCapIcon size={15} />;
+    case "Technology":
+      return <CpuIcon size={15} />;
+    case "Healthcare":
+      return <AmbulanceIcon size={15} />;
+  }
+};
+
+export const tagToColor = (tag: ProjectCardProps["tag"]) => {
+  switch (tag) {
+    case "Environment":
+      return "#2C7A7B";
+    case "Energy":
+      return "#FFC857";
+    case "Education":
+      return "#E9724C";
+    case "Technology":
+      return "#C5283D";
+    case "Healthcare":
+      return "#171738";
   }
 };
 
@@ -59,18 +89,14 @@ export default function ProjectCard({
   );
 }
 
-export function MapProjectCard({
-  title,
-  description,
-  stats,
-  tag,
-}: ProjectCardProps) {
+export function MapProjectCard({ title, stats, tag }: ProjectCardProps) {
   return (
     <Card className="relative overflow-hidden bg-gradient-to-r from-black to-transparent text-white">
       <div className="absolute z-10 h-full w-full bg-gradient-to-r from-black to-transparent" />
       <CardHeader className="relative z-10">
         <Badge
           className="pointer-events-none mb-1 w-fit gap-2 px-2 py-1 text-black"
+          style={{ backgroundColor: tagToColor(tag) }}
           variant={"secondary"}
         >
           {tagToIcon(tag)} {tag}

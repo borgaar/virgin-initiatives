@@ -13,7 +13,11 @@ import Map, {
   Source,
   ViewState,
 } from "react-map-gl/mapbox";
-import { MapProjectCard, ProjectCardProps } from "../_components/project/card";
+import {
+  MapProjectCard,
+  ProjectCardProps,
+  tagToColor,
+} from "../_components/project/card";
 import { ChevronRight, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -34,6 +38,417 @@ const dataLayer: LayerSpecification = {
     "line-width": 1.5,
   },
 };
+
+const items: ProjectCardMarker[] = [
+  {
+    id: "1",
+    title: "Clean Ocean Initiative",
+    description: `
+      Our global effort to remove 5 million tons of plastic from oceans by
+      2030, spanning 15 countries across 3 continents, as well as educating
+      communities on sustainable practices.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "7" },
+      { label: "Participants", value: "1.2k" },
+      { label: "Progress", value: "35%" },
+      { label: "Target Year", value: "2027" },
+    ],
+    lat: 43,
+    lon: 13,
+  },
+  {
+    id: "2",
+    title: "Build a new park",
+    description: `
+      Our city needs more green spaces. Let's build a new park for everyone to enjoy.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "7" },
+      { label: "Participants", value: "1.2k" },
+      { label: "Progress", value: "35%" },
+      { label: "Target Year", value: "2027" },
+    ],
+    lat: 24,
+    lon: 13,
+  },
+  {
+    id: "3",
+    title: "Renewable Energy Hub",
+    description: `
+      Creating the largest solar and wind energy facility in Southeast Asia, 
+      providing clean power to over 500,000 homes and reducing carbon emissions 
+      by 2.5 million tons annually.
+    `,
+    tag: "Energy",
+    stats: [
+      { label: "Companies", value: "12" },
+      { label: "Participants", value: "850" },
+      { label: "Progress", value: "62%" },
+      { label: "Target Year", value: "2026" },
+    ],
+    lat: 13.7563,
+    lon: 100.5018, // Bangkok, Thailand
+  },
+  {
+    id: "4",
+    title: "Urban Reforestation Project",
+    description: `
+      Transforming urban centers by planting 1 million trees across 50 cities, 
+      improving air quality and creating green spaces in densely populated areas.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "23" },
+      { label: "Participants", value: "5.7k" },
+      { label: "Progress", value: "41%" },
+      { label: "Target Year", value: "2028" },
+    ],
+    lat: -23.5505,
+    lon: -46.6333, // São Paulo, Brazil
+  },
+  {
+    id: "5",
+    title: "Digital Literacy Campaign",
+    description: `
+      Providing technology access and digital skills training to underserved 
+      communities, empowering 100,000 people with essential skills for the 
+      modern workforce.
+    `,
+    tag: "Education",
+    stats: [
+      { label: "Companies", value: "18" },
+      { label: "Participants", value: "720" },
+      { label: "Progress", value: "53%" },
+      { label: "Target Year", value: "2026" },
+    ],
+    lat: -1.2921,
+    lon: 36.8219, // Nairobi, Kenya
+  },
+  {
+    id: "6",
+    title: "Coral Reef Restoration",
+    description: `
+      Revitalizing damaged coral ecosystems using innovative cultivation techniques,
+      restoring marine biodiversity and protecting coastal communities from storms.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "5" },
+      { label: "Participants", value: "215" },
+      { label: "Progress", value: "28%" },
+      { label: "Target Year", value: "2029" },
+    ],
+    lat: 16.7425,
+    lon: -3.0097, // Great Barrier Reef, Australia (approximation)
+  },
+  {
+    id: "7",
+    title: "Clean Water Initiative",
+    description: `
+      Building sustainable water treatment facilities in rural communities, 
+      providing clean drinking water to over 300,000 people in regions facing 
+      severe water scarcity.
+    `,
+    tag: "Technology",
+    stats: [
+      { label: "Companies", value: "8" },
+      { label: "Participants", value: "430" },
+      { label: "Progress", value: "47%" },
+      { label: "Target Year", value: "2026" },
+    ],
+    lat: 14.6937,
+    lon: -17.4441, // Dakar, Senegal
+  },
+  {
+    id: "8",
+    title: "Sustainable Farming Network",
+    description: `
+      Teaching regenerative agriculture techniques to small-scale farmers, 
+      improving crop yields while reducing environmental impact and building 
+      climate resilience.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "15" },
+      { label: "Participants", value: "2.3k" },
+      { label: "Progress", value: "65%" },
+      { label: "Target Year", value: "2027" },
+    ],
+    lat: 28.6139,
+    lon: 77.209, // New Delhi, India
+  },
+  {
+    id: "9",
+    title: "Seismic-Resistant Housing",
+    description: `
+      Constructing affordable, earthquake-resistant homes in vulnerable regions, 
+      protecting communities from natural disasters and providing safe housing 
+      for 10,000 families.
+    `,
+    tag: "Technology",
+    stats: [
+      { label: "Companies", value: "10" },
+      { label: "Participants", value: "640" },
+      { label: "Progress", value: "32%" },
+      { label: "Target Year", value: "2028" },
+    ],
+    lat: -12.0464,
+    lon: -77.0428, // Lima, Peru
+  },
+  {
+    id: "10",
+    title: "Arctic Research Station",
+    description: `
+      Establishing a state-of-the-art climate research facility to monitor polar 
+      ice melt and develop strategies to mitigate the effects of climate change 
+      on vulnerable ecosystems.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "6" },
+      { label: "Participants", value: "85" },
+      { label: "Progress", value: "51%" },
+      { label: "Target Year", value: "2026" },
+    ],
+    lat: 78.2232,
+    lon: 15.6267, // Svalbard, Norway
+  },
+  {
+    id: "11",
+    title: "Urban Vertical Farming",
+    description: `
+      Building vertical hydroponic farms in urban centers to reduce food miles, 
+      provide fresh produce year-round, and create green jobs in densely populated areas.
+    `,
+    tag: "Technology",
+    stats: [
+      { label: "Companies", value: "9" },
+      { label: "Participants", value: "320" },
+      { label: "Progress", value: "75%" },
+      { label: "Target Year", value: "2025" },
+    ],
+    lat: 37.7749,
+    lon: -122.4194, // San Francisco, USA
+  },
+  {
+    id: "12",
+    title: "Women's Health Initiative",
+    description: `
+      Expanding access to maternal and reproductive healthcare services for women 
+      in underserved communities, with the goal of reaching 1 million women over 5 years.
+    `,
+    tag: "Healthcare",
+    stats: [
+      { label: "Companies", value: "13" },
+      { label: "Participants", value: "520" },
+      { label: "Progress", value: "38%" },
+      { label: "Target Year", value: "2027" },
+    ],
+    lat: 9.082,
+    lon: 8.6753, // Nigeria (center)
+  },
+  {
+    id: "13",
+    title: "Historic Site Preservation",
+    description: `
+      Restoring and preserving cultural heritage sites damaged by conflict or neglect, 
+      ensuring these treasures remain for future generations while promoting 
+      cultural tourism.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "4" },
+      { label: "Participants", value: "190" },
+      { label: "Progress", value: "22%" },
+      { label: "Target Year", value: "2029" },
+    ],
+    lat: 33.5138,
+    lon: 36.2765, // Damascus, Syria
+  },
+  {
+    id: "14",
+    title: "Youth Coding Academy",
+    description: `
+      Providing free programming education to underprivileged youth, 
+      preparing 50,000 students for careers in technology and fostering 
+      innovation in developing economies.
+    `,
+    tag: "Education",
+    stats: [
+      { label: "Companies", value: "25" },
+      { label: "Participants", value: "1.8k" },
+      { label: "Progress", value: "68%" },
+      { label: "Target Year", value: "2026" },
+    ],
+    lat: -26.2041,
+    lon: 28.0473, // Johannesburg, South Africa
+  },
+  {
+    id: "15",
+    title: "Microplastic Filtration System",
+    description: `
+      Developing and deploying advanced filtration technology in major river systems 
+      to prevent microplastics from reaching oceans, protecting marine ecosystems 
+      and food chains.
+    `,
+    tag: "Technology",
+    stats: [
+      { label: "Companies", value: "11" },
+      { label: "Participants", value: "240" },
+      { label: "Progress", value: "43%" },
+      { label: "Target Year", value: "2027" },
+    ],
+    lat: 31.2304,
+    lon: 121.4737, // Shanghai, China (Yangtze River)
+  },
+  {
+    id: "16",
+    title: "Arctic Wildlife Refuge",
+    description: `
+      Establishing protected areas for endangered polar species affected by 
+      climate change, combining conservation efforts with indigenous knowledge 
+      and sustainable tourism.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "7" },
+      { label: "Participants", value: "130" },
+      { label: "Progress", value: "29%" },
+      { label: "Target Year", value: "2030" },
+    ],
+    lat: 69.7085,
+    lon: -143.9918, // Alaska, USA
+  },
+  {
+    id: "17",
+    title: "Sustainable Fashion Cooperative",
+    description: `
+      Creating a network of ethical clothing manufacturers committed to 
+      fair labor practices, sustainable materials, and transparent supply chains 
+      across the fashion industry.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "42" },
+      { label: "Participants", value: "3.5k" },
+      { label: "Progress", value: "55%" },
+      { label: "Target Year", value: "2026" },
+    ],
+    lat: 23.8103,
+    lon: 90.4125, // Dhaka, Bangladesh
+  },
+  {
+    id: "18",
+    title: "Drought-Resistant Agriculture",
+    description: `
+      Implementing water-efficient farming techniques and drought-resistant crop 
+      varieties in arid regions, increasing food security for communities vulnerable 
+      to climate change.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "8" },
+      { label: "Participants", value: "970" },
+      { label: "Progress", value: "61%" },
+      { label: "Target Year", value: "2027" },
+    ],
+    lat: 15.3694,
+    lon: 44.191, // Sana'a, Yemen
+  },
+  {
+    id: "19",
+    title: "Floating Solar Array",
+    description: `
+      Building the world's largest floating solar farm on a hydroelectric reservoir, 
+      maximizing clean energy production while reducing water evaporation and 
+      providing shade for aquatic life.
+    `,
+    tag: "Energy",
+    stats: [
+      { label: "Companies", value: "14" },
+      { label: "Participants", value: "380" },
+      { label: "Progress", value: "49%" },
+      { label: "Target Year", value: "2026" },
+    ],
+    lat: -22.9068,
+    lon: -43.1729, // Rio de Janeiro, Brazil
+  },
+  {
+    id: "20",
+    title: "Mental Health Access Initiative",
+    description: `
+      Expanding mental health services in underserved regions through both 
+      physical clinics and telehealth platforms, aiming to reach 2 million 
+      people in need of support.
+    `,
+    tag: "Healthcare",
+    stats: [
+      { label: "Companies", value: "19" },
+      { label: "Participants", value: "860" },
+      { label: "Progress", value: "37%" },
+      { label: "Target Year", value: "2028" },
+    ],
+    lat: 55.7558,
+    lon: 37.6173, // Moscow, Russia
+  },
+  {
+    id: "21",
+    title: "Urban Mobility Revolution",
+    description: `
+      Transforming city transportation with an integrated network of electric 
+      buses, bike lanes, and pedestrian zones, reducing emissions and improving 
+      quality of life in congested urban areas.
+    `,
+    tag: "Technology",
+    stats: [
+      { label: "Companies", value: "16" },
+      { label: "Participants", value: "920" },
+      { label: "Progress", value: "42%" },
+      { label: "Target Year", value: "2027" },
+    ],
+    lat: 19.4326,
+    lon: -99.1332, // Mexico City, Mexico
+  },
+  {
+    id: "22",
+    title: "Marine Protected Area Network",
+    description: `
+      Establishing interconnected marine sanctuaries spanning multiple countries, 
+      protecting critical migration routes and breeding grounds for endangered 
+      ocean species.
+    `,
+    tag: "Environment",
+    stats: [
+      { label: "Companies", value: "9" },
+      { label: "Participants", value: "310" },
+      { label: "Progress", value: "33%" },
+      { label: "Target Year", value: "2029" },
+    ],
+    lat: 3.139,
+    lon: 101.6869, // Kuala Lumpur, Malaysia
+  },
+  {
+    id: "23",
+    title: "Revolutionizing Technology Education",
+    description: `
+      By removing JavaFX from the student curriculum, we can finally teach students, what they need to succeedd in the real world.
+
+      Long gone are the days of missery and pain, as we finally remove the last remnants of JavaFX from the curriculum.
+    `,
+    tag: "Education",
+    stats: [
+      { label: "Companies", value: "9" },
+      { label: "Participants", value: "310" },
+      { label: "Progress", value: "33%" },
+      { label: "Target Year", value: "2029" },
+    ],
+    lat: 63.4161695850931,
+    lon: 10.405766700330533, // Gløshaugen, Trondheim, Norway
+  },
+];
 
 function easeInOutCubic(x: number): number {
   return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
@@ -57,43 +472,6 @@ export default function Statistics() {
   const mapRef = useRef<MapRef>(null);
 
   const [exploring, setExploring] = useState(false);
-
-  const items: ProjectCardMarker[] = [
-    {
-      id: "1",
-      title: "Clean Ocean Initiative",
-      description: `
-        Our global effort to remove 5 million tons of plastic from oceans by
-        2030, spanning 15 countries across 3 continents, as well as educating
-        communities on sustainable practices.
-      `,
-      tag: "Environment",
-      stats: [
-        { label: "Companies", value: "7" },
-        { label: "Participants", value: "1.2k" },
-        { label: "Progress", value: "35%" },
-        { label: "Target Year", value: "2027" },
-      ],
-      lat: 43,
-      lon: 13,
-    },
-    {
-      id: "2",
-      title: "Build a new park",
-      description: `
-        Our city needs more green spaces. Let's build a new park for everyone to enjoy.
-      `,
-      tag: "Environment",
-      stats: [
-        { label: "Companies", value: "7" },
-        { label: "Participants", value: "1.2k" },
-        { label: "Progress", value: "35%" },
-        { label: "Target Year", value: "2027" },
-      ],
-      lat: 24,
-      lon: 13,
-    },
-  ];
 
   function handleViewStateChange(viewState: ViewState) {
     setCurrentViewState(viewState);
@@ -298,8 +676,11 @@ export default function Statistics() {
               }}
             >
               <div
-                className="h-6 w-6 cursor-pointer rounded-full border-2 border-white bg-blue-500 transition-all hover:h-8 hover:w-8"
-                style={{ boxShadow: "0 0 0 2px rgba(0,0,0,0.1)" }}
+                className="h-6 w-6 cursor-pointer rounded-full border-2 border-white transition-all hover:h-8 hover:w-8"
+                style={{
+                  boxShadow: "0 0 0 2px rgba(0,0,0,0.1)",
+                  backgroundColor: tagToColor(item.tag),
+                }}
               />
             </Marker>
           ))}
