@@ -19,6 +19,7 @@ import { ChevronRight, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { AnimatePresence, motion } from "motion/react";
+import { projects } from "@/lib/projects";
 
 type ProjectCardMarker = ProjectCardProps & {
   id: string;
@@ -36,412 +37,339 @@ const dataLayer: LayerSpecification = {
   },
 };
 
+function getProps(index: number): ProjectCardProps {
+  const project = projects[index]!;
+  return {
+    title: project.title,
+    banner: project.banner,
+    description: project.description,
+    stats: project.stats,
+    tag: project.tag,
+  };
+}
+
 const items: ProjectCardMarker[] = [
   {
+    ...getProps(0), // Ocean Conservation Initiative
     id: "1",
-    title: "Clean Ocean Initiative",
-    description: `
-      Our global effort to remove 5 million tons of plastic from oceans by
-      2030, spanning 15 countries across 3 continents, as well as educating
-      communities on sustainable practices.
-    `,
-    tag: "Environment",
-    stats: [
-      { label: "Companies", value: "7" },
-      { label: "Participants", value: "1.2k" },
-      { label: "Progress", value: "35%" },
-      { label: "Target Year", value: "2027" },
-    ],
     lat: 43,
     lon: 13,
   },
   {
+    ...getProps(5), // Working against poverty
     id: "2",
-    title: "Build a new park",
-    description: `
-      Our city needs more green spaces. Let's build a new park for everyone to enjoy.
-    `,
-    tag: "Environment",
-    stats: [
-      { label: "Companies", value: "7" },
-      { label: "Participants", value: "1.2k" },
-      { label: "Progress", value: "35%" },
-      { label: "Target Year", value: "2027" },
-    ],
     lat: 24,
     lon: 13,
   },
   {
+    ...getProps(3), // Renewable Energy Project
     id: "3",
-    title: "Renewable Energy Hub",
-    description: `
-      Creating the largest solar and wind energy facility in Southeast Asia, 
-      providing clean power to over 500,000 homes and reducing carbon emissions 
-      by 2.5 million tons annually.
-    `,
-    tag: "Energy",
-    stats: [
-      { label: "Companies", value: "12" },
-      { label: "Participants", value: "850" },
-      { label: "Progress", value: "62%" },
-      { label: "Target Year", value: "2026" },
-    ],
     lat: 13.7563,
     lon: 100.5018, // Bangkok, Thailand
   },
   {
+    ...getProps(2),
     id: "4",
-    title: "Urban Reforestation Project",
-    description: `
-      Transforming urban centers by planting 1 million trees across 50 cities, 
-      improving air quality and creating green spaces in densely populated areas.
-    `,
-    tag: "Environment",
-    stats: [
-      { label: "Companies", value: "23" },
-      { label: "Participants", value: "5.7k" },
-      { label: "Progress", value: "41%" },
-      { label: "Target Year", value: "2028" },
-    ],
     lat: -23.5505,
     lon: -46.6333, // São Paulo, Brazil
   },
   {
+    ...getProps(2), // Future Academy skills
     id: "5",
-    title: "Digital Literacy Campaign",
-    description: `
-      Providing technology access and digital skills training to underserved 
-      communities, empowering 100,000 people with essential skills for the 
-      modern workforce.
-    `,
-    tag: "Education",
-    stats: [
-      { label: "Companies", value: "18" },
-      { label: "Participants", value: "720" },
-      { label: "Progress", value: "53%" },
-      { label: "Target Year", value: "2026" },
-    ],
     lat: -1.2921,
     lon: 36.8219, // Nairobi, Kenya
   },
   {
+    ...getProps(0), // Ocean conservation
     id: "6",
-    title: "Coral Reef Restoration",
-    description: `
-      Revitalizing damaged coral ecosystems using innovative cultivation techniques,
-      restoring marine biodiversity and protecting coastal communities from storms.
-    `,
-    tag: "Environment",
-    stats: [
-      { label: "Companies", value: "5" },
-      { label: "Participants", value: "215" },
-      { label: "Progress", value: "28%" },
-      { label: "Target Year", value: "2029" },
-    ],
     lat: -33.866667,
     lon: 151.2, // Great Barrier Reef, Australia (approximation)
   },
   {
+    ...getProps(1), // Global Healthcare
     id: "7",
-    title: "Clean Water Initiative",
-    description: `
-      Building sustainable water treatment facilities in rural communities, 
-      providing clean drinking water to over 300,000 people in regions facing 
-      severe water scarcity.
-    `,
-    tag: "Technology",
-    stats: [
-      { label: "Companies", value: "8" },
-      { label: "Participants", value: "430" },
-      { label: "Progress", value: "47%" },
-      { label: "Target Year", value: "2026" },
-    ],
     lat: 14.6937,
     lon: -17.4441, // Dakar, Senegal
   },
   {
-    id: "8",
-    title: "Sustainable Farming Network",
-    description: `
-      Teaching regenerative agriculture techniques to small-scale farmers, 
-      improving crop yields while reducing environmental impact and building 
-      climate resilience.
-    `,
-    tag: "Environment",
-    stats: [
-      { label: "Companies", value: "15" },
-      { label: "Participants", value: "2.3k" },
-      { label: "Progress", value: "65%" },
-      { label: "Target Year", value: "2027" },
-    ],
-    lat: 28.6139,
-    lon: 77.209, // New Delhi, India
+    ...getProps(0), // Ocean Conservation Initiative
+    id: "9",
+    lat: -12.0464,
+    lon: -77.0428, // Lima, Peru
   },
   {
-    id: "9",
+    ...getProps(1), // Global Healthcare Access
+    id: "10",
+    lat: 78.2232,
+    lon: 15.6267, // Svalbard, Norway
+  },
+  {
+    ...getProps(2), // Future Skills Academy
+    id: "11",
+    lat: 37.7749,
+    lon: -122.4194, // San Francisco, USA
+  },
+  {
+    ...getProps(3), // Renewable Energy Transition
+    id: "12",
+    lat: 9.082,
+    lon: 8.6753, // Nigeria (center)
+  },
+  {
+    ...getProps(4), // Food Security Alliance
+    id: "13",
+    lat: 33.5138,
+    lon: 36.2765, // Damascus, Syria
+  },
+  {
+    ...getProps(5), // Working Against Poverty
+    id: "14",
+    lat: -26.2041,
+    lon: 28.0473, // Johannesburg, South Africa
+  },
+  {
+    ...getProps(6), // Making Science Fiction a Reality
+    id: "15",
+    lat: 31.2304,
+    lon: 121.4737, // Shanghai, China (Yangtze River)
+  },
+  {
     title: "Seismic-Resistant Housing",
-    description: `
-      Constructing affordable, earthquake-resistant homes in vulnerable regions, 
-      protecting communities from natural disasters and providing safe housing 
-      for 10,000 families.
-    `,
+    description:
+      "Constructing affordable, earthquake-resistant homes in vulnerable regions, protecting communities from natural disasters and providing safe housing for 10,000 families.",
     tag: "Technology",
+    banner: "/projects/t7-1.jpg",
     stats: [
       { label: "Companies", value: "10" },
       { label: "Participants", value: "640" },
       { label: "Progress", value: "32%" },
       { label: "Target Year", value: "2028" },
     ],
+    id: "16",
     lat: -12.0464,
     lon: -77.0428, // Lima, Peru
   },
   {
-    id: "10",
     title: "Arctic Research Station",
-    description: `
-      Establishing a state-of-the-art climate research facility to monitor polar 
-      ice melt and develop strategies to mitigate the effects of climate change 
-      on vulnerable ecosystems.
-    `,
+    description:
+      "Establishing a state-of-the-art climate research facility to monitor polar ice melt and develop strategies to mitigate the effects of climate change on vulnerable ecosystems.",
     tag: "Environment",
+    banner: "/projects/t4-1.jpg",
     stats: [
       { label: "Companies", value: "6" },
       { label: "Participants", value: "85" },
       { label: "Progress", value: "51%" },
       { label: "Target Year", value: "2026" },
     ],
+    id: "17",
     lat: 78.2232,
     lon: 15.6267, // Svalbard, Norway
   },
   {
-    id: "11",
     title: "Urban Vertical Farming",
-    description: `
-      Building vertical hydroponic farms in urban centers to reduce food miles, 
-      provide fresh produce year-round, and create green jobs in densely populated areas.
-    `,
+    description:
+      "Building vertical hydroponic farms in urban centers to reduce food miles, provide fresh produce year-round, and create green jobs in densely populated areas.",
     tag: "Technology",
+    banner: "/projects/t7-1.jpg",
     stats: [
       { label: "Companies", value: "9" },
       { label: "Participants", value: "320" },
       { label: "Progress", value: "75%" },
       { label: "Target Year", value: "2025" },
     ],
+    id: "18",
     lat: 37.7749,
     lon: -122.4194, // San Francisco, USA
   },
   {
-    id: "12",
     title: "Women's Health Initiative",
-    description: `
-      Expanding access to maternal and reproductive healthcare services for women 
-      in underserved communities, with the goal of reaching 1 million women over 5 years.
-    `,
+    description:
+      "Expanding access to maternal and reproductive healthcare services for women in underserved communities, with the goal of reaching 1 million women over 5 years.",
     tag: "Healthcare",
+    banner: "/projects/t2-1.jpg",
     stats: [
       { label: "Companies", value: "13" },
       { label: "Participants", value: "520" },
       { label: "Progress", value: "38%" },
       { label: "Target Year", value: "2027" },
     ],
+    id: "19",
     lat: 9.082,
     lon: 8.6753, // Nigeria (center)
   },
   {
-    id: "13",
     title: "Historic Site Preservation",
-    description: `
-      Restoring and preserving cultural heritage sites damaged by conflict or neglect, 
-      ensuring these treasures remain for future generations while promoting 
-      cultural tourism.
-    `,
+    description:
+      "Restoring and preserving cultural heritage sites damaged by conflict or neglect, ensuring these treasures remain for future generations while promoting cultural tourism.",
     tag: "Environment",
+    banner: "/projects/t4-1.jpg",
     stats: [
       { label: "Companies", value: "4" },
       { label: "Participants", value: "190" },
       { label: "Progress", value: "22%" },
       { label: "Target Year", value: "2029" },
     ],
+    id: "20",
     lat: 33.5138,
     lon: 36.2765, // Damascus, Syria
   },
   {
-    id: "14",
     title: "Youth Coding Academy",
-    description: `
-      Providing free programming education to underprivileged youth, 
-      preparing 50,000 students for careers in technology and fostering 
-      innovation in developing economies.
-    `,
+    description:
+      "Providing free programming education to underprivileged youth, preparing 50,000 students for careers in technology and fostering innovation in developing economies.",
     tag: "Education",
+    banner: "/projects/t3-1.jpg",
     stats: [
       { label: "Companies", value: "25" },
       { label: "Participants", value: "1.8k" },
       { label: "Progress", value: "68%" },
       { label: "Target Year", value: "2026" },
     ],
+    id: "21",
     lat: -26.2041,
     lon: 28.0473, // Johannesburg, South Africa
   },
   {
-    id: "15",
     title: "Microplastic Filtration System",
-    description: `
-      Developing and deploying advanced filtration technology in major river systems 
-      to prevent microplastics from reaching oceans, protecting marine ecosystems 
-      and food chains.
-    `,
+    description:
+      "Developing and deploying advanced filtration technology in major river systems to prevent microplastics from reaching oceans, protecting marine ecosystems and food chains.",
     tag: "Technology",
+    banner: "/projects/t1-1.jpg",
     stats: [
       { label: "Companies", value: "11" },
       { label: "Participants", value: "240" },
       { label: "Progress", value: "43%" },
       { label: "Target Year", value: "2027" },
     ],
+    id: "22",
     lat: 31.2304,
     lon: 121.4737, // Shanghai, China (Yangtze River)
   },
   {
-    id: "16",
     title: "Arctic Wildlife Refuge",
-    description: `
-      Establishing protected areas for endangered polar species affected by 
-      climate change, combining conservation efforts with indigenous knowledge 
-      and sustainable tourism.
-    `,
+    description:
+      "Establishing protected areas for endangered polar species affected by climate change, combining conservation efforts with indigenous knowledge and sustainable tourism.",
     tag: "Environment",
+    banner: "/projects/t4-1.jpg",
     stats: [
       { label: "Companies", value: "7" },
       { label: "Participants", value: "130" },
       { label: "Progress", value: "29%" },
       { label: "Target Year", value: "2030" },
     ],
+    id: "23",
     lat: 69.7085,
     lon: -143.9918, // Alaska, USA
   },
   {
-    id: "17",
     title: "Sustainable Fashion Cooperative",
-    description: `
-      Creating a network of ethical clothing manufacturers committed to 
-      fair labor practices, sustainable materials, and transparent supply chains 
-      across the fashion industry.
-    `,
+    description:
+      "Creating a network of ethical clothing manufacturers committed to fair labor practices, sustainable materials, and transparent supply chains across the fashion industry.",
     tag: "Environment",
+    banner: "/projects/t4-1.jpg",
     stats: [
       { label: "Companies", value: "42" },
       { label: "Participants", value: "3.5k" },
       { label: "Progress", value: "55%" },
       { label: "Target Year", value: "2026" },
     ],
+    id: "24",
     lat: 23.8103,
     lon: 90.4125, // Dhaka, Bangladesh
   },
   {
-    id: "18",
     title: "Drought-Resistant Agriculture",
-    description: `
-      Implementing water-efficient farming techniques and drought-resistant crop 
-      varieties in arid regions, increasing food security for communities vulnerable 
-      to climate change.
-    `,
+    description:
+      "Implementing water-efficient farming techniques and drought-resistant crop varieties in arid regions, increasing food security for communities vulnerable to climate change.",
     tag: "Environment",
+    banner: "/projects/t4-1.jpg",
     stats: [
       { label: "Companies", value: "8" },
       { label: "Participants", value: "970" },
       { label: "Progress", value: "61%" },
       { label: "Target Year", value: "2027" },
     ],
+    id: "25",
     lat: 15.3694,
     lon: 44.191, // Sana'a, Yemen
   },
   {
-    id: "19",
     title: "Floating Solar Array",
-    description: `
-      Building the world's largest floating solar farm on a hydroelectric reservoir, 
-      maximizing clean energy production while reducing water evaporation and 
-      providing shade for aquatic life.
-    `,
+    description:
+      "Building the world's largest floating solar farm on a hydroelectric reservoir, maximizing clean energy production while reducing water evaporation and providing shade for aquatic life.",
     tag: "Energy",
+    banner: "/projects/t4-1.jpg",
     stats: [
       { label: "Companies", value: "14" },
       { label: "Participants", value: "380" },
       { label: "Progress", value: "49%" },
       { label: "Target Year", value: "2026" },
     ],
+    id: "26",
     lat: -22.9068,
     lon: -43.1729, // Rio de Janeiro, Brazil
   },
   {
-    id: "20",
     title: "Mental Health Access Initiative",
-    description: `
-      Expanding mental health services in underserved regions through both 
-      physical clinics and telehealth platforms, aiming to reach 2 million 
-      people in need of support.
-    `,
+    description:
+      "Expanding mental health services in underserved regions through both physical clinics and telehealth platforms, aiming to reach 2 million people in need of support.",
     tag: "Healthcare",
+    banner: "/projects/t2-1.jpg",
     stats: [
       { label: "Companies", value: "19" },
       { label: "Participants", value: "860" },
       { label: "Progress", value: "37%" },
       { label: "Target Year", value: "2028" },
     ],
+    id: "27",
     lat: 55.7558,
     lon: 37.6173, // Moscow, Russia
   },
   {
-    id: "21",
     title: "Urban Mobility Revolution",
-    description: `
-      Transforming city transportation with an integrated network of electric 
-      buses, bike lanes, and pedestrian zones, reducing emissions and improving 
-      quality of life in congested urban areas.
-    `,
+    description:
+      "Transforming city transportation with an integrated network of electric buses, bike lanes, and pedestrian zones, reducing emissions and improving quality of life in congested urban areas.",
     tag: "Technology",
+    banner: "/projects/t7-1.jpg",
     stats: [
       { label: "Companies", value: "16" },
       { label: "Participants", value: "920" },
       { label: "Progress", value: "42%" },
       { label: "Target Year", value: "2027" },
     ],
+    id: "28",
     lat: 19.4326,
     lon: -99.1332, // Mexico City, Mexico
   },
   {
-    id: "22",
     title: "Marine Protected Area Network",
-    description: `
-      Establishing interconnected marine sanctuaries spanning multiple countries, 
-      protecting critical migration routes and breeding grounds for endangered 
-      ocean species.
-    `,
+    description:
+      "Establishing interconnected marine sanctuaries spanning multiple countries, protecting critical migration routes and breeding grounds for endangered ocean species.",
     tag: "Environment",
+    banner: "/projects/t1-1.jpg",
     stats: [
       { label: "Companies", value: "9" },
       { label: "Participants", value: "310" },
       { label: "Progress", value: "33%" },
       { label: "Target Year", value: "2029" },
     ],
+    id: "29",
     lat: 3.139,
     lon: 101.6869, // Kuala Lumpur, Malaysia
   },
   {
-    id: "23",
     title: "Revolutionizing Technology Education",
-    description: `
-      By removing JavaFX from the student curriculum, we can finally teach students, what they need to succeedd in the real world.
-
-      Long gone are the days of missery and pain, as we finally remove the last remnants of JavaFX from the curriculum.
-    `,
+    description:
+      "By removing JavaFX from the student curriculum, we can finally teach students, what they need to succeedd in the real world. Long gone are the days of missery and pain, as we finally remove the last remnants of JavaFX from the curriculum.",
     tag: "Education",
+    banner: "/projects/t3-1.jpg",
     stats: [
       { label: "Companies", value: "9" },
       { label: "Participants", value: "310" },
       { label: "Progress", value: "33%" },
       { label: "Target Year", value: "2029" },
     ],
+    id: "30",
     lat: 63.4161695850931,
     lon: 10.405766700330533, // Gløshaugen, Trondheim, Norway
   },
@@ -508,11 +436,11 @@ export default function GlobeExplorer() {
       });
     }
   }
-
   useEffect(() => {
     if (exploring) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+    projects.forEach((p, i) => console.log(i, p.title));
   }, [exploring]);
 
   function openPopup(info: { data: ProjectCardMarker; viewState: ViewState }) {

@@ -48,7 +48,7 @@ export const tagToColor = (tag: ProjectCardProps["tag"]) => {
     case "Technology":
       return "#C5283D";
     case "Healthcare":
-      return "#171738";
+      return "#ffbfc9";
   }
 };
 
@@ -91,13 +91,18 @@ export default function ProjectCard({
   );
 }
 
-export function MapProjectCard({ title, stats, tag }: ProjectCardProps) {
+export function MapProjectCard({
+  title,
+  stats,
+  tag,
+  banner,
+}: ProjectCardProps) {
   return (
-    <Card className="relative overflow-hidden bg-gradient-to-r from-black to-transparent text-white">
-      <div className="absolute z-10 h-full w-full bg-gradient-to-r from-black to-transparent" />
+    <Card className="relative flex w-full flex-col justify-end gap-4 overflow-hidden rounded-md border-[1px] border-white text-white">
+      <div className="absolute z-10 h-full w-full bg-gradient-to-t from-black/60 to-transparent" />
       <CardHeader className="relative z-10">
         <Badge
-          className="pointer-events-none mb-1 w-fit gap-2 px-2 py-1 text-black"
+          className="pointer-events-none mb-4 w-fit gap-2 rounded-full px-2.5 py-1 text-black"
           style={{ backgroundColor: tagToColor(tag) }}
           variant={"secondary"}
         >
@@ -112,8 +117,8 @@ export function MapProjectCard({ title, stats, tag }: ProjectCardProps) {
         ))}
       </CardContent>
       <img
-        src="/ocean.avif"
-        className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full object-cover"
+        src={banner}
+        className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full object-cover brightness-50"
       />
     </Card>
   );
