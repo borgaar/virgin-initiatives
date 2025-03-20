@@ -440,7 +440,6 @@ export default function GlobeExplorer() {
     if (exploring) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    projects.forEach((p, i) => console.log(i, p.title));
   }, [exploring]);
 
   function openPopup(info: { data: ProjectCardMarker; viewState: ViewState }) {

@@ -62,7 +62,6 @@ const items: FeedItem[] = [
 ];
 
 export default function Feed() {
-  console.log(items);
   return (
     <PageContainer className="flex flex-col items-center gap-4 py-6">
       {items.map((item) => (

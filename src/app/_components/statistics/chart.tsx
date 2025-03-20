@@ -154,7 +154,6 @@ export default function ProjectsStats() {
                 return (
                   <div>
                     {[...circles].reverse().map((circle, i) => {
-                      console.log(circle.value);
                       return (
                         <a
                           key={`circle-${i}`}
