@@ -594,6 +594,7 @@ export default function GlobeExplorer() {
         style={{
           width: "100%",
           height: "100%",
+          position: "relative",
         }}
         initialViewState={{
           zoom: currentViewState.zoom,
@@ -609,6 +610,7 @@ export default function GlobeExplorer() {
         scrollZoom={exploring}
         ref={mapRef}
         onMoveEnd={exploring ? undefined : handleAnimationEnd}
+        attributionControl={false}
         onLoad={(e) => {
           e.target.setFog({
             color: "rgb(186, 210, 235)", // Fog color
