@@ -102,7 +102,7 @@ export default function Statistics() {
   function handleAnimationEnd(e: MapEvent) {
     if (exploring) return;
 
-    const secondsPerRevolution = 20;
+    const secondsPerRevolution = 100;
 
     let distancePerSecond = 360 / secondsPerRevolution;
 
@@ -172,7 +172,7 @@ export default function Statistics() {
 
   return (
     <>
-      <div className="relative h-screen w-screen">
+      <div className="relative h-screen w-full">
         <AnimatePresence>
           {!exploring && (
             <>
@@ -190,7 +190,7 @@ export default function Statistics() {
                   opacity: 1,
                   filter: "blur(0px)",
                 }}
-                className="absolute left-[50%] top-[50px] z-20 -translate-x-[50%] text-center font-[merriweather] text-4xl"
+                className="absolute left-[50%] top-[50px] z-20 -translate-x-[50%] pt-24 text-center font-[merriweather] text-4xl"
               >
                 Explore the
                 <br />
@@ -234,6 +234,18 @@ export default function Statistics() {
               "vertical-range": [1, 2],
               "high-color": "rgb(36, 92, 223)",
             });
+            // remove country names if `exploring` is false
+            e.target.setLayoutProperty(
+              "country-label",
+              "visibility",
+              exploring ? "visible" : "none",
+            );
+            // remove continent names if `exploring` is false
+            e.target.setLayoutProperty(
+              "continent-label",
+              "visibility",
+              exploring ? "visible" : "none",
+            );
             handleAnimationEnd(e);
           }}
           onDrag={(e) => handleViewStateChange(e.viewState)}
