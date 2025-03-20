@@ -1,28 +1,29 @@
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { formatDistance } from "date-fns";
-import Image from "next/image";
+import { useState } from "react";
 
 const bgFromTag = (tag: Tag) => {
   switch (tag) {
     case Tag.Environmental:
-      return "bg-green-200";
+      return "bg-green-400";
     case Tag.Social:
-      return "bg-blue-200";
+      return "bg-blue-400";
     case Tag.Economic:
-      return "bg-yellow-200";
+      return "bg-yellow-400";
     case Tag.Education:
-      return "bg-purple-200";
+      return "bg-purple-400";
     case Tag.Health:
-      return "bg-red-200";
+      return "bg-red-400";
     case Tag.Technology:
-      return "bg-indigo-200";
+      return "bg-indigo-400";
     case Tag.Political:
-      return "bg-gray-200";
+      return "bg-gray-400";
     case Tag.Cultural:
-      return "bg-pink-200";
+      return "bg-pink-400";
     case Tag.Other:
-      return "bg-gray-200";
+      return "bg-gray-400";
   }
 };
 
@@ -30,23 +31,23 @@ const bgFromTag = (tag: Tag) => {
 const fontColorFromTag = (tag: Tag) => {
   switch (tag) {
     case Tag.Environmental:
-      return "text-green-800";
+      return "text-green-900";
     case Tag.Social:
-      return "text-blue-800";
+      return "text-blue-900";
     case Tag.Economic:
-      return "text-yellow-800";
+      return "text-yellow-900";
     case Tag.Education:
-      return "text-purple-800";
+      return "text-purple-900";
     case Tag.Health:
-      return "text-red-800";
+      return "text-red-900";
     case Tag.Technology:
-      return "text-indigo-800";
+      return "text-indigo-900";
     case Tag.Political:
-      return "text-gray-800";
+      return "text-gray-900";
     case Tag.Cultural:
-      return "text-pink-800";
+      return "text-pink-900";
     case Tag.Other:
-      return "text-gray-800";
+      return "text-gray-900";
   }
 };
 
@@ -56,11 +57,9 @@ export interface FeedItem {
   content: string;
   tags: Tag[];
   createdAt: string;
-  likes: number;
-  interested: number;
   image: string;
   name: string;
-  companyLogo?: string[];
+  companyLogos: string[];
 }
 
 export enum Tag {
@@ -80,12 +79,21 @@ export default function InitiativeFeedItem({
   createdAt,
   tags,
   title,
-  likes,
-  interested,
   image,
   name,
-  companyLogo,
+  companyLogos,
 }: FeedItem) {
+  const addLogo = () => {
+    if (interestedCompanies.includes("/virgin-wines.webp")) {
+      setInterestedCompanies([...companyLogos]);
+    } else {
+      setInterestedCompanies([...companyLogos, "/virgin-wines.webp"]);
+    }
+  };
+
+  const [interestedCompanies, setInterestedCompanies] =
+    useState<string[]>(companyLogos);
+
   return (
     <div className="flex min-w-full flex-col items-start justify-between rounded-lg bg-neutral-500/5 p-5 backdrop-blur-sm">
       <div className="flex w-full items-center justify-start space-x-3">
@@ -93,9 +101,27 @@ export default function InitiativeFeedItem({
           <AvatarImage src={image} />
           <AvatarFallback>{name.split(" ")[0]}</AvatarFallback>
         </Avatar>
+        <h2 className="font-bold">{title}</h2>
         <div className="flex flex-none flex-col">
-          <div className="flex items-center justify-between space-x-6">
-            <h2 className="font-bold">{title}</h2>
+          <h2 className="text-gray-500">
+            {"Created " +
+              formatDistance(createdAt, new Date(), {
+                addSuffix: true,
+              })}
+          </h2>
+        </div>
+        <div className="flex flex-1 justify-end gap-7">
+          <div className="flex items-center justify-end gap-5">
+            {interestedCompanies.map((e) => (
+              <img key={e} src={e} alt="Company logo" className="w-100 h-10" />
+            ))}
+          </div>
+        </div>
+      </div>
+      <p className="py-6">{content}</p>
+      <div className="flex w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between">
+          <div className="flex gap-4">
             {tags.map((tag) => (
               <span
                 key={tag}
@@ -105,33 +131,11 @@ export default function InitiativeFeedItem({
               </span>
             ))}
           </div>
-          <h2 className="text-gray-500">
-            {"Created " +
-              formatDistance(createdAt, new Date(), {
-                addSuffix: true,
-              })}
-          </h2>
-        </div>
-        {companyLogo && (
-          <div className="flex flex-1 items-center justify-end gap-5">
-            {companyLogo.map((e) => (
-              <img key={e} src={e} alt="Company logo" className="w-100 h-10" />
-            ))}
-          </div>
-        )}
-      </div>
-      <p className="py-6">{content}</p>
-      <div className="flex w-full items-center justify-between">
-        <div className="flex space-x-5">
-          <p>‼️ {interested} interested</p>
-          <p>❤️ {likes} likes</p>
-        </div>
-        <div className="space-x-3">
-          <Button className="rounded-lg bg-neutral-950 text-blue-600 hover:bg-neutral-900">
-            👋<span>I&apos;m Interested</span>
-          </Button>
-          <Button className="rounded-lg bg-neutral-950 text-gray-600 hover:bg-neutral-900">
-            ❤️<span>Like</span>
+          <Button
+            onClick={addLogo}
+            className="rounded-lg bg-neutral-950 text-primary hover:bg-neutral-900"
+          >
+            <span>Show Interest</span>
           </Button>
         </div>
       </div>
