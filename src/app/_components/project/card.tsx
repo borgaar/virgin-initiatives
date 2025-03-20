@@ -66,7 +66,7 @@ export function MapProjectCard({
   tag,
 }: ProjectCardProps) {
   return (
-    <Card className="relative bg-gradient-to-r from-black to-transparent text-white">
+    <Card className="relative overflow-hidden bg-gradient-to-r from-black to-transparent text-white">
       <div className="absolute z-10 h-full w-full bg-gradient-to-r from-black to-transparent" />
       <CardHeader className="relative z-10">
         <Badge

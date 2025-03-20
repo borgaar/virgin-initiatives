@@ -115,6 +115,7 @@ export default function Statistics() {
   function toggleExploring() {
     setExploring((e) => !e);
     if (exploring) {
+      setPopupInfo(null);
       mapRef.current?.easeTo({
         center: mapRef.current.getCenter(),
         zoom: 1,
