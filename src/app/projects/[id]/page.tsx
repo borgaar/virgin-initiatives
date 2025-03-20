@@ -6,11 +6,12 @@ import InitiativeReference from "@/app/_components/project/initiative-reference"
 import ProjectTakeInitiative from "../../_components/project/take-initiative";
 import { projects } from "../../../lib/projects";
 
-export default function ProjectPage({
-  params: { id },
+export default async function ProjectPage({
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const project = projects[parseInt(id)];
 
   if (!project) {
