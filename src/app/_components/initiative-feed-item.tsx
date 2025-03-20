@@ -28,30 +28,6 @@ const outlineFromTag = (tag: string) => {
   }
 };
 
-// Same as bg just darker
-const fontColorFromTag = (tag: string) => {
-  switch (tag) {
-    case "Environmental":
-      return "text-green-950";
-    case "Social":
-      return "text-blue-950";
-    case "Economic":
-      return "text-yellow-950";
-    case "Education":
-      return "text-purple-950";
-    case "Health":
-      return "text-red-950";
-    case "Technology":
-      return "text-indigo-950";
-    case "Political":
-      return "text-gray-950";
-    case "Cultural":
-      return "text-pink-950";
-    case "Other":
-      return "text-gray-950";
-  }
-};
-
 export interface FeedItem {
   id: string;
   title: string;

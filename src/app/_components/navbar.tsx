@@ -76,7 +76,7 @@ export default function Navbar() {
               Feed
             </Link>
           </div>
-          <div className="flex items-center justify-end space-x-4 text-neutral-400 @container">
+          <div className="@container flex items-center justify-end space-x-4 text-neutral-400">
             <Badge variant={"outline"}>1450 points</Badge>
             <Avatar>
               <AvatarImage src="https://randomuser.me/api/portraits/thumb/men/40.jpg" />

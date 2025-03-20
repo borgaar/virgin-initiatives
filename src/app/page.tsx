@@ -10,6 +10,7 @@ import {
   WindIcon,
 } from "lucide-react";
 import { projects } from "../lib/projects";
+import ProjectTile from "./statistics/_components/project-tile";
 
 export default async function Home() {
   return (
@@ -54,38 +55,28 @@ export default async function Home() {
         </div>
 
         <section className="mt-32 flex flex-col gap-10">
-          <h2 className="text-center text-3xl">All projects</h2>
-          <div className="flex flex-row justify-center gap-10">
-            <Button className="p-10" variant={"secondary"} size={"icon"}>
-              <SproutIcon className="!size-7" />
-            </Button>
-            <Button className="p-10" variant={"secondary"} size={"icon"}>
-              <PawPrintIcon className="!size-7" />
-            </Button>
-            <Button className="p-10" variant={"secondary"} size={"icon"}>
-              <WindIcon className="!size-7" />
-            </Button>
-            <Button className="p-10" variant={"secondary"} size={"icon"}>
-              <HandCoinsIcon className="!size-7" />
-            </Button>
+          <div className="flex items-center justify-center gap-6">
+            <div
+              className="relative h-[2px] w-96 bg-neutral-600"
+              style={{
+                clipPath: "polygon(100% 0, 100% 100%, 0 100%, 0 100%)",
+              }}
+            />
+            <h2 className="text-center text-3xl text-neutral-200">
+              All projects
+            </h2>
+            <div
+              className="relative h-[2px] w-96 bg-neutral-600"
+              style={{
+                clipPath: "polygon(0 0, 0 100%, 100% 100%, 100% 100%)",
+              }}
+            />
           </div>
 
-          <div className="grid grid-cols-1 gap-7 md:grid-cols-3 lg:grid-cols-4">
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
-            <div className="size-48 bg-secondary"></div>
+          <div className="grid max-w-screen-2xl grid-cols-1 gap-7 md:grid-cols-3 lg:grid-cols-4">
+            {projects.map((project, idx) => (
+              <ProjectTile {...project} key={project.title} idx={idx} />
+            ))}
           </div>
         </section>
       </main>
