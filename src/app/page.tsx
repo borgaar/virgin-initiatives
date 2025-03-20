@@ -1,6 +1,7 @@
 // import { auth } from "@/server/auth";
 import { cn } from "@/lib/utils";
 import { HydrateClient } from "@/trpc/server";
+import Link from "next/link";
 
 export default async function Home() {
   // const session = await auth();
@@ -40,9 +41,10 @@ export default async function Home() {
             help shape our future?
           </h1>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 pt-10">
           {items.map((item) => (
-            <div
+            <Link
+              href={`/projects/${item.id}`}
               style={{
                 backgroundImage: `url(${item.imageUrl})`,
               }}
@@ -63,7 +65,7 @@ export default async function Home() {
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </main>
