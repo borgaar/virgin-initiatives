@@ -35,4 +35,14 @@ export const companies: Company[] = [
     description: "Everyone leaves feeling better",
     logo: "/companies/hotels.jpg",
   },
+  {
+    name: "Virgin Wines",
+    description: "Creating joy from grape to glass",
+    logo: "/companies/wines.webp",
+  },
+  {
+    name: "Virgin Fibra",
+    description: "Making life simpler",
+    logo: "/companies/fibra.png",
+  },
 ];

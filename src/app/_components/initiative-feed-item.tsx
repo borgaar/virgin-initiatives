@@ -84,10 +84,10 @@ export default function InitiativeFeedItem({
   companyLogos,
 }: FeedItem) {
   const addLogo = () => {
-    if (interestedCompanies.includes("/virgin-wines.webp")) {
+    if (interestedCompanies.includes("/companies/virgin-wines.webp")) {
       setInterestedCompanies([...companyLogos]);
     } else {
-      setInterestedCompanies([...companyLogos, "/virgin-wines.webp"]);
+      setInterestedCompanies([...companyLogos, "/companies/wines.webp"]);
     }
   };
 

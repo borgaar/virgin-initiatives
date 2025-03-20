@@ -13,7 +13,7 @@ const items: FeedItem[] = [
     createdAt: "2021-09-01T00:00:00Z",
     image: "https://loremfaces.net/96/id/2.jpg",
     name: "Brotherman Testern",
-    companyLogos: ["/virgin-fibra.png"],
+    companyLogos: ["/companies/fibra.png"],
   },
   {
     id: "2",
@@ -24,7 +24,7 @@ const items: FeedItem[] = [
     createdAt: "2022-09-01T00:00:00Z",
     image: "https://loremfaces.net/96/id/3.jpg",
     name: "Ola Nordmann",
-    companyLogos: ["/virgin-fibra.png"],
+    companyLogos: ["/companies/fibra.png"],
   },
   {
     id: "3",
@@ -35,7 +35,7 @@ const items: FeedItem[] = [
     createdAt: "2025-03-18T00:00:00Z",
     image: "https://loremfaces.net/96/id/4.jpg",
     name: "Kari Nordmann",
-    companyLogos: ["/virgin-active.png", "/virgin-fibra.png"],
+    companyLogos: ["/companies/active.png", "/companies/fibra.png"],
   },
   {
     id: "4",
@@ -46,7 +46,7 @@ const items: FeedItem[] = [
     createdAt: "2025-02-20T00:00:00Z",
     image: "https://loremfaces.net/96/id/5.jpg",
     name: "Jon Johansson",
-    companyLogos: ["/virgin-active.png"],
+    companyLogos: ["/companies/active.png"],
   },
   {
     id: "5",
@@ -57,7 +57,7 @@ const items: FeedItem[] = [
     createdAt: "2024-09-01T00:00:00Z",
     image: "https://loremfaces.net/96/id/6.jpg",
     name: "Kari Johansson",
-    companyLogos: ["/virgin-fibra.png"],
+    companyLogos: ["/companies/fibra.png"],
   },
 ];
 
