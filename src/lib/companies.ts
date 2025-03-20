@@ -8,31 +8,31 @@ export const companies: Company[] = [
   {
     name: "Virgin Australia",
     description: "Creating irresistible exercise experiences",
-    logo: "/australia.png",
+    logo: "/companies/australia.jpg",
   },
   {
     name: "Virgin Active Italy",
     description: "Discover irresistible training",
-    logo: "/active.png",
+    logo: "/companies/active.png",
   },
   {
     name: "Virgin Atlantic",
     description: "Everyone can take on the world",
-    logo: "/atlantic.png",
+    logo: "/companies/atlantic.png",
   },
   {
     name: "Virgin Galactic",
     description: "The spaceline for Earth",
-    logo: "/galactic.png",
+    logo: "/companies/galactic.jpeg",
   },
   {
     name: "Virgin Mobile Poland",
     description: "Saving you from second rate service",
-    logo: "/mobile.png",
+    logo: "/companies/mobile.png",
   },
   {
     name: "Virgin Hotels",
     description: "Everyone leaves feeling better",
-    logo: "/hotels.png",
+    logo: "/companies/hotels.jpg",
   },
 ];
