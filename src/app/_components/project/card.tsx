@@ -48,7 +48,7 @@ export default function ProjectCard({
           <Stats key={index} {...stat} />
         ))}
         <Button variant={"outline"} className="ml-auto">
-          <Download /> Donwload Report
+          <Download /> Download Report
         </Button>
       </CardContent>
       <img
