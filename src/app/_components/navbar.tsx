@@ -1,5 +1,5 @@
 import { Avatar } from "@/components/ui/avatar";
-import { AvatarImage } from "@radix-ui/react-avatar";
+import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { BellDot, Search } from "lucide-react";
 import Image from "next/image";
 
@@ -21,13 +21,14 @@ export default function Navbar() {
             <div>Statistics</div>
             <div>Feed</div>
           </div>
-          <div className="flex justify-end">
+          <div className="flex items-center justify-end space-x-4">
             <Search />
             <BellDot />
             <Avatar>
-              <AvatarImage src="bitch" />
-              <AvatarImage src="bitch" />
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>BT</AvatarFallback>
             </Avatar>
+            <div>Brothernan Testern</div>
           </div>
         </div>
       </div>
