@@ -27,14 +27,12 @@ export interface ProjectCommentsProps {
 
 export default function ProjectComments({ comments }: ProjectCommentsProps) {
   return (
-    <Card className="mb-64 bg-neutral-500/5 px-6 py-3 backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle className="text-white">Comments</CardTitle>
-        <CardDescription className="text-gray-300">
-          Make a difference by sharing your opinions!
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+    <Card className="mb-64 bg-neutral-500/5 px-6 py-6 backdrop-blur-sm">
+      <CardTitle className="text-white">Comments</CardTitle>
+      <CardDescription className="text-md mt-1.5 text-neutral-500">
+        Make a difference by sharing your opinions!
+      </CardDescription>
+      <CardContent className="mt-10 flex flex-col gap-4 p-0">
         <CommentsList comments={comments} />
         <AddComment />
       </CardContent>
@@ -61,7 +59,7 @@ export function PostComments({ comments }: ProjectCommentsProps) {
 
 function CommentsList({ comments }: ProjectCommentsProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {comments.map((c) => (
         <Comment {...c} key={c.content} />
       ))}
@@ -98,7 +96,7 @@ function AddComment() {
   const [selected, setSelected] = useState(moods[5]);
 
   return (
-    <div className="flex items-start space-x-4">
+    <div className="mt-4 flex items-start space-x-4">
       <div className="shrink-0">
         <img
           alt=""

@@ -17,11 +17,11 @@ export default function ProjectParticipation({
   companies,
 }: ProjectParticipationProps) {
   return (
-    <Card className="bg-neutral-500/5 px-6 py-3 backdrop-blur-sm">
+    <Card className="bg-neutral-500/5 px-6 py-6 backdrop-blur-sm">
       <CardTitle className="inline-flex gap-1 text-white">
         Company Participation
       </CardTitle>
-      <CardContent className="mt-10 flex flex-row flex-wrap justify-start gap-4">
+      <CardContent className="mt-10 flex flex-row flex-wrap justify-start gap-4 p-0">
         {companies.map((c) => (
           <Card
             className="flex max-w-48 flex-col items-center justify-center gap-1 rounded-none bg-transparent px-4 py-6 text-white"

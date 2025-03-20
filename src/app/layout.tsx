@@ -17,7 +17,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="relative bg-[url(/stars.png)] bg-cover">
+      <body className="relative min-h-[300svh] bg-[url(/stars.png)] bg-contain bg-top bg-no-repeat">
         <Navbar />
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
