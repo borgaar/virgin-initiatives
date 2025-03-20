@@ -94,3 +94,14 @@
     display: none;
   }
 }
+
+/* Remove mapbox watermarks :) */
+.mapboxgl-ctrl-bottom-left {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.mapboxgl-control-container {
+  display: none !important;
+  visibility: hidden !important;
+}
