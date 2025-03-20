@@ -8,12 +8,11 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { format, formatDistance } from "date-fns";
+import { formatDistance } from "date-fns";
 import {
   PlusIcon,
   Share2Icon,
   ThumbsDownIcon,
-  ThumbsUp,
   ThumbsUpIcon,
 } from "lucide-react";
 import { useState } from "react";
