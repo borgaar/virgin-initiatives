@@ -25,16 +25,19 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../components/ui/card";
+import { Project } from "next/dist/build/swc/types";
+import { moods } from "../../../lib/projects";
 
 interface ProjectCommentsProps {
   comments: {
     author: string;
     content: string;
     mood: (typeof moods)[number]["value"];
-  };
+    avatar: string;
+  }[];
 }
 
-export default function ProjectComments() {
+export default function ProjectComments({ comments }: ProjectCommentsProps) {
   return (
     <Card className="mb-64 bg-neutral-500/5 px-6 py-3 backdrop-blur-sm">
       <CardHeader>
@@ -44,38 +47,35 @@ export default function ProjectComments() {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <CommentsList />
+        <CommentsList comments={comments} />
         <AddComment />
       </CardContent>
     </Card>
   );
 }
 
-function CommentsList() {
+function CommentsList({ comments }: ProjectCommentsProps) {
   return (
     <div className="space-y-4">
-      <Comment
-        author="Jane Doe"
-        content="This is a great initiative! I'm excited to see the progress."
-        mood="excited"
-      />
-      <Comment
-        author="John Doe"
-        content="I'm happy to be a part of this. Let's make a difference!"
-        mood="happy"
-      />
-      <Comment author="Alice Doe" content="I feel nothing." mood={null} />
+      {comments.map((c) => (
+        <Comment {...c} key={c.content} />
+      ))}
     </div>
   );
 }
 
-function Comment({ author, content, mood }: ProjectCommentsProps["comments"]) {
+function Comment({
+  author,
+  content,
+  mood,
+  avatar,
+}: ProjectCommentsProps["comments"][number]) {
   return (
     <div className="flex items-start space-x-4">
       <div className="shrink-0">
         <img
-          alt=""
-          src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          alt={author}
+          src={avatar}
           className="inline-block size-10 rounded-full"
         />
       </div>
@@ -93,57 +93,6 @@ function Comment({ author, content, mood }: ProjectCommentsProps["comments"]) {
     </div>
   );
 }
-
-const moods = [
-  {
-    name: "Excited",
-    value: "excited",
-    icon: FireIcon,
-    iconColor: "text-white",
-    bgColor: "bg-red-500",
-    text: "text-red-500",
-  },
-  {
-    name: "Loved",
-    value: "loved",
-    icon: HeartIcon,
-    iconColor: "text-white",
-    bgColor: "bg-pink-400",
-    text: "text-pink-400",
-  },
-  {
-    name: "Happy",
-    value: "happy",
-    icon: FaceSmileIcon,
-    iconColor: "text-white",
-    bgColor: "bg-green-400",
-    text: "text-green-400",
-  },
-  {
-    name: "Virgin",
-    value: "virgin",
-    icon: FaceFrownIcon,
-    iconColor: "text-white",
-    bgColor: "bg-yellow-400",
-    text: "text-yellow-400",
-  },
-  {
-    name: "Thumbsy",
-    value: "thumbsy",
-    icon: HandThumbUpIcon,
-    iconColor: "text-white",
-    bgColor: "bg-blue-500",
-    text: "text-blue-500",
-  },
-  {
-    name: "I feel nothing",
-    value: null,
-    icon: XMarkIcon,
-    iconColor: "text-gray-400",
-    bgColor: "bg-transparent",
-    text: "text-gray-400",
-  },
-] as const;
 
 function AddComment() {
   const [selected, setSelected] = useState(moods[5]);
