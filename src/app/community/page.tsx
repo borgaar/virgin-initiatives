@@ -246,6 +246,14 @@ export default function Page() {
                     </AvatarFallback>
                   </Avatar>
                   <span>{post.author.name}</span>
+                  <img
+                    src="/logo.png"
+                    alt=""
+                    className={cn(
+                      post.author.isVirginEmployee ? "hidden" : "",
+                      "ml-2 size-6",
+                    )}
+                  />
                   <span className="ml-auto">
                     {formatDistance(new Date(post.createdAt), new Date(), {
                       addSuffix: true,
