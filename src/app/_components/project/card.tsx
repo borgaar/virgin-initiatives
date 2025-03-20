@@ -60,24 +60,26 @@ export default function ProjectCard({
   banner,
 }: ProjectCardProps) {
   return (
-    <Card className="relative flex w-full flex-col justify-between text-white">
-      <div className="absolute z-10 h-full w-full bg-gradient-to-r from-black/60 to-transparent" />
+    <Card className="relative flex w-full flex-col justify-end gap-4 text-white">
+      <div className="absolute z-10 h-full w-full bg-gradient-to-t from-black/60 to-transparent" />
       <CardHeader className="relative z-10">
         <Badge
-          className="pointer-events-none mb-1 w-fit gap-2 px-2 py-1 text-black"
+          className="pointer-events-none mb-4 w-fit gap-2 rounded-full bg-neutral-200 px-2.5 py-1 text-black"
           variant={"secondary"}
         >
           {tagToIcon(tag)} {tag}
         </Badge>
 
-        <CardTitle>{title}</CardTitle>
-        <CardDescription className="text-muted">{description}</CardDescription>
+        <CardTitle className="text-4xl">{title}</CardTitle>
+        <CardDescription className="text-md text-neutral-400">
+          {description}
+        </CardDescription>
       </CardHeader>
       <CardContent className="relative z-10 -mt-2 flex items-center justify-start gap-4">
         {stats.map((stat, index) => (
           <Stats key={index} {...stat} />
         ))}
-        <Button variant={"ghost"} className="ml-auto bg-neutral-900">
+        <Button variant={"ghost"} className="ml-auto rounded-none bg-black/40">
           <Download /> Download Report
         </Button>
       </CardContent>

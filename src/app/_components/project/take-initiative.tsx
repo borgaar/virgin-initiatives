@@ -32,18 +32,18 @@ export default function ProjectTakeInitiative() {
         <div className="flex justify-between gap-4">
           <input
             type="text"
-            className="w-full rounded-sm border-[1px] border-neutral-700 bg-transparent pl-2 text-white"
+            className="w-full rounded-sm border-[1px] border-neutral-600 bg-transparent pl-2 text-white"
           />
-          <Button className="w-60 rounded-none bg-black/30 font-semibold text-white hover:bg-neutral-900">
+          <Button className="w-60 rounded-none bg-black/30 font-semibold text-white hover:bg-neutral-800">
             Donate points
           </Button>
         </div>
         <div className="flex justify-between gap-4">
           <input
             type="text"
-            className="w-full rounded-sm border-[1px] border-neutral-700 bg-transparent pl-2 text-white"
+            className="w-full rounded-sm border-[1px] border-neutral-600 bg-transparent pl-2 text-white"
           />
-          <Button className="w-60 rounded-none bg-black/30 font-semibold text-white hover:bg-neutral-900">
+          <Button className="w-60 rounded-none bg-black/30 font-semibold text-white hover:bg-neutral-800">
             Donate cash
           </Button>
         </div>
@@ -55,18 +55,18 @@ export default function ProjectTakeInitiative() {
           <div className="h-1 w-full border-b-2 border-neutral-700"></div>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <p className="text-nowrap font-medium text-neutral-400">+50 points</p>
           <Button className="w-60 rounded-none bg-neutral-800 font-semibold text-white hover:bg-neutral-700">
             Share on social media
           </Button>
+          <p className="text-nowrap font-medium text-neutral-400">+50 points</p>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <p className="text-nowrap font-medium text-neutral-400">
-            +500 points
-          </p>
           <Button className="w-60 rounded-none bg-neutral-800 font-semibold text-white hover:bg-neutral-700">
             Join event
           </Button>
+          <p className="text-nowrap font-medium text-neutral-400">
+            +500 points
+          </p>
         </div>
       </CardContent>
     </Card>
