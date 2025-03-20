@@ -43,13 +43,16 @@ export default async function Home() {
       <main className="flex flex-col items-center text-white">
         <div className="h-[calc(100vh-100px)] pt-44">
           <div className="flex animate-fade-in flex-col items-center gap-12 px-4 py-6">
-            <h1 className="font-[merriweather] text-5xl leading-[1.4]">
-              Where do <span className="italic text-primary">you</span> want to{" "}
+            <h1 className="text-center font-[merriweather] text-5xl leading-[1.4]">
+              How do <span className="italic text-primary">you</span> want to{" "}
               <br />
               help shape our future?
             </h1>
+            <p className="text-neutral-500">
+              Take a look at our projects below
+            </p>
           </div>
-          <div className="m-auto mt-20 flex h-[400px] gap-2 align-middle">
+          <div className="m-auto flex h-[31rem] gap-2 align-middle">
             {items.map((item) => (
               <Link
                 href={`/projects/${item.id}`}
@@ -59,7 +62,7 @@ export default async function Home() {
                 key={item.id}
                 className={cn(
                   "my-auto overflow-hidden bg-gradient-to-b from-transparent via-black/40 to-black/60 bg-cover bg-center brightness-[0.4] transition-all duration-300 [&:not(:hover)]:grayscale [&:not(:hover)_>_*]:hidden", // base
-                  "h-72 w-32 flex-col hover:h-[400px] hover:w-72 hover:brightness-75", // Main style
+                  "h-[26rem] w-[10rem] flex-col hover:h-full hover:w-[20rem] hover:brightness-75", // Main style
                   "[&:hover_.the-text-content]:motion-preset-slide-up-lg", // The text content
                 )}
               >
