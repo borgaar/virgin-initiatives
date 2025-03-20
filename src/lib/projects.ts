@@ -40,7 +40,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    thumbnail: "projects/t1.jpg",
+    thumbnail: "/projects/t1.jpg",
     banner: "/projects/t1-1.jpg",
     title: "Ocean Conservation Initiative",
     description:
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    thumbnail: "projects/t2.jpg",
+    thumbnail: "/projects/t2.jpg",
     banner: "/projects/t2-1.jpg",
     title: "Global Healthcare Access",
     description:
@@ -208,7 +208,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    thumbnail: "projects/t3.jpg",
+    thumbnail: "/projects/t3.jpg",
     banner: "/projects/t3-1.jpg",
     title: "Future Skills Academy",
     description:
@@ -306,7 +306,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    thumbnail: "projects/t4.jpg",
+    thumbnail: "/projects/t4.jpg",
     banner: "/projects/t4-1.jpg",
     title: "Renewable Energy Transition",
     description:
@@ -412,7 +412,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    thumbnail: "projects/t5.jpg",
+    thumbnail: "/projects/t5.jpg",
     banner: "/projects/t5-1.jpg",
     title: "Food Security Alliance",
     description:
@@ -518,7 +518,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    thumbnail: "projects/t6.jpg",
+    thumbnail: "/projects/t6.jpg",
     banner: "/projects/t6-1.jpg",
     title: "Working Against Poverty",
     description:
@@ -624,7 +624,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    thumbnail: "projects/t7.jpg",
+    thumbnail: "/projects/t7.jpg",
     banner: "/projects/t7-1.jpg",
     title: "Making Science Fiction a Reality",
     description:
