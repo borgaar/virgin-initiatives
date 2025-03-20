@@ -1,17 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import { env } from "@/env";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Map, {
   Layer,
   LayerSpecification,
+  MapEvent,
+  MapRef,
   Marker,
   NavigationControl,
   Source,
   ViewState,
 } from "react-map-gl/mapbox";
 import { MapProjectCard, ProjectCardProps } from "../_components/project/card";
+import { ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+import { AnimatePresence, motion } from "motion/react";
 
 type ProjectCardMarker = ProjectCardProps & {
   id: string;
@@ -24,23 +30,14 @@ const dataLayer: LayerSpecification = {
   type: "line",
   source: "geojson",
   paint: {
-    "line-color": {
-      property: "percentile",
-      stops: [
-        [0, "#3288bd"],
-        [1, "#66c2a5"],
-        [2, "#abdda4"],
-        [3, "#e6f598"],
-        [4, "#ffffbf"],
-        [5, "#fee08b"],
-        [6, "#fdae61"],
-        [7, "#f46d43"],
-        [8, "#d53e4f"],
-      ],
-    },
-    "line-width": 2,
+    "line-color": "#FFFFFF",
+    "line-width": 1.5,
   },
 };
+
+function easeInOutCubic(x: number): number {
+  return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+}
 
 export default function Statistics() {
   const [popupInfo, setPopupInfo] = useState<{
@@ -49,13 +46,17 @@ export default function Statistics() {
   } | null>(null);
 
   const [currentViewState, setCurrentViewState] = useState<ViewState>({
-    zoom: 5,
+    zoom: 1,
     latitude: 47.42853,
     longitude: 9.376571,
     bearing: 0,
-    pitch: 0,
+    pitch: 30,
     padding: {},
   });
+
+  const mapRef = useRef<MapRef>(null);
+
+  const [exploring, setExploring] = useState(false);
 
   const items: ProjectCardMarker[] = [
     {
@@ -98,6 +99,30 @@ export default function Statistics() {
     setCurrentViewState(viewState);
   }
 
+  function handleAnimationEnd(e: MapEvent) {
+    if (exploring) return;
+
+    const secondsPerRevolution = 20;
+
+    let distancePerSecond = 360 / secondsPerRevolution;
+
+    const center = e.target.getCenter();
+    center.lng -= distancePerSecond;
+
+    e.target.easeTo({ center, duration: 1000, easing: (n) => n });
+  }
+
+  function startExploring() {
+    if (exploring) return;
+    setExploring(true);
+    mapRef.current?.flyTo({
+      center: [9.376571, 47.42853],
+      zoom: 12,
+      duration: 2000,
+      easing: (n) => easeInOutCubic(n),
+    });
+  }
+
   useEffect(() => {
     if (popupInfo == null) return;
 
@@ -112,7 +137,33 @@ export default function Statistics() {
   }, [currentViewState, popupInfo]);
 
   return (
-    <div className="h-screen bg-transparent">
+    <div className="relative h-[calc(100vh_-_60px)]">
+      <AnimatePresence>
+        {!exploring && (
+          <>
+            <motion.h1
+              key={"header"}
+              initial={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(20px)" }}
+              className="absolute left-[50%] top-[50px] z-20 -translate-x-[50%] text-center font-[merriweather] text-4xl"
+            >
+              Explore the
+              <br />
+              <span className="italic text-primary">World of Initiative</span>
+            </motion.h1>
+            <motion.div
+              className="absolute bottom-[50px] left-[50%] z-20 -translate-x-[50%]"
+              initial={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(10px)" }}
+              key={"button"}
+            >
+              <Button onClick={startExploring}>
+                Explore now <ChevronRight />
+              </Button>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
       <Map
         mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
         mapStyle="mapbox://styles/aleks-hse/cm8h8vqmp001001s800tc7gcn"
@@ -124,15 +175,20 @@ export default function Statistics() {
           zoom: currentViewState.zoom,
           latitude: currentViewState.latitude,
           longitude: currentViewState.longitude,
+          bearing: currentViewState.bearing,
+          pitch: currentViewState.pitch,
         }}
         pitchWithRotate={false}
         touchPitch={false}
         dragRotate={false}
+        dragPan={exploring}
+        scrollZoom={exploring}
+        ref={mapRef}
+        onMoveEnd={exploring ? undefined : handleAnimationEnd}
+        onLoad={handleAnimationEnd}
         onDrag={(e) => handleViewStateChange(e.viewState)}
         onZoom={(e) => handleViewStateChange(e.viewState)}
       >
-        <NavigationControl />
-
         {popupInfo && (
           <Source
             type="geojson"
