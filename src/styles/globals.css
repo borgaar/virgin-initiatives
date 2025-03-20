@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 351 60% 99%;
+    --background: 0 0% 100%;
     --foreground: 351 63% 2%;
     --muted: 351 21% 85%;
     --muted-foreground: 351 6% 31%;
@@ -14,7 +16,7 @@
     --card-foreground: 351 63% 2%;
     --border: 351 3% 89%;
     --input: 351 3% 89%;
-    --primary: 351 64% 50%;
+    --primary: 0 100% 60%;
     --primary-foreground: 0 0% 100%;
     --secondary: 351 6% 80%;
     --secondary-foreground: 351 6% 20%;
@@ -28,7 +30,8 @@
     --chart-3: 212 64% 50%;
     --chart-4: 142 64% 50%;
     --chart-5: 53 64% 50%;
-    
+    --font-merriweather: "Merriweather", serif;
+
     --radius: 0.5rem;
   }
 
