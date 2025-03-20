@@ -50,7 +50,7 @@ export default function Statistics() {
     latitude: 47.42853,
     longitude: 9.376571,
     bearing: 0,
-    pitch: 30,
+    pitch: 20,
     padding: {},
   });
 
@@ -119,7 +119,7 @@ export default function Statistics() {
       mapRef.current?.easeTo({
         center: mapRef.current.getCenter(),
         zoom: 1,
-        pitch: 30,
+        pitch: 20,
         duration: 2000,
         easing: easeInOutCubic,
       });
@@ -127,7 +127,7 @@ export default function Statistics() {
       mapRef.current?.easeTo({
         center: [9.376571, 47.42853],
         zoom: 5,
-        pitch: 30,
+        pitch: 20,
         duration: 2000,
         easing: easeInOutCubic,
       });
