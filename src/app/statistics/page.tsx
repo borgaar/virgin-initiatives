@@ -112,15 +112,49 @@ export default function Statistics() {
     e.target.easeTo({ center, duration: 1000, easing: (n) => n });
   }
 
-  function startExploring() {
-    if (exploring) return;
-    setExploring(true);
-    mapRef.current?.flyTo({
-      center: [9.376571, 47.42853],
-      zoom: 12,
-      duration: 2000,
-      easing: (n) => easeInOutCubic(n),
-    });
+  function toggleExploring() {
+    setExploring((e) => !e);
+    if (exploring) {
+      mapRef.current?.easeTo({
+        center: mapRef.current.getCenter(),
+        zoom: 1,
+        pitch: 30,
+        duration: 2000,
+        easing: easeInOutCubic,
+      });
+    } else {
+      mapRef.current?.easeTo({
+        center: [9.376571, 47.42853],
+        zoom: 5,
+        pitch: 30,
+        duration: 2000,
+        easing: easeInOutCubic,
+      });
+    }
+  }
+
+  function openPopup(info: { data: ProjectCardMarker; viewState: ViewState }) {
+    const zoom = mapRef.current?.getZoom() ?? 0;
+    mapRef.current
+      ?.flyTo({
+        center: [info.data.lon, info.data.lat],
+        zoom: mapRef.current?.getZoom() < 6 ? 6 : zoom,
+        duration: 1000,
+        easing: easeInOutCubic,
+      })
+      .once("moveend", (e) =>
+        setPopupInfo({
+          data: info.data,
+          viewState: {
+            zoom: e.target.getZoom(),
+            latitude: e.target.getCenter().lat,
+            longitude: e.target.getCenter().lng,
+            bearing: e.target.getBearing(),
+            padding: e.target.getPadding(),
+            pitch: e.target.getPitch(),
+          },
+        }),
+      );
   }
 
   useEffect(() => {
@@ -137,114 +171,136 @@ export default function Statistics() {
   }, [currentViewState, popupInfo]);
 
   return (
-    <div className="relative h-[calc(100vh_-_60px)]">
-      <AnimatePresence>
-        {!exploring && (
-          <>
-            <motion.h1
-              key={"header"}
-              initial={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(20px)" }}
-              className="absolute left-[50%] top-[50px] z-20 -translate-x-[50%] text-center font-[merriweather] text-4xl"
-            >
-              Explore the
-              <br />
-              <span className="italic text-primary">World of Initiative</span>
-            </motion.h1>
-            <motion.div
-              className="absolute bottom-[50px] left-[50%] z-20 -translate-x-[50%]"
-              initial={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(10px)" }}
-              key={"button"}
-            >
-              <Button onClick={startExploring}>
-                Explore now <ChevronRight />
-              </Button>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-      <Map
-        mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
-        mapStyle="mapbox://styles/aleks-hse/cm8h8vqmp001001s800tc7gcn"
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-        initialViewState={{
-          zoom: currentViewState.zoom,
-          latitude: currentViewState.latitude,
-          longitude: currentViewState.longitude,
-          bearing: currentViewState.bearing,
-          pitch: currentViewState.pitch,
-        }}
-        pitchWithRotate={false}
-        touchPitch={false}
-        dragRotate={false}
-        dragPan={exploring}
-        scrollZoom={exploring}
-        ref={mapRef}
-        onMoveEnd={exploring ? undefined : handleAnimationEnd}
-        onLoad={handleAnimationEnd}
-        onDrag={(e) => handleViewStateChange(e.viewState)}
-        onZoom={(e) => handleViewStateChange(e.viewState)}
-      >
-        {popupInfo && (
-          <Source
-            type="geojson"
-            data={{
-              type: "FeatureCollection",
-              features: [
-                {
-                  type: "Feature",
-                  properties: {},
-                  geometry: {
-                    type: "LineString",
-                    coordinates: [
-                      [popupInfo.data.lon, popupInfo.data.lat],
-                      [popupInfo.data.lon + 0.35, popupInfo.data.lat + 0.35],
-                    ],
+    <>
+      <div className="relative h-[calc(100vh_-_60px)]">
+        <AnimatePresence>
+          {!exploring && (
+            <>
+              <motion.h1
+                key={"header"}
+                initial={{
+                  opacity: 0,
+                  filter: "blur(20px)",
+                }}
+                exit={{
+                  opacity: 0,
+                  filter: "blur(20px)",
+                }}
+                animate={{
+                  opacity: 1,
+                  filter: "blur(0px)",
+                }}
+                className="absolute left-[50%] top-[50px] z-20 -translate-x-[50%] text-center font-[merriweather] text-4xl"
+              >
+                Explore the
+                <br />
+                <span className="italic text-primary">World of Initiative</span>
+              </motion.h1>
+            </>
+          )}
+        </AnimatePresence>
+        <Button
+          className="absolute bottom-[50px] left-[50%] z-20 -translate-x-[50%]"
+          onClick={toggleExploring}
+        >
+          {exploring ? "Go back" : "Explore now"} <ChevronRight />
+        </Button>
+        <Map
+          mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
+          mapStyle="mapbox://styles/aleks-hse/cm8h8vqmp001001s800tc7gcn"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+          initialViewState={{
+            zoom: currentViewState.zoom,
+            latitude: currentViewState.latitude,
+            longitude: currentViewState.longitude,
+            bearing: currentViewState.bearing,
+            pitch: currentViewState.pitch,
+          }}
+          pitchWithRotate={false}
+          touchPitch={false}
+          dragRotate={false}
+          dragPan={exploring}
+          scrollZoom={exploring}
+          ref={mapRef}
+          onMoveEnd={exploring ? undefined : handleAnimationEnd}
+          onLoad={handleAnimationEnd}
+          onDrag={(e) => handleViewStateChange(e.viewState)}
+          onZoom={(e) => handleViewStateChange(e.viewState)}
+          onClick={() => setPopupInfo(null)}
+        >
+          {popupInfo && (
+            <Source
+              type="geojson"
+              data={{
+                type: "FeatureCollection",
+                features: [
+                  {
+                    type: "Feature",
+                    properties: {},
+                    geometry: {
+                      type: "LineString",
+                      coordinates: [
+                        [popupInfo.data.lon, popupInfo.data.lat],
+                        [popupInfo.data.lon + 0.35, popupInfo.data.lat + 0.35],
+                      ],
+                    },
                   },
-                },
-              ],
-            }}
-          >
-            <Layer {...dataLayer} />
-          </Source>
-        )}
+                ],
+              }}
+            >
+              <Layer {...dataLayer} />
+            </Source>
+          )}
 
-        {items.map(({ id, lat, lon, ...item }) => (
-          <Marker
-            key={id}
-            latitude={lat}
-            longitude={lon}
-            anchor="center"
-            onClick={(e) => {
-              e.originalEvent.preventDefault();
-              e.originalEvent.stopPropagation();
-              setPopupInfo({
-                data: { id, lat, lon, ...item },
-                viewState: currentViewState,
-              });
-            }}
-          >
-            <div
-              className="h-6 w-6 cursor-pointer rounded-full border-2 border-white bg-blue-500 transition-all hover:h-8 hover:w-8"
-              style={{ boxShadow: "0 0 0 2px rgba(0,0,0,0.1)" }}
-            />
-          </Marker>
-        ))}
+          {items.map(({ id, lat, lon, ...item }) => (
+            <Marker
+              key={id}
+              latitude={lat}
+              longitude={lon}
+              anchor="center"
+              onClick={(e) => {
+                e.originalEvent.preventDefault();
+                e.originalEvent.stopPropagation();
+                openPopup({
+                  data: { id, lat, lon, ...item },
+                  viewState: currentViewState,
+                });
+              }}
+            >
+              <div
+                className="h-6 w-6 cursor-pointer rounded-full border-2 border-white bg-blue-500 transition-all hover:h-8 hover:w-8"
+                style={{ boxShadow: "0 0 0 2px rgba(0,0,0,0.1)" }}
+              />
+            </Marker>
+          ))}
 
-        {popupInfo && (
-          <Marker
-            latitude={popupInfo.data.lat + 0.3}
-            longitude={popupInfo.data.lon + 0.3}
-            anchor="bottom-left"
-          >
-            <MapProjectCard {...popupInfo.data} />
-          </Marker>
-        )}
-      </Map>
-    </div>
+          {popupInfo && (
+            <Marker
+              latitude={popupInfo.data.lat + 0.3}
+              longitude={popupInfo.data.lon + 0.3}
+              anchor="bottom-left"
+              onClick={(e) => e.originalEvent.stopPropagation()}
+            >
+              <MapProjectCard {...popupInfo.data} />
+            </Marker>
+          )}
+        </Map>
+      </div>
+
+      <div className="mt-20">
+        <h1 className="text-4xl">Statistics</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam aperiam
+          minus nam repellendus consequatur ad quos unde eveniet culpa quibusdam
+          sequi quod pariatur tempore reiciendis dolores saepe ab quaerat
+          architecto, praesentium odit et id. Voluptatibus, dolores? Vitae
+          veniam voluptates tempora necessitatibus ut amet temporibus, culpa
+          officia animi dolore natus asperiores.
+        </p>
+      </div>
+    </>
   );
 }
