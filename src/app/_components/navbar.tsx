@@ -12,8 +12,10 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        path === "/statistics" ? "fixed" : "sticky",
-        "left-0 top-0 z-10 w-full bg-transparent [body.stats-exploring_&]:hidden",
+        path === "/statistics"
+          ? "fixed [body.stats-exploring_&]:hidden"
+          : "sticky",
+        "left-0 top-0 z-10 w-full bg-transparent",
       )}
     >
       <div className="container mx-auto">
