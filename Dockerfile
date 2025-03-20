@@ -8,7 +8,9 @@ COPY . .
 
 RUN npm install -g pnpm
 
-RUN pnpm i --frozen-lockfile
+# Breaking change in pnpm so frozen lockfile does not work
+#RUN pnpm i --frozen-lockfile
+RUN pnpm i --no-frozen-lockfile
 
 ENV SKIP_ENV_VALIDATION=1
 
