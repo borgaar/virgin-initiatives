@@ -36,20 +36,18 @@ interface ProjectCommentsProps {
 
 export default function ProjectComments() {
   return (
-    <div className="mb-64 bg-white bg-opacity-5">
-      <Card className="bg-transparent px-6 py-3">
-        <CardHeader>
-          <CardTitle className="text-white">Comments</CardTitle>
-          <CardDescription className="text-gray-300">
-            Make a difference by sharing your opinions!
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4">
-          <CommentsList />
-          <AddComment />
-        </CardContent>
-      </Card>
-    </div>
+    <Card className="mb-64 bg-neutral-500/5 px-6 py-3 backdrop-blur-sm">
+      <CardHeader>
+        <CardTitle className="text-white">Comments</CardTitle>
+        <CardDescription className="text-gray-300">
+          Make a difference by sharing your opinions!
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4">
+        <CommentsList />
+        <AddComment />
+      </CardContent>
+    </Card>
   );
 }
 
