@@ -1,7 +1,14 @@
 // import { auth } from "@/server/auth";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { HydrateClient } from "@/trpc/server";
 import Link from "next/link";
+import {
+  HandCoinsIcon,
+  PawPrintIcon,
+  SproutIcon,
+  WindIcon,
+} from "lucide-react";
 
 export default async function Home() {
   // const session = await auth();
@@ -41,7 +48,7 @@ export default async function Home() {
             help shape our future?
           </h1>
         </div>
-        <div className="flex gap-2 pt-10">
+        <div className="mt-20 flex gap-2">
           {items.map((item) => (
             <Link
               href={`/projects/${item.id}`}
@@ -68,6 +75,42 @@ export default async function Home() {
             </Link>
           ))}
         </div>
+
+        <section className="mt-32 flex flex-col gap-10">
+          <h2 className="text-center text-3xl">All projects</h2>
+          <div className="flex flex-row justify-center gap-10">
+            <Button className="p-10" variant={"secondary"} size={"icon"}>
+              <SproutIcon className="!size-7" />
+            </Button>
+            <Button className="p-10" variant={"secondary"} size={"icon"}>
+              <PawPrintIcon className="!size-7" />
+            </Button>
+            <Button className="p-10" variant={"secondary"} size={"icon"}>
+              <WindIcon className="!size-7" />
+            </Button>
+            <Button className="p-10" variant={"secondary"} size={"icon"}>
+              <HandCoinsIcon className="!size-7" />
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-7 md:grid-cols-3 lg:grid-cols-4">
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+            <div className="size-48 bg-secondary"></div>
+          </div>
+        </section>
       </main>
     </HydrateClient>
   );
