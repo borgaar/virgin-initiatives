@@ -34,11 +34,9 @@ export default function Page() {
   const posts: Post[] = [
     {
       id: "1",
-      title: "Lower the cost of flying with bio-fuel",
+      title: "A push for bio-fuel investments",
       description: `
-          Bio-fuel is a great option to give the customers, and definately a step in the right direction. However, the steep price scare away the average customer. 
-
-          This company needs to get their shit together and lower the price already!
+Biofuels offer a compelling solution for aviation sustainability, reducing lifecycle greenhouse gas emissions by 60-80% compared to conventional jet fuels. Research in Environmental Science & Technology confirms these fuels not only decrease carbon intensity but also reduce harmful particulate and sulfur emissions. Additionally, domestically produced aviation biofuels enhance energy security while creating economic opportunities in rural communities. As the aviation sector works to meet climate targets, these sustainable fuels provide an immediate advantage by being compatible with existing aircraft and fueling infrastructure.
       `,
       author: {
         name: "John Doe",
@@ -50,13 +48,9 @@ export default function Page() {
     },
     {
       id: "2",
-      title: "Lower the cost of flying with bio-fuel",
+      title: "Bio-fuel to fight climate change!",
       description: `
-          Bio-fuel is a great option to give the customers, and definately a step in the right direction. However, the steep price scare away the average customer. 
-
-          This company needs to get their shit together and lower the price already! Bio-fuel is a great option to give the customers, and definately a step in the right direction. However, the steep price scare away the average customer. 
-
-          This company needs to get their shit together and lower the price already!
+Sustainable aviation fuels derived from biological sources represent a promising path toward reducing the environmental impact of air travel, with studies in Environmental Science & Technology showing they can cut lifecycle greenhouse gas emissions by 60-80% compared to traditional jet fuel. Beyond carbon reductions, these alternative fuels produce fewer particulate matter and sulfur emissions that contribute to air pollution. Producing biofuels domestically strengthens energy independence while generating economic benefits for agricultural regions. A key advantage of aviation biofuels is their drop-in capability, allowing immediate adoption without requiring modifications to current aircraft or fuel distribution systems as the industry pursues its climate objectives.
       `,
       author: {
         name: "Johnathan Doe",
@@ -68,11 +62,11 @@ export default function Page() {
     },
     {
       id: "3",
-      title: "Improve in-flight entertainment options",
+      title: "Reusable/sustainable wine corks?",
       description: `
-          The current selection of movies and shows is quite outdated. Most competitors offer a much wider and more current catalog.
-          
-          I suggest adding more recent releases and expanding the TV series collection. This would greatly enhance the flying experience for passengers on longer routes.
+        I've noticed that we're still using single-use plastic corks in our business class cabins. Given our commitment to sustainability, I believe we should consider switching to reusable corks made from sustainable materials.
+        
+        This small change could significantly reduce our plastic waste and demonstrate our dedication to eco-friendly practices. I'd be happy to provide more information on suppliers and cost comparisons if needed.
       `,
       author: {
         avatar: "https://randomuser.me/api/portraits/women/42.jpg",
@@ -185,7 +179,7 @@ export default function Page() {
   ];
 
   return (
-    <div className="flex justify-center pt-10">
+    <div className="flex justify-center pb-6 pt-10">
       <div className="container">
         <h1 className="text-5xl">Share your thoughts</h1>
         <p className="mb-4 mt-2 text-lg text-white/40">
