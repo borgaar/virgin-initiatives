@@ -9,13 +9,15 @@ export default function Navbar() {
     <nav className="bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="grid h-[69] grid-cols-3 items-center justify-between">
-          <Image
-            className="hidden lg:block"
-            src="/logo.png"
-            alt="Workflow"
-            width={50}
-            height={50}
-          />
+          <Link href={"/"}>
+            <Image
+              className="hidden lg:block"
+              src="/logo.png"
+              alt="Workflow"
+              width={50}
+              height={50}
+            />
+          </Link>
           <div className="flex justify-between space-x-10 text-center">
             <Link href="/">Projects</Link>
             <Link href="/initiatives">Initiatives</Link>
