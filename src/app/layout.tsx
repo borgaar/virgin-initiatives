@@ -18,12 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="relative bg-[url(/stars.png)] bg-cover">
-        <div className="absolute z-0 size-full h-[1774px] rounded-lg bg-gradient-to-b from-transparent to-black">
-          <div className="fixed left-0 top-0 z-10 w-full">
-            <Navbar />
-          </div>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
-        </div>
+        <Navbar />
+        <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
   );

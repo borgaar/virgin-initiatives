@@ -10,8 +10,13 @@ export default function Navbar() {
   const path = usePathname();
 
   return (
-    <nav className="absolute z-10 w-full bg-transparent">
-      <div className="mx-auto max-w-7xl">
+    <nav
+      className={cn(
+        path === "/statistics" ? "fixed" : "sticky",
+        "left-0 top-0 z-10 w-full bg-transparent [body.stats-exploring_&]:hidden",
+      )}
+    >
+      <div className="container mx-auto">
         <div className="grid h-[69] grid-cols-3 items-center justify-between">
           <Link href={"/"}>
             <Image

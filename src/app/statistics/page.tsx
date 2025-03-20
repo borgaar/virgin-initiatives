@@ -160,6 +160,10 @@ export default function Statistics() {
   }
 
   useEffect(() => {
+    document.body.classList.toggle("stats-exploring", exploring);
+  }, [exploring]);
+
+  useEffect(() => {
     if (popupInfo == null) return;
 
     const { viewState } = popupInfo;
