@@ -23,7 +23,7 @@ export default function PostRenderer({ post }: { post: Post }) {
   return (
     <>
       <h1 className="text-5xl">{post.title}</h1>
-      <div className="mb-4 mt-4 flex flex-row gap-2 rounded-lg rounded-md bg-neutral-500/5 p-2 backdrop-blur-sm">
+      <div className="mb-4 mt-4 flex flex-row gap-2 rounded-lg bg-neutral-500/5 p-2 backdrop-blur-sm">
         <Button
           variant={"ghost"}
           className="bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
