@@ -1,62 +1,4 @@
-import {
-  FaceFrownIcon,
-  FaceSmileIcon,
-  FireIcon,
-  HandThumbUpIcon,
-  HeartIcon,
-  XMarkIcon,
-} from "@heroicons/react/20/solid";
-
-export const moods = [
-  {
-    name: "Excited",
-    value: "excited",
-    icon: FireIcon,
-    iconColor: "text-white",
-    bgColor: "bg-red-500",
-    text: "text-red-500",
-  },
-  {
-    name: "Loved",
-    value: "loved",
-    icon: HeartIcon,
-    iconColor: "text-white",
-    bgColor: "bg-pink-400",
-    text: "text-pink-400",
-  },
-  {
-    name: "Happy",
-    value: "happy",
-    icon: FaceSmileIcon,
-    iconColor: "text-white",
-    bgColor: "bg-green-400",
-    text: "text-green-400",
-  },
-  {
-    name: "Virgin",
-    value: "virgin",
-    icon: FaceFrownIcon,
-    iconColor: "text-white",
-    bgColor: "bg-yellow-400",
-    text: "text-yellow-400",
-  },
-  {
-    name: "Thumbsy",
-    value: "thumbsy",
-    icon: HandThumbUpIcon,
-    iconColor: "text-white",
-    bgColor: "bg-blue-500",
-    text: "text-blue-500",
-  },
-  {
-    name: "I feel nothing",
-    value: null,
-    icon: XMarkIcon,
-    iconColor: "text-gray-400",
-    bgColor: "bg-transparent",
-    text: "text-gray-400",
-  },
-] as const;
+import { Mood, moods } from "./moods";
 
 export interface Project {
   title: string; // short project title
@@ -90,7 +32,7 @@ export interface Project {
     author: string; // Firstname Lastname
     avatar: string; // url
     content: string;
-    mood: (typeof moods)[number]["value"]; // "excited" | "loved" | "happy" | "virgin" | "thumbsy" | null
+    mood: Mood;
   }[];
 }
 

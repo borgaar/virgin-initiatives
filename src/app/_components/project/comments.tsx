@@ -1,15 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  FaceFrownIcon,
-  FaceSmileIcon,
-  FireIcon,
-  HandThumbUpIcon,
-  HeartIcon,
-  PaperClipIcon,
-  XMarkIcon,
-} from "@heroicons/react/20/solid";
+import { FaceSmileIcon, PaperClipIcon } from "@heroicons/react/20/solid";
 import {
   Label,
   Listbox,
@@ -25,8 +17,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../components/ui/card";
-import { Project } from "next/dist/build/swc/types";
-import { moods } from "../../../lib/projects";
+import { moods } from "../../../lib/moods";
 
 interface ProjectCommentsProps {
   comments: {
