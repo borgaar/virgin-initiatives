@@ -28,7 +28,7 @@ export default function Navbar() {
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>BT</AvatarFallback>
             </Avatar>
-            <div>Brothernan Testern</div>
+            <div>Brotherman Testern</div>
           </div>
         </div>
       </div>
