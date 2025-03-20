@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import ProjectCard from "../../_components/project/card";
+import ProjectComments from "../../_components/project/comments";
 import ProjectParticipation from "../../_components/project/participation";
 import ProjectRoadmap from "../../_components/project/roadmap";
 import InitiativeReference from "@/app/_components/project/initiative-reference";
@@ -91,6 +92,7 @@ export default function ProjectPage() {
       />
       <ProjectParticipation />
       <InitiativeReference />
+      <ProjectComments />
     </main>
   );
 }
