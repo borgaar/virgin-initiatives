@@ -193,36 +193,50 @@ export default function Page() {
           sustainability. Give and receive points for coming up with great
           ideas. We want your unfiltered feedback and suggestions.
         </p>
-        <div className="mb-4 flex flex-row gap-2 bg-white/5 p-2">
-          <Button variant={"ghost"} className="bg-white/20">
+        <div className="mb-4 flex flex-row gap-2 rounded-md bg-neutral-500/5 p-2 backdrop-blur-sm">
+          <Button
+            variant={"ghost"}
+            className="bg-neutral-700/20 hover:bg-neutral-800 hover:text-white"
+          >
             Trending
           </Button>
-          <Button variant={"ghost"} className="text-muted">
+          <Button
+            variant={"ghost"}
+            className="text-neutral-500 hover:bg-neutral-800 hover:text-white"
+          >
             New
           </Button>
-          <Button variant={"ghost"} className="text-muted">
+          <Button
+            variant={"ghost"}
+            className="text-neutral-500 hover:bg-neutral-800 hover:text-white"
+          >
             Top
           </Button>
-          <Button variant={"ghost"} className="ml-auto">
+          <Button
+            variant={"ghost"}
+            className="ml-auto hover:bg-neutral-800 hover:text-white"
+          >
             <PlusIcon /> New Post{" "}
           </Button>
         </div>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-4">
           {posts.map((post, index) => (
             <Card
               key={post.id}
-              className={cn("border-none bg-white/5 text-muted")}
+              className={cn(
+                "border-none bg-neutral-700/10 text-muted backdrop-blur-sm",
+              )}
             >
-              <CardHeader className="text-xs">
-                <div className="flex items-center">
-                  <Avatar>
+              <CardHeader className="text-sm font-medium text-neutral-400">
+                <div className="flex items-center justify-start">
+                  <Avatar className="-ml-2 scale-[0.6]">
                     {post.author.avatar && (
                       <AvatarImage
-                        className="scale-50 rounded-full"
+                        className="rounded-full"
                         src={post.author.avatar}
                       ></AvatarImage>
                     )}
-                    <AvatarFallback className="scale-50 bg-white/10 text-sm">
+                    <AvatarFallback className="bg-white/10 text-sm text-neutral-200">
                       {post.author.name
                         .toUpperCase()
                         .split(" ")
@@ -241,25 +255,37 @@ export default function Page() {
                 <h3 className="text-xl text-white">{post.title}</h3>
               </CardHeader>
               <CardContent>
-                <p className="max-h-20 overflow-hidden text-ellipsis">
+                <p className="max-h-20 overflow-hidden text-ellipsis text-neutral-500">
                   {post.description}
                 </p>
               </CardContent>
               <CardFooter className="flex gap-2">
-                <Button variant={"ghost"} size="sm" className="bg-white/10">
+                <Button
+                  variant={"ghost"}
+                  size="sm"
+                  className="bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
+                >
                   <ThumbsUpIcon /> {post.likes}
                 </Button>
-                <Button variant={"ghost"} size="sm" className="bg-white/10">
+                <Button
+                  variant={"ghost"}
+                  size="sm"
+                  className="bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
+                >
                   <ThumbsDownIcon /> {post.dislikes}
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="ml-auto bg-white/10"
+                  className="ml-auto bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
                 >
                   <Share2Icon />
                 </Button>
-                <Button variant={"ghost"} size="sm" className="bg-white/10">
+                <Button
+                  variant={"ghost"}
+                  size="sm"
+                  className="bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
+                >
                   <PlusIcon /> Give points
                 </Button>
               </CardFooter>
