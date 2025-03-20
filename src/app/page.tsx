@@ -9,27 +9,42 @@ import {
   SproutIcon,
   WindIcon,
 } from "lucide-react";
+import { describe } from "node:test";
+import { Description } from "@headlessui/react";
 
 export default async function Home() {
-  // const session = await auth();
-  // if (session?.user) {
-  //   void api.post.getLatest.prefetch();
-  // }
-
   const numberOfItems = 7;
 
   const initiatives = [
     {
-      title: "The Sea Turtle initiative",
-      description: "1200 sea trurtles saved",
+      title: "A green soil for earth",
+      description: "How Virgin is working towards more farmable land",
     },
     {
-      title: "Carbon Footprint initiative",
-      description: "1000 tons of CO2 saved",
+      title: "Working against the green massacre",
+      description: "Stopping the deforestation of our beloved nature",
     },
     {
-      title: "Clean Water initiative",
-      description: "1000 tons of clean water provided",
+      title: "Clean energy for a cleaner future",
+      description:
+        "Investing in techology to provide better energy for our future generations",
+    },
+    {
+      title: "Making science fiction a reality",
+      description: "How we are working towards making the impossible possible",
+    },
+    {
+      title: "Keeping the blue in our blue marble",
+      description: "How we are working towards a cleaner ocean",
+    },
+    {
+      title: "Natural reserves are reserves for a reason",
+      description: "Stopping the exploitation of our natural reserves",
+    },
+    {
+      title: "Sustainable foods for a sustainable future",
+      description:
+        "How we are working towards a greener and more sustainable food industry",
     },
   ];
   const items = Array.from({ length: numberOfItems }, (_, i) => ({
@@ -42,7 +57,7 @@ export default async function Home() {
     <HydrateClient>
       <main className="flex flex-col items-center text-white">
         <div className="h-[calc(100vh-100px)] pt-[calc(20vh-100px)]">
-          <div className="flex animate-fade-in flex-col items-center gap-[calc(16vh-100px)] px-4 py-[calc(14vh-100px)]">
+          <div className="animate-fade-in flex flex-col items-center gap-[calc(16vh-100px)] px-4 py-[calc(14vh-100px)]">
             <h1 className="text-center font-[merriweather] text-5xl leading-[1.4]">
               How do <span className="italic text-primary">you</span> want to{" "}
               <br />
