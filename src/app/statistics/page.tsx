@@ -22,6 +22,7 @@ import { ChevronRight, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { AnimatePresence, motion } from "motion/react";
+import ProjectsStats from "../_components/statistics/chart";
 
 type ProjectCardMarker = ProjectCardProps & {
   id: string;
@@ -715,6 +716,8 @@ export default function Statistics() {
           officia animi dolore natus asperiores.
         </p>
       </div>
+
+      <ProjectsStats />
     </div>
   );
 }
