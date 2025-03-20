@@ -42,7 +42,7 @@ export default function ProjectComments({ comments }: ProjectCommentsProps) {
 
 export function PostComments({ comments }: ProjectCommentsProps) {
   return (
-    <Card className="mb-64 bg-neutral-500/5 px-6 py-3 backdrop-blur-sm">
+    <Card className="mb-64 rounded-lg bg-neutral-500/5 px-6 py-3 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="text-white">Comments</CardTitle>
         <CardDescription className="text-gray-300">

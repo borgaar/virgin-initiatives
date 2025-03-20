@@ -10,7 +10,7 @@ type PostPageProps = {
 };
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { postId } = await params;
+  const { postId } = params;
   const post = posts.find((post) => post.id === postId);
 
   if (!post) {

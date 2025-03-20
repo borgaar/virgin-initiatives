@@ -35,7 +35,7 @@ const items: FeedItem[] = [
     createdAt: "2025-03-18T00:00:00Z",
     image: "https://loremfaces.net/96/id/4.jpg",
     name: "Kari Nordmann",
-    companyLogos: ["/companies/active.png", "/companies/fibra.png"],
+    companyLogos: ["/companies/mobile.png", "/companies/fibra.png"],
   },
   {
     id: "4",
@@ -46,7 +46,7 @@ const items: FeedItem[] = [
     createdAt: "2025-02-20T00:00:00Z",
     image: "https://loremfaces.net/96/id/5.jpg",
     name: "Jon Johansson",
-    companyLogos: ["/companies/active.png"],
+    companyLogos: ["/companies/mobile.png"],
   },
   {
     id: "5",

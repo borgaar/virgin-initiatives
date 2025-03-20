@@ -2,6 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { formatDistance } from "date-fns";
+import { Check } from "lucide-react";
 import { useState } from "react";
 
 const outlineFromTag = (tag: string) => {
@@ -82,7 +83,7 @@ export default function InitiativeFeedItem({
   companyLogos,
 }: FeedItem) {
   const addLogo = () => {
-    if (interestedCompanies.includes("/companies/virgin-wines.webp")) {
+    if (interestedCompanies.includes("/companies/wines.webp")) {
       setInterestedCompanies([...companyLogos]);
     } else {
       setInterestedCompanies([...companyLogos, "/companies/wines.webp"]);
@@ -91,6 +92,8 @@ export default function InitiativeFeedItem({
 
   const [interestedCompanies, setInterestedCompanies] =
     useState<string[]>(companyLogos);
+
+  const isInterested = interestedCompanies.includes("/companies/wines.webp");
 
   return (
     <div className="flex min-w-full flex-col items-start justify-between rounded-lg bg-neutral-500/5 p-5 backdrop-blur-sm">
@@ -111,7 +114,13 @@ export default function InitiativeFeedItem({
         <div className="flex flex-1 justify-end gap-7">
           <div className="flex items-center justify-end gap-5">
             {interestedCompanies.map((e) => (
-              <img key={e} src={e} alt="Company logo" className="w-100 h-10" />
+              <img
+                key={e}
+                src={e}
+                style={{ objectFit: "contain" }}
+                alt="Company logo"
+                className="h-10 max-w-16"
+              />
             ))}
           </div>
         </div>
@@ -132,9 +141,10 @@ export default function InitiativeFeedItem({
         </div>
         <Button
           onClick={addLogo}
-          className="rounded-lg bg-neutral-900 py-1 text-neutral-300 hover:bg-neutral-950"
+          className={`w-32 rounded-lg ${isInterested ? "bg-neutral-700" : "bg-neutral-800"} ${isInterested ? "text-neutral-400" : "text-neutral-300"} py-1 ${isInterested ? "hover:bg-neutral-800" : "hover:bg-neutral-900"}`}
         >
-          <span>Show Interest</span>
+          {isInterested && <Check />}
+          <span>{isInterested ? "Interested" : "Show Interest"}</span>
         </Button>
       </div>
     </div>
