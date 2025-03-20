@@ -40,7 +40,7 @@ export default function ProjectTile({
 }: Project & { idx: number }) {
   return (
     <Link href={`/projects/${idx + 1}`}>
-      <div className="group flex flex-col overflow-hidden shadow-lg">
+      <div className="group flex h-full flex-col overflow-hidden shadow-lg">
         <img
           className="h-48 w-full flex-shrink-0 object-cover brightness-50 saturate-50 transition-all duration-300 ease-in-out group-hover:brightness-75 group-hover:saturate-100"
           src={banner}

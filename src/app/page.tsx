@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { projects } from "../lib/projects";
 import ProjectTile from "./statistics/_components/project-tile";
+import PageContainer from "./_components/page-container";
 
 export default async function Home() {
   return (
@@ -73,11 +74,13 @@ export default async function Home() {
             />
           </div>
 
-          <div className="grid max-w-screen-2xl grid-cols-1 gap-7 md:grid-cols-3 lg:grid-cols-4">
-            {projects.map((project, idx) => (
-              <ProjectTile {...project} key={project.title} idx={idx} />
-            ))}
-          </div>
+          <PageContainer>
+            <div className="grid grid-cols-1 gap-7 md:grid-cols-3 lg:grid-cols-3">
+              {projects.slice(0, 6).map((project, idx) => (
+                <ProjectTile {...project} key={project.title} idx={idx} />
+              ))}
+            </div>
+          </PageContainer>
         </section>
       </main>
     </HydrateClient>
