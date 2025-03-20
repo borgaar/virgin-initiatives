@@ -224,7 +224,7 @@ export default function Page() {
             <Card
               key={post.id}
               className={cn(
-                "border-none bg-neutral-700/10 text-muted backdrop-blur-sm",
+                "flex flex-col border-none bg-neutral-700/10 text-muted backdrop-blur-sm",
               )}
             >
               <CardHeader className="text-sm font-medium text-neutral-400">
@@ -254,8 +254,8 @@ export default function Page() {
                 </div>
                 <h3 className="text-xl text-white">{post.title}</h3>
               </CardHeader>
-              <CardContent>
-                <p className="max-h-20 overflow-hidden text-ellipsis text-neutral-500">
+              <CardContent className="h-full">
+                <p className="overflow-hidden text-ellipsis text-neutral-500">
                   {post.description}
                 </p>
               </CardContent>
