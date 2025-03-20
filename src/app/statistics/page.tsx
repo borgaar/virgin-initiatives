@@ -112,11 +112,14 @@ export default function Statistics() {
   }, [currentViewState, popupInfo]);
 
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-transparent">
       <Map
         mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
-        mapStyle="mapbox://styles/mapbox/dark-v11"
-        style={{ width: "100%", height: "100%" }}
+        mapStyle="mapbox://styles/aleks-hse/cm8h8vqmp001001s800tc7gcn"
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
         initialViewState={{
           zoom: currentViewState.zoom,
           latitude: currentViewState.latitude,
