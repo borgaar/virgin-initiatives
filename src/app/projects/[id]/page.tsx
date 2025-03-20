@@ -23,13 +23,13 @@ export default function ProjectPage() {
           ]}
           tag={"Environment"}
         />
-        <div className="flex flex-col gap-4 bg-blue-50 p-4">
+        <div className="flex flex-col gap-4 bg-red-50 p-4">
           <div>Joining this initiative will earn you points!</div>
           <div className="flex justify-center gap-2">
-            <Button className="w-full bg-blue-700">Donate points</Button>
-            <Button className="w-full bg-blue-700">Donate cash</Button>
+            <Button className="w-full bg-primary">Donate points</Button>
+            <Button className="w-full bg-primary">Donate cash</Button>
           </div>
-          <Button className="border-2 border-solid border-blue-200 bg-blue-100 text-blue-700">
+          <Button className="border-2 border-solid border-red-200 bg-red-100 text-black">
             Share on social media
           </Button>
           <Button className="border-2 border-solid border-gray-200 bg-white text-gray-600">

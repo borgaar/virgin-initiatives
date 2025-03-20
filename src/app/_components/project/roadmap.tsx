@@ -33,7 +33,7 @@ export default function ProjectRoadmap({ timeline }: ProjectRoadmapProps) {
                         event.status === "completed"
                           ? "bg-green-600"
                           : event.status === "in-progress"
-                            ? "bg-blue-500"
+                            ? "bg-yellow-400"
                             : "bg-gray-200",
                         "flex size-4 items-center justify-center rounded-full ring-4 ring-card",
                       )}
