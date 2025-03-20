@@ -14,7 +14,7 @@ import Map, {
   ViewState,
 } from "react-map-gl/mapbox";
 import { MapProjectCard, ProjectCardProps } from "../_components/project/card";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { AnimatePresence, motion } from "motion/react";
@@ -297,16 +297,22 @@ export default function Statistics() {
               />
             </Marker>
           ))}
-
           {popupInfo && (
-            <Marker
-              latitude={popupInfo.data.lat + 0.3}
-              longitude={popupInfo.data.lon + 0.3}
-              anchor="bottom-left"
-              onClick={(e) => e.originalEvent.stopPropagation()}
-            >
-              <MapProjectCard {...popupInfo.data} />
-            </Marker>
+            <Link href="/projects/1">
+              <Marker
+                latitude={popupInfo.data.lat + 0.3}
+                longitude={popupInfo.data.lon + 0.3}
+                anchor="bottom-left"
+                // Navigate to "/projects/1" when clicking on the card
+                onClick={(e) => {
+                  e.originalEvent.preventDefault();
+                  e.originalEvent.stopPropagation();
+                  window.location.href = "/projects/1";
+                }}
+              >
+                <MapProjectCard {...popupInfo.data} />
+              </Marker>
+            </Link>
           )}
         </Map>
       </div>
