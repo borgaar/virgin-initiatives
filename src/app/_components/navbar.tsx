@@ -33,13 +33,13 @@ export default function Navbar() {
               Projects
             </Link>
             <Link
-              href="/initiatives"
+              href="/community"
               className={cn(
                 "transition hover:text-neutral-400 active:text-neutral-100",
-                path === "/initiatives" ? "text-white hover:text-white" : "",
+                path === "/community" ? "text-white hover:text-white" : "",
               )}
             >
-              Initiatives
+              Community
             </Link>
             <Link
               href="/statistics"
