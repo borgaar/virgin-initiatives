@@ -509,6 +509,12 @@ export default function GlobeExplorer() {
     }
   }
 
+  useEffect(() => {
+    if (exploring) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [exploring]);
+
   function openPopup(info: { data: ProjectCardMarker; viewState: ViewState }) {
     const zoom = mapRef.current?.getZoom() ?? 0;
     if (!exploring) setExploring(true);
