@@ -12,7 +12,7 @@ export default async function ProjectPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const project = projects[parseInt(id)];
+  const project = projects[parseInt(id) - 1];
 
   if (!project) {
     return <div>404 not found</div>;

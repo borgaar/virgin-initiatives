@@ -15,13 +15,12 @@ import {
 } from "../../../components/ui/card";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
+import { Project } from "../../../lib/projects";
 
-export interface ProjectCardProps {
-  title: string;
-  description: string;
-  tag: "Environment" | "Energy" | "Education" | "Technology" | "Healthcare";
-  stats: { value: string; label: string }[];
-}
+export type ProjectCardProps = Pick<
+  Project,
+  "title" | "description" | "tag" | "stats" | "banner"
+>;
 
 const tagToIcon = (tag: ProjectCardProps["tag"]) => {
   switch (tag) {
@@ -58,6 +57,7 @@ export default function ProjectCard({
   description,
   stats,
   tag,
+  banner,
 }: ProjectCardProps) {
   return (
     <Card className="relative flex w-full flex-col justify-between text-white">
@@ -82,7 +82,7 @@ export default function ProjectCard({
         </Button>
       </CardContent>
       <img
-        src="/ocean.avif"
+        src={banner}
         className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full object-cover brightness-50"
       />
     </Card>

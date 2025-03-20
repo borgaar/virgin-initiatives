@@ -3,6 +3,8 @@ import { Mood, moods } from "./moods";
 import { people, Person } from "./people";
 
 export interface Project {
+  thumbnail: string;
+  banner: string;
   title: string;
   description: string;
   stats: {
@@ -38,6 +40,8 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    thumbnail: "projects/t1.jpg",
+    banner: "/projects/t1-1.jpg",
     title: "Ocean Conservation Initiative",
     description:
       "A collaborative effort to reduce ocean plastic pollution by 75% across major coastlines by implementing innovative waste management solutions and promoting sustainable consumer behaviors.",
@@ -120,6 +124,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    thumbnail: "projects/t2.jpg",
+    banner: "/projects/t2-1.jpg",
     title: "Global Healthcare Access",
     description:
       "Expanding access to essential healthcare services in underserved regions through mobile clinics, telehealth infrastructure, and healthcare professional training programs.",
@@ -202,6 +208,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    thumbnail: "projects/t3.jpg",
+    banner: "/projects/t3-1.jpg",
     title: "Future Skills Academy",
     description:
       "Equipping underprivileged youth with technology skills, entrepreneurship training, and meaningful mentorship to create pathways to economic opportunity in the digital economy.",
@@ -298,6 +306,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    thumbnail: "projects/t4.jpg",
+    banner: "/projects/t4-1.jpg",
     title: "Renewable Energy Transition",
     description:
       "Accelerating the adoption of renewable energy technologies across residential and commercial sectors through innovative financing models, installation training, and policy advocacy.",
@@ -402,6 +412,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    thumbnail: "projects/t5.jpg",
+    banner: "/projects/t5-1.jpg",
     title: "Food Security Alliance",
     description:
       "Combating hunger and food insecurity through sustainable agriculture practices, supply chain innovations, and equitable food distribution systems in vulnerable communities.",
@@ -503,6 +515,218 @@ export const projects: Project[] = [
       "Support a farmer",
       "Reduce your food waste",
       "Advocate for policy change",
+    ],
+  },
+  {
+    thumbnail: "projects/t6.jpg",
+    banner: "/projects/t6-1.jpg",
+    title: "Working Against Poverty",
+    description:
+      "Tackling systemic poverty through microfinance initiatives, skills development programs, and community-based economic empowerment strategies focusing on sustainable livelihood creation.",
+    stats: [
+      { label: "families supported", value: "34.6k" },
+      { label: "microloans granted", value: "22.8k" },
+      { label: "training graduates", value: "15.3k" },
+      { label: "communities reached", value: "412" },
+    ],
+    tag: "Education",
+    roadmap: [
+      {
+        id: 1,
+        time: "Q2 2022",
+        title: "Microfinance Infrastructure",
+        description:
+          "Establish digital platforms and community networks for accessible small business loans and financial literacy education.",
+        status: "completed",
+      },
+      {
+        id: 2,
+        time: "Q4 2022",
+        title: "Skills Training Centers",
+        description:
+          "Launch regional hubs for vocational training in high-demand sectors including technology, healthcare, and sustainable agriculture.",
+        status: "completed",
+      },
+      {
+        id: 3,
+        time: "Q2 2023",
+        title: "Market Access Program",
+        description:
+          "Create direct connections between small producers and larger markets through digital marketplaces and supply chain integration.",
+        status: "completed",
+      },
+      {
+        id: 4,
+        time: "2023-2024",
+        title: "Community Economic Centers",
+        description:
+          "Develop shared economic spaces in underserved areas that provide infrastructure, mentorship, and collective resources.",
+        status: "in-progress",
+      },
+      {
+        id: 5,
+        time: "2024-2026",
+        title: "Social Enterprise Scaling",
+        description:
+          "Expand successful community businesses through investment networks and operational support to create regional employment engines.",
+        status: "todo",
+      },
+    ],
+    participants: companies.filter((_, idx) => idx % 3 === 0),
+    initiatives: [
+      {
+        id: 1,
+        title: "Women's Entrepreneurship Collective",
+        description:
+          "Dedicated support system for women entrepreneurs including tailored financing, mentorship, and childcare solutions during business development.",
+        author: people[3]!,
+      },
+      {
+        id: 2,
+        title: "Youth Tech Empowerment",
+        description:
+          "Technology training and startup incubator for youth from economically disadvantaged backgrounds, focusing on practical digital economy skills.",
+        author: people[5]!,
+      },
+      {
+        id: 3,
+        title: "Rural Economic Development Alliance",
+        description:
+          "Collaborative network connecting rural communities with resources, markets, and technology to build sustainable local economies.",
+        author: people[7]!,
+      },
+    ],
+    comments: [
+      {
+        author: people[8]!,
+        content:
+          "The microfinance program helped me start my tailoring business. Two years later, I'm employing five people from my village. This changes everything.",
+        mood: "loved",
+      },
+      {
+        author: people[11]!,
+        content:
+          "The digital skills training opened doors I never knew existed. I now work remotely for clients around the world while staying in my community.",
+        mood: "happy",
+      },
+      {
+        author: people[6]!,
+        content:
+          "Our farming cooperative accessed larger markets through the program. Our income has stabilized and we're investing in more sustainable practices.",
+        mood: "thumbsy",
+      },
+    ],
+    callToActions: [
+      "Volunteer as a mentor",
+      "Support a microloan",
+      "Contribute skills",
+      "Join a local initiative",
+    ],
+  },
+  {
+    thumbnail: "projects/t7.jpg",
+    banner: "/projects/t7-1.jpg",
+    title: "Making Science Fiction a Reality",
+    description:
+      "Accelerating human space exploration through collaborative research, cutting-edge technology development, and educational initiatives aimed at democratizing access to space and establishing sustainable off-world habitation.",
+    stats: [
+      { label: "research projects", value: "247" },
+      { label: "prototype technologies", value: "42" },
+      { label: "student engagements", value: "183k" },
+      { label: "planned missions", value: "8" },
+    ],
+    tag: "Technology",
+    roadmap: [
+      {
+        id: 1,
+        time: "Q1 2023",
+        title: "Advanced Propulsion Research",
+        description:
+          "Develop and test next-generation propulsion systems to reduce travel time between Earth and Mars by up to 60%.",
+        status: "completed",
+      },
+      {
+        id: 2,
+        time: "Q3 2023",
+        title: "Habitation Materials Innovation",
+        description:
+          "Create radiation-resistant, self-repairing materials for long-term space habitation using in-situ resources.",
+        status: "completed",
+      },
+      {
+        id: 3,
+        time: "2024",
+        title: "Lunar Gateway Prototype",
+        description:
+          "Establish testing facility for space agriculture, manufacturing, and habitation systems on lunar-like conditions.",
+        status: "in-progress",
+      },
+      {
+        id: 4,
+        time: "2025",
+        title: "Mars Habitation Simulation",
+        description:
+          "Launch year-long closed-system simulation with volunteer crew to test psychological and physical support systems.",
+        status: "todo",
+      },
+      {
+        id: 5,
+        time: "2026-2030",
+        title: "First Commercial Moon Base",
+        description:
+          "Establish initial permanent human presence with research, tourism, and resource utilization capabilities.",
+        status: "todo",
+      },
+    ],
+    participants: companies.filter((_, idx) => idx % 4 === 2),
+    initiatives: [
+      {
+        id: 1,
+        title: "Global Space Education Network",
+        description:
+          "Connecting students worldwide with space professionals through virtual classrooms, mentorship programs, and hands-on engineering challenges.",
+        author: people[1]!,
+      },
+      {
+        id: 2,
+        title: "Open-Source Space Technologies",
+        description:
+          "Collaborative platform for developing and sharing critical technologies for space exploration without proprietary restrictions.",
+        author: people[9]!,
+      },
+      {
+        id: 3,
+        title: "Citizen Astronaut Program",
+        description:
+          "Training protocol and selection process to prepare non-professional astronauts for future space habitation and research missions.",
+        author: people[4]!,
+      },
+    ],
+    comments: [
+      {
+        author: people[10]!,
+        content:
+          "My daughter participated in the habitat design challenge and now she's studying aerospace engineering. These programs are inspiring the next generation.",
+        mood: "loved",
+      },
+      {
+        author: people[0]!,
+        content:
+          "The open-source approach to life support systems has accelerated progress beyond what any single company could achieve. This is how we'll get to Mars.",
+        mood: "thumbsy",
+      },
+      {
+        author: people[15]!,
+        content:
+          "I never thought I'd have a chance to contribute to space exploration as a farmer, but the agriculture research program values my expertise. We're all part of this journey.",
+        mood: "happy",
+      },
+    ],
+    callToActions: [
+      "Join a research team",
+      "Support space education",
+      "Test prototype technologies",
+      "Apply for simulation missions",
     ],
   },
 ];
