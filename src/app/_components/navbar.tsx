@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Badge } from "../../components/ui/badge";
 
 export default function Navbar() {
   const path = usePathname();
@@ -68,12 +69,12 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="flex items-center justify-end space-x-4 text-neutral-400">
-            <p>1450 points</p>
+            <Badge variant={"outline"}>1450 points</Badge>
             <Avatar>
-              <AvatarImage src="https://loremfaces.net/96/id/1.jpg" />
-              <AvatarFallback>BT</AvatarFallback>
+              <AvatarImage src="https://randomuser.me/api/portraits/thumb/men/40.jpg" />
+              <AvatarFallback>PN</AvatarFallback>
             </Avatar>
-            <div>Brotherman Testern</div>
+            <div>Peter Normann</div>
           </div>
         </div>
       </div>
