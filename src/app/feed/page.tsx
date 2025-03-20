@@ -63,7 +63,7 @@ const items: FeedItem[] = [
 
 export default function Feed() {
   return (
-    <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 py-6">
+    <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 py-6 pt-24">
       {items.map((item) => (
         <InitiativeFeedItem key={item.id} {...item} />
       ))}
