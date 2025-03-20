@@ -69,6 +69,7 @@ export const posts: Post[] = [
 Biofuels offer a compelling solution for aviation sustainability, reducing lifecycle greenhouse gas emissions by 60-80% compared to conventional jet fuels. Research in Environmental Science & Technology confirms these fuels not only decrease carbon intensity but also reduce harmful particulate and sulfur emissions. Additionally, domestically produced aviation biofuels enhance energy security while creating economic opportunities in rural communities. As the aviation sector works to meet climate targets, these sustainable fuels provide an immediate advantage by being compatible with existing aircraft and fueling infrastructure.
       `,
     author: {
+      avatar: people[70]!.avatar,
       name: "John Doe",
       isVirginEmployee: false,
     },
@@ -84,6 +85,7 @@ Biofuels offer a compelling solution for aviation sustainability, reducing lifec
 Sustainable aviation fuels derived from biological sources represent a promising path toward reducing the environmental impact of air travel, with studies in Environmental Science & Technology showing they can cut lifecycle greenhouse gas emissions by 60-80% compared to traditional jet fuel. Beyond carbon reductions, these alternative fuels produce fewer particulate matter and sulfur emissions that contribute to air pollution. Producing biofuels domestically strengthens energy independence while generating economic benefits for agricultural regions. A key advantage of aviation biofuels is their drop-in capability, allowing immediate adoption without requiring modifications to current aircraft or fuel distribution systems as the industry pursues its climate objectives.
       `,
     author: {
+      avatar: people[34]!.avatar,
       name: "Johnathan Doe",
       isVirginEmployee: true,
     },
@@ -101,6 +103,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
         This small change could significantly reduce our plastic waste and demonstrate our dedication to eco-friendly practices. I'd be happy to provide more information on suppliers and cost comparisons if needed.
       `,
     author: {
+      avatar: people[59]!.avatar,
       name: "Sarah Johnson",
       isVirginEmployee: false,
     },
@@ -118,6 +121,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
           Perhaps passengers could nominate attendants who provide outstanding service, with monthly awards for those who receive the most nominations.
       `,
     author: {
+      avatar: people[45]!.avatar,
       name: "Michael Chen",
       isVirginEmployee: false,
     },
@@ -135,6 +139,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
           I've compiled data from the last six months showing that adding a 20-minute buffer would significantly improve our on-time performance without substantially affecting our scheduling.
       `,
     author: {
+      avatar: people[80]!.avatar,
       name: "Robert Williams",
       isVirginEmployee: true,
     },
@@ -152,6 +157,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
           Most competitors offer more varied and flavorful vegetarian choices. Could we please consider expanding our menu? Perhaps consult with chefs who specialize in vegetarian cuisine.
       `,
     author: {
+      avatar: people[20]!.avatar,
       name: "Priya Patel",
       isVirginEmployee: false,
     },
@@ -169,6 +175,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
           As our sustainability manager, I propose creating a detailed quarterly report accessible to all customers, showing the specific projects funded through our offset program and their measurable impact on CO2 reduction.
       `,
     author: {
+      avatar: people[33]!.avatar,
       name: "Emma Thompson",
       isVirginEmployee: true,
     },
@@ -186,6 +193,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
           This discrepancy is causing us to lose high-value customers to competitors. Data from my department shows we could increase retention by 15% by adjusting our tier requirements.
       `,
     author: {
+      avatar: people[19]!.avatar,
       name: "David Rodriguez",
       isVirginEmployee: true,
     },
@@ -203,6 +211,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
           I work in software development, and would be happy to provide more detailed feedback on specific UI/UX improvements that would make the app more user-friendly.
       `,
     author: {
+      avatar: people[66]!.avatar,
       name: "Alex Kim",
       isVirginEmployee: false,
     },
