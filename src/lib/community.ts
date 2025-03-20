@@ -1,4 +1,5 @@
 import { ProjectCommentsProps } from "@/app/_components/project/comments";
+import { people } from "./people";
 
 export type Post = {
   id: string;
@@ -17,53 +18,46 @@ export type Post = {
 
 const mockComments: ProjectCommentsProps["comments"] = [
   {
-    author: "Sarah Johnson",
+    author: people[Math.floor(Math.random() * people.length)]!,
     content:
       "This is absolutely amazing! I can't believe how well this turned out. Definitely keeping an eye on future updates!",
     mood: "excited",
-    avatar: "https://randomuser.me/api/portraits/women/42.jpg",
   },
   {
-    author: "Michael Chen",
+    author: people[Math.floor(Math.random() * people.length)]!,
     content:
       "I adore everything about this. It's exactly what I've been looking for all this time. You've made my day!",
     mood: "loved",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
-    author: "Jessica Park",
+    author: people[Math.floor(Math.random() * people.length)]!,
     content:
       "Great work on this! It's really well done and I appreciate all the thought that went into it.",
     mood: "happy",
-    avatar: "https://randomuser.me/api/portraits/women/24.jpg",
   },
   {
-    author: "David Rodriguez",
+    author: people[Math.floor(Math.random() * people.length)]!,
     content:
       "I'm not sure about this one. It seems like there are some issues that need to be addressed before it's ready.",
     mood: "virgin",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
-    author: "Emily Williams",
+    author: people[Math.floor(Math.random() * people.length)]!,
     content:
       "Solid effort! This is definitely a step in the right direction. Looking forward to seeing what comes next.",
     mood: "thumbsy",
-    avatar: "https://randomuser.me/api/portraits/women/12.jpg",
   },
   {
-    author: "Alex Thompson",
+    author: people[Math.floor(Math.random() * people.length)]!,
     content:
       "Interesting concept but I don't have strong feelings either way. Could go either direction with some tweaks.",
     mood: null,
-    avatar: "https://randomuser.me/api/portraits/men/12.jpg",
   },
   {
-    author: "Taylor Smith",
+    author: people[Math.floor(Math.random() * people.length)]!,
     content:
       "This is exactly what I needed today! The quality is outstanding and I'm already recommending it to friends!",
     mood: "excited",
-    avatar: "https://randomuser.me/api/portraits/women/31.jpg",
   },
 ];
 
@@ -107,7 +101,6 @@ Sustainable aviation fuels derived from biological sources represent a promising
         This small change could significantly reduce our plastic waste and demonstrate our dedication to eco-friendly practices. I'd be happy to provide more information on suppliers and cost comparisons if needed.
       `,
     author: {
-      avatar: "https://randomuser.me/api/portraits/women/42.jpg",
       name: "Sarah Johnson",
       isVirginEmployee: false,
     },
@@ -142,7 +135,6 @@ Sustainable aviation fuels derived from biological sources represent a promising
           I've compiled data from the last six months showing that adding a 20-minute buffer would significantly improve our on-time performance without substantially affecting our scheduling.
       `,
     author: {
-      avatar: "https://randomuser.me/api/portraits/men/24.jpg",
       name: "Robert Williams",
       isVirginEmployee: true,
     },
@@ -177,7 +169,6 @@ Sustainable aviation fuels derived from biological sources represent a promising
           As our sustainability manager, I propose creating a detailed quarterly report accessible to all customers, showing the specific projects funded through our offset program and their measurable impact on CO2 reduction.
       `,
     author: {
-      avatar: "https://randomuser.me/api/portraits/women/67.jpg",
       name: "Emma Thompson",
       isVirginEmployee: true,
     },
@@ -212,7 +203,6 @@ Sustainable aviation fuels derived from biological sources represent a promising
           I work in software development, and would be happy to provide more detailed feedback on specific UI/UX improvements that would make the app more user-friendly.
       `,
     author: {
-      avatar: "https://randomuser.me/api/portraits/men/35.jpg",
       name: "Alex Kim",
       isVirginEmployee: false,
     },

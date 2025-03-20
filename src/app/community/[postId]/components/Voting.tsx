@@ -56,6 +56,7 @@ export default function Voting({
                   width: `${((option.totalVotes + Number(votedFor === index)) / totalVotes) * 100}%`,
                 }}
               ></div>
+              {option.icon}
               <span className="z-10">{option.label}</span>
               <Circle
                 fill={votedFor === index ? "white" : undefined}
