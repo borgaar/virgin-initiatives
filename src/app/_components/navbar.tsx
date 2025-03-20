@@ -2,6 +2,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { BellDot, Search } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -16,10 +17,10 @@ export default function Navbar() {
             height={50}
           />
           <div className="flex justify-between space-x-10 text-center">
-            <div>Projects</div>
-            <div>Initiatives</div>
-            <div>Statistics</div>
-            <div>Feed</div>
+            <Link href="/">Projects</Link>
+            <Link href="/initiatives">Initiatives</Link>
+            <Link href="/statistics">Statistics</Link>
+            <Link href="/feed">Feed</Link>
           </div>
           <div className="flex items-center justify-end space-x-4">
             <Search />
