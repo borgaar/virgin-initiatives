@@ -23,7 +23,7 @@ export default async function Home() {
               help shape our future?
             </h1>
             <p className="text-neutral-500">
-              Take a look at our projects below ↓
+              ↓ Take a look at our projects below ↓
             </p>
           </div>
           <div className="m-auto flex h-[calc(56vh-100px)] gap-2 align-middle">
