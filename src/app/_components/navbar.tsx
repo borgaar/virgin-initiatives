@@ -67,7 +67,7 @@ export default function Navbar() {
               Feed
             </Link>
           </div>
-          <div className="flex items-center justify-end space-x-4">
+          <div className="flex items-center justify-end space-x-4 text-neutral-400">
             <p>1450 points</p>
             <Avatar>
               <AvatarImage src="https://loremfaces.net/96/id/1.jpg" />

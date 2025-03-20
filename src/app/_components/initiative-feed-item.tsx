@@ -1,7 +1,7 @@
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { AvatarImage } from "@radix-ui/react-avatar";
 import { formatDistance } from "date-fns";
+import Image from "next/image";
 
 const bgFromTag = (tag: Tag) => {
   switch (tag) {
@@ -56,9 +56,11 @@ export interface FeedItem {
   content: string;
   tags: Tag[];
   createdAt: string;
-  updatedAt: string;
   likes: number;
   interested: number;
+  image: string;
+  name: string;
+  companyLogo?: string[];
 }
 
 export enum Tag {
@@ -80,14 +82,18 @@ export default function InitiativeFeedItem({
   title,
   likes,
   interested,
+  image,
+  name,
+  companyLogo,
 }: FeedItem) {
   return (
-    <div className="flex min-w-full flex-col items-start justify-between bg-white bg-opacity-5 p-5">
-      <div className="flex items-center justify-start space-x-3">
+    <div className="flex min-w-full flex-col items-start justify-between rounded-lg bg-neutral-500/5 p-5 backdrop-blur-sm">
+      <div className="flex w-full items-center justify-start space-x-3">
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage src={image} />
+          <AvatarFallback>{name.split(" ")[0]}</AvatarFallback>
         </Avatar>
-        <div className="flex flex-col">
+        <div className="flex flex-none flex-col">
           <div className="flex items-center justify-between space-x-6">
             <h2 className="font-bold">{title}</h2>
             {tags.map((tag) => (
@@ -106,6 +112,13 @@ export default function InitiativeFeedItem({
               })}
           </h2>
         </div>
+        {companyLogo && (
+          <div className="flex flex-1 items-center justify-end gap-5">
+            {companyLogo.map((e) => (
+              <img key={e} src={e} alt="Company logo" className="w-100 h-10" />
+            ))}
+          </div>
+        )}
       </div>
       <p className="py-6">{content}</p>
       <div className="flex w-full items-center justify-between">
@@ -114,10 +127,10 @@ export default function InitiativeFeedItem({
           <p>❤️ {likes} likes</p>
         </div>
         <div className="space-x-3">
-          <Button className="rounded-full bg-white text-blue-600">
+          <Button className="rounded-lg bg-neutral-950 text-blue-600 hover:bg-neutral-900">
             👋<span>I&apos;m Interested</span>
           </Button>
-          <Button className="bg-gray-100 text-gray-600">
+          <Button className="rounded-lg bg-neutral-950 text-gray-600 hover:bg-neutral-900">
             ❤️<span>Like</span>
           </Button>
         </div>
