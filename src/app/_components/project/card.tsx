@@ -55,6 +55,38 @@ export default function ProjectCard({
   );
 }
 
+export function MapProjectCard({
+  title,
+  description,
+  stats,
+  tag,
+}: ProjectCardProps) {
+  return (
+    <Card className="relative bg-gradient-to-r from-black to-transparent text-white">
+      <div className="absolute z-10 h-full w-full bg-gradient-to-r from-black to-transparent" />
+      <CardHeader className="relative z-10">
+        <Badge
+          className="pointer-events-none mb-1 w-fit gap-2 px-2 py-1 text-black"
+          variant={"secondary"}
+        >
+          {tagToIcon(tag)} {tag}
+        </Badge>
+
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
+      <CardContent className="relative z-10 -mt-2 flex items-center justify-start gap-4">
+        {stats.map((stat, index) => (
+          <Stats key={index} {...stat} />
+        ))}
+      </CardContent>
+      <img
+        src="/ocean.avif"
+        className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full object-cover"
+      />
+    </Card>
+  );
+}
+
 function Stats({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex flex-col items-start justify-center">
