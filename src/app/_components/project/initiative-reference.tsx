@@ -19,10 +19,10 @@ export default function InitiativeReference({
     }
 
     if (others === 1) {
-      return `and 1 other`;
+      return ` and 1 other`;
     }
 
-    return `and ${others} others`;
+    return ` and ${others} others`;
   })();
 
   return (

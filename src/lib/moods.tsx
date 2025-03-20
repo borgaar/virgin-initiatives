@@ -14,7 +14,7 @@ export const moods = [
     icon: FireIcon,
     iconColor: "text-white",
     bgColor: "bg-red-500",
-    text: "text-red-500",
+    text: "text-red-300",
   },
   {
     name: "Loved",
@@ -22,7 +22,7 @@ export const moods = [
     icon: HeartIcon,
     iconColor: "text-white",
     bgColor: "bg-pink-400",
-    text: "text-pink-400",
+    text: "text-pink-300",
   },
   {
     name: "Happy",
@@ -30,7 +30,7 @@ export const moods = [
     icon: FaceSmileIcon,
     iconColor: "text-white",
     bgColor: "bg-green-400",
-    text: "text-green-400",
+    text: "text-green-300",
   },
   {
     name: "Virgin",
@@ -38,7 +38,7 @@ export const moods = [
     icon: FaceFrownIcon,
     iconColor: "text-white",
     bgColor: "bg-yellow-400",
-    text: "text-yellow-400",
+    text: "text-yellow-300",
   },
   {
     name: "Thumbsy",
@@ -46,7 +46,7 @@ export const moods = [
     icon: HandThumbUpIcon,
     iconColor: "text-white",
     bgColor: "bg-blue-500",
-    text: "text-blue-500",
+    text: "text-blue-300",
   },
   {
     name: "I feel nothing",
@@ -54,7 +54,7 @@ export const moods = [
     icon: XMarkIcon,
     iconColor: "text-gray-400",
     bgColor: "bg-transparent",
-    text: "text-gray-400",
+    text: "text-gray-300",
   },
 ] as const;
 

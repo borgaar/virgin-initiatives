@@ -81,9 +81,12 @@ function Comment({
         <div className="flex items-center space-x-2">
           <h3 className="text-lg font-bold text-white">{fullName(author)}</h3>
           {Boolean(mood) && (
-            <span
-              className={cn(moods.find((m) => m.value === mood)!.text)}
-            >{` is feeling ${mood}`}</span>
+            <>
+              <span className="text-neutral-200"> is feeling </span>
+              <span className={cn(moods.find((m) => m.value === mood)!.text)}>
+                {mood}
+              </span>
+            </>
           )}
         </div>
         <p className="mt-1 text-gray-200">{content}</p>
