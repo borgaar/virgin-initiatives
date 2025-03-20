@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 
 import { AnimatePresence, motion } from "motion/react";
 import ProjectsStats from "../_components/statistics/chart";
+import KeyFigures from "../_components/statistics/key-figures";
 
 type ProjectCardMarker = ProjectCardProps & {
   id: string;
@@ -705,18 +706,7 @@ export default function Statistics() {
         </Map>
       </div>
 
-      <div className="h-min border-t-2 border-solid">
-        <h1 className="text-4xl">Statistics</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam aperiam
-          minus nam repellendus consequatur ad quos unde eveniet culpa quibusdam
-          sequi quod pariatur tempore reiciendis dolores saepe ab quaerat
-          architecto, praesentium odit et id. Voluptatibus, dolores? Vitae
-          veniam voluptates tempora necessitatibus ut amet temporibus, culpa
-          officia animi dolore natus asperiores.
-        </p>
-      </div>
-
+      <KeyFigures />
       <ProjectsStats />
     </div>
   );
