@@ -570,6 +570,9 @@ export default function GlobeExplorer() {
                 opacity: 1,
                 filter: "blur(0px)",
               }}
+              transition={{
+                delay: 1,
+              }}
               className="absolute left-[50%] top-[50px] z-20 -translate-x-[50%] pt-24 text-center font-[merriweather] text-4xl"
             >
               Explore the
