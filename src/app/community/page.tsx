@@ -1,3 +1,4 @@
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +16,7 @@ import {
   ThumbsUp,
   ThumbsUpIcon,
 } from "lucide-react";
+import { useState } from "react";
 
 type Post = {
   id: string;
@@ -178,6 +180,9 @@ Sustainable aviation fuels derived from biological sources represent a promising
     },
   ];
 
+  const [likedPosts, setLiked] = useState<number[]>([]);
+  const [dislikedPosts, setDisliked] = useState<number[]>([]);
+
   return (
     <div className="flex justify-center px-80 pb-6 pt-10">
       <div className="container">
@@ -214,7 +219,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
           </Button>
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {posts.map((post, index) => (
+          {posts.map((post, idx) => (
             <Card
               key={post.id}
               className={cn(
@@ -264,17 +269,41 @@ Sustainable aviation fuels derived from biological sources represent a promising
               <CardFooter className="flex gap-2">
                 <Button
                   variant={"ghost"}
+                  onClick={() => {
+                    if (likedPosts.includes(idx)) {
+                      setLiked(likedPosts.filter((v) => v !== idx));
+                    } else {
+                      setLiked([...likedPosts, idx]);
+                      setDisliked(dislikedPosts.filter((v) => v !== idx));
+                    }
+                  }}
                   size="sm"
                   className="bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
                 >
-                  <ThumbsUpIcon /> {post.likes}
+                  <ThumbsUpIcon
+                    fill={likedPosts.includes(idx) ? "white" : undefined}
+                  />
+                  {likedPosts.includes(idx) ? post.likes + 1 : post.likes}
                 </Button>
                 <Button
                   variant={"ghost"}
+                  onClick={() => {
+                    if (dislikedPosts.includes(idx)) {
+                      setDisliked(dislikedPosts.filter((v) => v !== idx));
+                    } else {
+                      setDisliked([...dislikedPosts, idx]);
+                      setLiked(likedPosts.filter((v) => v !== idx));
+                    }
+                  }}
                   size="sm"
                   className="bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
                 >
-                  <ThumbsDownIcon /> {post.dislikes}
+                  <ThumbsDownIcon
+                    fill={dislikedPosts.includes(idx) ? "white" : undefined}
+                  />
+                  {dislikedPosts.includes(idx)
+                    ? post.dislikes + 1
+                    : post.dislikes}
                 </Button>
                 <Button
                   variant="ghost"
