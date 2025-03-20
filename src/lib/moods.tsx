@@ -33,14 +33,6 @@ export const moods = [
     text: "text-green-300",
   },
   {
-    name: "Virgin",
-    value: "virgin",
-    icon: FaceFrownIcon,
-    iconColor: "text-white",
-    bgColor: "bg-yellow-400",
-    text: "text-yellow-300",
-  },
-  {
     name: "Thumbsy",
     value: "thumbsy",
     icon: HandThumbUpIcon,

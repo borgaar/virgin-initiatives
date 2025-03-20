@@ -198,7 +198,7 @@ export const projects: Project[] = [
         author: people[5]!,
         content:
           "Our community health workers are becoming trusted resources in their villages. Local ownership is key to sustainability.",
-        mood: "virgin",
+        mood: "excited",
       },
     ],
     callToActions: [
@@ -501,7 +501,7 @@ export const projects: Project[] = [
         author: people[18]!,
         content:
           "Our food hub has become more than just a distribution center—it's a community gathering space where knowledge is shared and relationships are built.",
-        mood: "virgin",
+        mood: "loved",
       },
       {
         author: people[19]!,

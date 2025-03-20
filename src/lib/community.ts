@@ -39,7 +39,7 @@ const mockComments: ProjectCommentsProps["comments"] = [
     author: people[Math.floor(Math.random() * people.length)]!,
     content:
       "I'm not sure about this one. It seems like there are some issues that need to be addressed before it's ready.",
-    mood: "virgin",
+    mood: "excited",
   },
   {
     author: people[Math.floor(Math.random() * people.length)]!,
