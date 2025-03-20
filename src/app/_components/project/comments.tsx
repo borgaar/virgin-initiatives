@@ -96,7 +96,7 @@ function Comment({
 }
 
 function AddComment() {
-  const [selected, setSelected] = useState(moods[5]);
+  const [selected, setSelected] = useState(moods[4]);
 
   return (
     <div className="mt-4 flex items-start space-x-4">
