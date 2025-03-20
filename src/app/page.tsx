@@ -64,7 +64,7 @@ export default async function Home() {
               help shape our future?
             </h1>
             <p className="text-neutral-500">
-              Take a look at our projects below
+              Take a look at our projects below ↓
             </p>
           </div>
           <div className="m-auto flex h-[calc(56vh-100px)] gap-2 align-middle">
@@ -76,7 +76,7 @@ export default async function Home() {
                 }}
                 key={item.id}
                 className={cn(
-                  "my-auto overflow-hidden bg-gradient-to-b from-transparent via-black/40 to-black/60 bg-cover bg-center brightness-[0.4] transition-all duration-300 [&:not(:hover)]:grayscale [&:not(:hover)_>_*]:hidden", // base
+                  "my-auto overflow-hidden bg-gradient-to-b from-transparent via-black/40 to-black/60 bg-cover bg-center brightness-[0.4] transition-all duration-300 ease-in-out [&:not(:hover)]:grayscale [&:not(:hover)_>_*]:hidden", // base
                   "h-[calc(50vh-100px)] w-[calc(26vh-100px)] flex-col hover:h-full hover:w-[calc(38vh-100px)] hover:brightness-75", // Main style
                   "[&:hover_.the-text-content]:motion-preset-slide-up-lg", // The text content
                 )}

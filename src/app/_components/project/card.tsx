@@ -60,8 +60,8 @@ export default function ProjectCard({
   tag,
 }: ProjectCardProps) {
   return (
-    <Card className="relative w-full bg-gradient-to-r from-black to-transparent text-white">
-      <div className="absolute z-10 h-full w-full rounded-lg bg-gradient-to-r from-black to-transparent" />
+    <Card className="relative flex w-full flex-col justify-between text-white">
+      <div className="absolute z-10 h-full w-full bg-gradient-to-r from-black/60 to-transparent" />
       <CardHeader className="relative z-10">
         <Badge
           className="pointer-events-none mb-1 w-fit gap-2 px-2 py-1 text-black"
@@ -77,13 +77,13 @@ export default function ProjectCard({
         {stats.map((stat, index) => (
           <Stats key={index} {...stat} />
         ))}
-        <Button variant={"outline"} className="ml-auto">
+        <Button variant={"ghost"} className="ml-auto bg-neutral-900">
           <Download /> Download Report
         </Button>
       </CardContent>
       <img
         src="/ocean.avif"
-        className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full rounded-lg object-cover"
+        className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full object-cover brightness-50"
       />
     </Card>
   );

@@ -13,7 +13,7 @@ export interface ProjectRoadmapProps {
 
 export default function ProjectRoadmap({ timeline }: ProjectRoadmapProps) {
   return (
-    <Card className="bg-neutral-500/5 px-6 py-3 backdrop-blur-sm">
+    <Card className="bg-neutral-700/10 px-6 py-3 backdrop-blur-sm">
       <CardTitle className="mt-4 inline-flex gap-1 text-white">
         Project Roadmap
       </CardTitle>
@@ -25,7 +25,7 @@ export default function ProjectRoadmap({ timeline }: ProjectRoadmapProps) {
                 {eventIdx !== timeline.length - 1 ? (
                   <span
                     aria-hidden="true"
-                    className="absolute left-2 top-2 -ml-px h-full w-0.5 bg-gray-400"
+                    className="absolute left-1 top-2 -ml-px h-full w-0.5 bg-neutral-800"
                   />
                 ) : null}
                 <div className="relative flex space-x-3">
@@ -37,19 +37,19 @@ export default function ProjectRoadmap({ timeline }: ProjectRoadmapProps) {
                           : event.status === "in-progress"
                             ? "bg-yellow-400"
                             : "bg-gray-400",
-                        "flex size-4 items-center justify-center rounded-full ring-4 ring-card",
+                        "flex size-2 items-center justify-center rounded-full ring-card",
                       )}
                     ></span>
                   </div>
-                  <div className="-mt-1 flex min-w-0 flex-1 justify-between space-x-4">
+                  <div className="-mt-1 flex min-w-0 flex-1 justify-between space-x-4 pl-4">
                     <div>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-sm text-neutral-600">
                         {event.time.toUpperCase()}
                       </p>
                       <h3 className="text-base font-semibold text-foreground">
                         {event.title}
                       </h3>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-sm text-neutral-500">
                         {event.description}
                       </p>
                     </div>

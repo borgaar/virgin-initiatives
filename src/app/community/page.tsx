@@ -179,7 +179,7 @@ Sustainable aviation fuels derived from biological sources represent a promising
   ];
 
   return (
-    <div className="flex justify-center pb-6 pt-10">
+    <div className="flex justify-center px-80 pb-6 pt-10">
       <div className="container">
         <h1 className="text-5xl">Share your thoughts</h1>
         <p className="mb-4 mt-2 text-lg text-white/40">
