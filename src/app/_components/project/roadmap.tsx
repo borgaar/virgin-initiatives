@@ -26,7 +26,7 @@ export default function ProjectRoadmap({ timeline }: ProjectRoadmapProps) {
                   {eventIdx !== timeline.length - 1 ? (
                     <span
                       aria-hidden="true"
-                      className="absolute left-2 top-2 -ml-px h-full w-0.5 bg-gray-200"
+                      className="absolute left-2 top-2 -ml-px h-full w-0.5 bg-gray-400"
                     />
                   ) : null}
                   <div className="relative flex space-x-3">
@@ -37,20 +37,20 @@ export default function ProjectRoadmap({ timeline }: ProjectRoadmapProps) {
                             ? "bg-green-600"
                             : event.status === "in-progress"
                               ? "bg-yellow-400"
-                              : "bg-gray-200",
+                              : "bg-gray-400",
                           "flex size-4 items-center justify-center rounded-full ring-4 ring-card",
                         )}
                       ></span>
                     </div>
                     <div className="-mt-1 flex min-w-0 flex-1 justify-between space-x-4">
                       <div>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-400">
                           {event.time.toUpperCase()}
                         </p>
                         <h3 className="text-base font-semibold text-foreground">
                           {event.title}
                         </h3>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-400">
                           {event.description}
                         </p>
                       </div>

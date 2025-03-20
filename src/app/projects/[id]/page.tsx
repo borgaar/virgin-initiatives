@@ -4,10 +4,11 @@ import ProjectComments from "../../_components/project/comments";
 import ProjectParticipation from "../../_components/project/participation";
 import ProjectRoadmap from "../../_components/project/roadmap";
 import InitiativeReference from "@/app/_components/project/initiative-reference";
+import ProjectTakeInitiative from "../../_components/project/take-initiative";
 
 export default function ProjectPage() {
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-6 py-6">
+    <main className="mx-auto mb-64 flex max-w-6xl flex-col gap-6 py-6">
       <div className="flex gap-6">
         <ProjectCard
           title={"Clean Ocean Initiative"}
@@ -24,19 +25,7 @@ export default function ProjectPage() {
           ]}
           tag={"Environment"}
         />
-        <div className="flex flex-col gap-4 bg-red-50 p-4">
-          <div>Joining this initiative will earn you points!</div>
-          <div className="flex justify-center gap-2">
-            <Button className="w-full bg-primary">Donate points</Button>
-            <Button className="w-full bg-primary">Donate cash</Button>
-          </div>
-          <Button className="border-2 border-solid border-red-200 bg-red-100 text-red-800">
-            Share on social media
-          </Button>
-          <Button className="border-2 border-solid border-gray-200 bg-white text-gray-600">
-            Download report
-          </Button>
-        </div>
+        <ProjectTakeInitiative />
       </div>
       <ProjectRoadmap
         timeline={[
@@ -90,8 +79,64 @@ export default function ProjectPage() {
           },
         ]}
       />
-      <ProjectParticipation />
-      <InitiativeReference />
+      <ProjectParticipation
+        companies={[
+          {
+            name: "Virgin Fibra",
+            logo: "/virgin-fibra.png",
+            description: "Making life simpler",
+          },
+          {
+            name: "Virgin Active Australia",
+            logo: "/virgin-active.png",
+            description: "Creating irresistible exercise experiences",
+          },
+        ]}
+      />
+      <InitiativeReference
+        initiatives={[
+          {
+            id: 1,
+            image: "https://loremfaces.net/96/id/2.jpg",
+            title: "Clean Ocean Initiative",
+            description:
+              "The sea as of 2025 is full of plastic waste. We aim to remove 5 million tons of plastic from oceans by 2030, spanning 15 countries across 3 continents, as well as educating communities on sustainable practices.",
+            author: "Brotherman Testern",
+          },
+          {
+            id: 2,
+            image: "https://loremfaces.net/96/id/3.jpg",
+            title: "The Sea Turtle initiative",
+            description:
+              "Did you know that sea turtles are one of the oldest creatures on Earth? They have been around for over 100 million years! Sadly, all 7 species of sea turtles are now endangered due to human activities, such as poaching, pollution, and climate change. By supporting this initiative, you can help protect these ancient creatures and ensure their survival for generations to come.",
+            author: "Ola Nordmann",
+          },
+          {
+            id: 3,
+            image: "https://loremfaces.net/96/id/4.jpg",
+            title: "Let's clean the ocean!",
+            description:
+              "The ocean is the largest ecosystem on Earth, covering more than 70% of the planet's surface. It is home to a wide variety of marine life, from tiny plankton to massive whales. Unfortunately, the ocean is also the world's largest garbage dump, with millions of tons of plastic waste entering the ocean every year. By supporting this initiative, you can help clean up the ocean and protect marine life for future generations.",
+            author: "Kari Nordmann",
+          },
+          {
+            id: 4,
+            image: "https://loremfaces.net/96/id/5.jpg",
+            title: "The Carbon Footprint initiative",
+            description:
+              "Did you know that the average person in the United States generates about 16 tons of carbon dioxide (CO2) emissions per year? This is equivalent to burning 1,700 gallons of gasoline! By supporting this initiative, you can help reduce your carbon footprint and combat climate change.",
+            author: "Brother Olsen",
+          },
+          {
+            id: 5,
+            image: "https://loremfaces.net/96/id/7.jpg",
+            title: "Clean Water initiative",
+            description:
+              "Did you know that more than 2 billion people worldwide lack access to clean drinking water? This is a major public health crisis, as contaminated water can spread diseases such as cholera, typhoid, and dysentery. By supporting this initiative, you can help provide clean water to communities in need and improve public health around the world.",
+            author: "Sister Olsen",
+          },
+        ]}
+      />
       <ProjectComments />
     </main>
   );

@@ -1,6 +1,5 @@
 "use client";
-import { Avatar } from "@/components/ui/avatar";
-import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BellDot, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const path = usePathname();
-  console.log("path: " + path);
+
   return (
     <nav className="absolute z-10 w-full bg-transparent">
       <div className="mx-auto max-w-7xl">
