@@ -26,7 +26,7 @@ export default function Navbar() {
             <Search />
             <BellDot />
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src="https://loremfaces.net/96/id/1.jpg" />
               <AvatarFallback>BT</AvatarFallback>
             </Avatar>
             <div>Brotherman Testern</div>

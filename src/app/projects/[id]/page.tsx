@@ -1,25 +1,42 @@
+import { Button } from "@/components/ui/button";
 import ProjectCard from "../../_components/project/card";
 import ProjectParticipation from "../../_components/project/participation";
 import ProjectRoadmap from "../../_components/project/roadmap";
+import InitiativeReference from "@/app/_components/project/initiative-reference";
 
 export default function ProjectPage() {
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-6">
-      <ProjectCard
-        title={"Clean Ocean Initiative"}
-        description={`
+    <main className="mx-auto flex max-w-6xl flex-col gap-6 py-6">
+      <div className="flex gap-6">
+        <ProjectCard
+          title={"Clean Ocean Initiative"}
+          description={`
           Our global effort to remove 5 million tons of plastic from oceans by
           2030, spanning 15 countries across 3 continents, as well as educating
           communities on sustainable practices.
         `}
-        stats={[
-          { label: "Companies", value: "7" },
-          { label: "Participants", value: "1.2k" },
-          { label: "Progress", value: "35%" },
-          { label: "Target Year", value: "2027" },
-        ]}
-        tag={"Environment"}
-      />
+          stats={[
+            { label: "Companies", value: "7" },
+            { label: "Participants", value: "1.2k" },
+            { label: "Progress", value: "35%" },
+            { label: "Target Year", value: "2027" },
+          ]}
+          tag={"Environment"}
+        />
+        <div className="flex flex-col gap-4 bg-blue-50 p-4">
+          <div>Joining this initiative will earn you points!</div>
+          <div className="flex justify-center gap-2">
+            <Button className="w-full bg-blue-700">Donate points</Button>
+            <Button className="w-full bg-blue-700">Donate cash</Button>
+          </div>
+          <Button className="border-2 border-solid border-blue-200 bg-blue-100 text-blue-700">
+            Share on social media
+          </Button>
+          <Button className="border-2 border-solid border-gray-200 bg-white text-gray-600">
+            Download report
+          </Button>
+        </div>
+      </div>
       <ProjectRoadmap
         timeline={[
           {
@@ -73,6 +90,7 @@ export default function ProjectPage() {
         ]}
       />
       <ProjectParticipation />
+      <InitiativeReference />
     </main>
   );
 }
