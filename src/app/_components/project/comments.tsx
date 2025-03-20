@@ -21,8 +21,7 @@ import { moods } from "../../../lib/moods";
 import { Project } from "../../../lib/projects";
 import PersonAvatar from "../user-avatar";
 import { fullName } from "../../../lib/people";
-
-interface ProjectCommentsProps {
+export interface ProjectCommentsProps {
   comments: Project["comments"];
 }
 
@@ -33,6 +32,23 @@ export default function ProjectComments({ comments }: ProjectCommentsProps) {
         <CardTitle className="text-white">Comments</CardTitle>
         <CardDescription className="text-gray-300">
           Make a difference by sharing your opinions!
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4">
+        <CommentsList comments={comments} />
+        <AddComment />
+      </CardContent>
+    </Card>
+  );
+}
+
+export function PostComments({ comments }: ProjectCommentsProps) {
+  return (
+    <Card className="mb-64 bg-neutral-500/5 px-6 py-3 backdrop-blur-sm">
+      <CardHeader>
+        <CardTitle className="text-white">Comments</CardTitle>
+        <CardDescription className="text-gray-300">
+          Share your opinion on this post!
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
