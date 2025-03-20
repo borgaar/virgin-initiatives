@@ -1,5 +1,6 @@
-import ProjectCard from "../../_components/project-card";
-import ProjectRoadmap from "../../_components/project-roadmap";
+import ProjectCard from "../../_components/project/card";
+import ProjectParticipation from "../../_components/project/participation";
+import ProjectRoadmap from "../../_components/project/roadmap";
 
 export default function ProjectPage() {
   return (
@@ -71,6 +72,7 @@ export default function ProjectPage() {
           },
         ]}
       />
+      <ProjectParticipation />
     </main>
   );
 }

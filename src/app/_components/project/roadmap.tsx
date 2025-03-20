@@ -1,6 +1,5 @@
-import { Map } from "lucide-react";
-import { Card, CardContent, CardTitle } from "../../components/ui/card";
-import { cn } from "../../lib/utils";
+import { Card, CardContent, CardTitle } from "../../../components/ui/card";
+import { cn } from "../../../lib/utils";
 
 export interface ProjectRoadmapProps {
   timeline: {

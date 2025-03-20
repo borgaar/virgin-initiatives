@@ -32,7 +32,7 @@
     --chart-5: 53 64% 50%;
     --font-merriweather: "Merriweather", serif;
 
-    --radius: 0rem;
+    --radius: 0;
   }
 
   .dark {
