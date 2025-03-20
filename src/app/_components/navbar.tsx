@@ -61,8 +61,7 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="flex items-center justify-end space-x-4">
-            <Search />
-            <BellDot />
+            <p>1450 points</p>
             <Avatar>
               <AvatarImage src="https://loremfaces.net/96/id/1.jpg" />
               <AvatarFallback>BT</AvatarFallback>

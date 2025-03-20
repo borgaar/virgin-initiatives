@@ -171,8 +171,8 @@ export default function Statistics() {
   }, [currentViewState, popupInfo]);
 
   return (
-    <>
-      <div className="relative h-screen w-full">
+    <div className="bg-black">
+      <div className="relative h-screen w-full border-solid">
         <AnimatePresence>
           {!exploring && (
             <>
@@ -311,7 +311,7 @@ export default function Statistics() {
         </Map>
       </div>
 
-      <div className="mt-20">
+      <div className="h-min border-t-2 border-solid">
         <h1 className="text-4xl">Statistics</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam aperiam
@@ -322,6 +322,6 @@ export default function Statistics() {
           officia animi dolore natus asperiores.
         </p>
       </div>
-    </>
+    </div>
   );
 }
