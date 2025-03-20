@@ -33,7 +33,7 @@ export default function ProjectCard({
       <div className="absolute z-10 h-full w-full bg-gradient-to-r from-black to-transparent" />
       <CardHeader className="relative z-10">
         <Badge
-          className="mb-1 w-fit gap-2 px-2 py-1 text-black"
+          className="pointer-events-none mb-1 w-fit gap-2 px-2 py-1 text-black"
           variant={"secondary"}
         >
           {tagToIcon(tag)} {tag}
