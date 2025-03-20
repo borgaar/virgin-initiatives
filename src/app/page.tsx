@@ -34,46 +34,48 @@ export default async function Home() {
   ];
   const items = Array.from({ length: numberOfItems }, (_, i) => ({
     id: i,
-    imageUrl: `https://picsum.photos/id/${i + 10}/300/400`, // Replace with your image URLs
+    imageUrl: `../projects/p${i + 1}.jpg`, // Replace with your image URLs
     initiative: initiatives[i % initiatives.length],
   }));
 
   return (
     <HydrateClient>
-      <main className="flex flex-col items-center pt-24 text-white">
-        <div className="animate-fade-in flex flex-col items-center gap-12 px-4 py-6">
-          <h1 className="font-[merriweather] text-5xl leading-[1.4]">
-            Where do <span className="italic text-primary">you</span> want to{" "}
-            <br />
-            help shape our future?
-          </h1>
-        </div>
-        <div className="mt-20 flex gap-2">
-          {items.map((item) => (
-            <Link
-              href={`/projects/${item.id}`}
-              style={{
-                backgroundImage: `url(${item.imageUrl})`,
-              }}
-              key={item.id}
-              className={cn(
-                "overflow-hidden bg-secondary bg-cover transition-all duration-300 [&:not(:hover)]:grayscale [&:not(:hover)_>_*]:hidden", // base
-                "h-72 w-32 flex-col hover:w-72 hover:scale-y-150", // Main style
-                "[&:hover_.the-text-content]:motion-preset-slide-up-lg [&:hover_.the-text-content]:scale-y-75", // The text content
-              )}
-            >
-              <div className="h-full bg-gradient-to-b from-transparent via-black/70 to-black/70 p-2">
-                <div className="the-text-content flex h-full flex-col justify-end gap-2">
-                  <h2 className="text-md text-white">
-                    {item.initiative?.title}
-                  </h2>
-                  <span className="text-xs text-white/60">
-                    {item.initiative?.description}
-                  </span>
+      <main className="flex flex-col items-center text-white">
+        <div className="h-[calc(100vh-100px)] pt-44">
+          <div className="flex animate-fade-in flex-col items-center gap-12 px-4 py-6">
+            <h1 className="font-[merriweather] text-5xl leading-[1.4]">
+              Where do <span className="italic text-primary">you</span> want to{" "}
+              <br />
+              help shape our future?
+            </h1>
+          </div>
+          <div className="m-auto mt-20 flex h-[400px] gap-2 align-middle">
+            {items.map((item) => (
+              <Link
+                href={`/projects/${item.id}`}
+                style={{
+                  backgroundImage: `url(${item.imageUrl})`,
+                }}
+                key={item.id}
+                className={cn(
+                  "my-auto overflow-hidden bg-gradient-to-b from-transparent via-black/40 to-black/60 bg-cover bg-center brightness-[0.4] transition-all duration-300 [&:not(:hover)]:grayscale [&:not(:hover)_>_*]:hidden", // base
+                  "h-72 w-32 flex-col hover:h-[400px] hover:w-72 hover:brightness-75", // Main style
+                  "[&:hover_.the-text-content]:motion-preset-slide-up-lg", // The text content
+                )}
+              >
+                <div className="h-full bg-gradient-to-b from-transparent via-black/10 to-black/60 p-6">
+                  <div className="the-text-content flex h-full flex-col justify-end font-semibold">
+                    <h2 className="text-xl text-white">
+                      {item.initiative?.title}
+                    </h2>
+                    <span className="text-xs text-white/60">
+                      {item.initiative?.description}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <section className="mt-32 flex flex-col gap-10">
