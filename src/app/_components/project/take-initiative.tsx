@@ -1,3 +1,6 @@
+"use client";
+
+import { createRef, useRef, useState } from "react";
 import { Button } from "../../../components/ui/button";
 import {
   Card,
@@ -5,10 +8,23 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../components/ui/card";
-import { Input } from "@/components/ui/input";
-import { InputComponent } from "@/components/ui/inputComponent";
+import { Confetti, ConfettiRef } from "../../../components/ui/confetti";
 
 export default function ProjectTakeInitiative() {
+  const inputRef = createRef<HTMLInputElement>();
+  const sumRef = createRef<HTMLDivElement>();
+  const confettiRef = createRef<ConfettiRef>();
+
+  const donate = () => {
+    const value = inputRef.current!.value;
+    inputRef.current!.value = "";
+    confettiRef.current?.fire({});
+    sumRef.current!.innerText = `€ 31,512`;
+    document.querySelector(
+      "body > nav > div > div > div.\\@container.flex.items-center.justify-end.space-x-4.text-neutral-400 > div.inline-flex.items-center.border.px-2\\.5.py-0\\.5.text-xs.font-semibold.transition-colors.focus\\:outline-none.focus\\:ring-2.focus\\:ring-ring.focus\\:ring-offset-2.text-foreground",
+    ).innerText = "1250 points";
+  };
+
   return (
     <Card className="flex h-full flex-col bg-neutral-500/5 p-2 backdrop-blur-sm">
       <CardHeader>
@@ -19,7 +35,13 @@ export default function ProjectTakeInitiative() {
       <CardContent className="flex h-full w-full flex-col justify-end gap-3 pb-[1.8rem]">
         <div className="flex w-full flex-col">
           <div className="h-1 w-full rounded border-2 border-green-400"></div>
-          <h1 className="mt-2 text-4xl font-bold text-green-400">€ 31,492</h1>
+          <h1 className="mt-2 text-4xl font-bold text-green-400" ref={sumRef}>
+            € 31,492
+          </h1>
+          <Confetti
+            ref={confettiRef}
+            className="absolute right-[-90px] top-0 z-0 size-full"
+          />
           <p className="text-neutral-500">€ 25k target</p>
         </div>
         <div className="flex w-full items-center gap-4 align-middle">
@@ -29,12 +51,16 @@ export default function ProjectTakeInitiative() {
           </p>
           <div className="h-1 w-full border-b-2 border-neutral-700"></div>
         </div>
-        <div className="flex justify-between gap-4">
+        <div className="z-10 flex justify-between gap-4">
           <input
+            ref={inputRef}
             type="text"
             className="w-full rounded-sm border-[1px] border-neutral-600 bg-transparent pl-2 text-white"
           />
-          <Button className="w-60 rounded-none bg-black/30 font-semibold text-white hover:bg-neutral-800">
+          <Button
+            className="w-60 rounded-none bg-black/30 font-semibold text-white hover:bg-neutral-800"
+            onClick={() => donate()}
+          >
             Donate points
           </Button>
         </div>
