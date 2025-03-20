@@ -172,7 +172,7 @@ export default function Statistics() {
 
   return (
     <>
-      <div className="relative h-[calc(100vh_-_60px)]">
+      <div className="relative h-screen w-screen">
         <AnimatePresence>
           {!exploring && (
             <>
@@ -226,7 +226,16 @@ export default function Statistics() {
           scrollZoom={exploring}
           ref={mapRef}
           onMoveEnd={exploring ? undefined : handleAnimationEnd}
-          onLoad={handleAnimationEnd}
+          onLoad={(e) => {
+            e.target.setFog({
+              color: "rgb(186, 210, 235)", // Fog color
+              "horizon-blend": 0.02, // Keep this low for a sharp horizon line
+              "space-color": "black", // Background color
+              "vertical-range": [1, 2],
+              "high-color": "rgb(36, 92, 223)",
+            });
+            handleAnimationEnd(e);
+          }}
           onDrag={(e) => handleViewStateChange(e.viewState)}
           onZoom={(e) => handleViewStateChange(e.viewState)}
           onClick={() => setPopupInfo(null)}
