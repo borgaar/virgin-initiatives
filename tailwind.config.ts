@@ -3,6 +3,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 
 import animate from "tailwindcss-animate";
 import motion from "tailwindcss-motion";
+import container from "@tailwindcss/container-queries";
 
 export default {
   darkMode: ["class"],
@@ -98,5 +99,5 @@ export default {
       },
     },
   },
-  plugins: [animate, motion],
+  plugins: [animate, motion, container],
 } satisfies Config;

@@ -25,8 +25,8 @@ export default function Page() {
   const [likedPosts, setLiked] = useState<number[]>([]);
   const [dislikedPosts, setDisliked] = useState<number[]>([]);
   return (
-    <div className="flex justify-center px-80 pb-6 pt-10">
-      <div className="container">
+    <div className="flex justify-center pb-6 pt-10">
+      <div className="">
         <h1 className="text-5xl">Share your thoughts</h1>
         <p className="mb-4 mt-2 text-lg text-white/40">
           Participate in our community and discuss how we can improve our
@@ -64,7 +64,7 @@ export default function Page() {
             <Card
               key={post.id}
               className={cn(
-                "flex flex-col border-none bg-neutral-700/10 text-muted backdrop-blur-sm",
+                "flex flex-col border-none bg-neutral-700/10 text-muted backdrop-blur-sm @container",
               )}
             >
               <CardHeader className="text-sm font-medium text-neutral-400">
@@ -107,7 +107,7 @@ export default function Page() {
                   {post.description}
                 </p>
               </CardContent>
-              <CardFooter className="flex gap-2">
+              <CardFooter className="grid grid-cols-2 gap-2 @sm:flex">
                 <Button
                   variant={"ghost"}
                   onClick={() => {
@@ -149,7 +149,7 @@ export default function Page() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="ml-auto bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
+                  className="bg-neutral-500/10 hover:bg-neutral-800 hover:text-white @sm:ml-auto"
                 >
                   <Share2Icon />
                 </Button>
@@ -160,7 +160,8 @@ export default function Page() {
                   asChild
                 >
                   <Link href={`/community/${post.id}`}>
-                    <ExternalLinkIcon /> View Post
+                    <ExternalLinkIcon />{" "}
+                    <span className="hidden @xs:block">View Post</span>
                   </Link>
                 </Button>
               </CardFooter>
