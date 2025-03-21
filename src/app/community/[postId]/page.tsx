@@ -3,14 +3,12 @@ import { redirect } from "next/navigation";
 import PostRenderer from "./components/PostRenderer";
 import PageContainer from "@/app/_components/page-container";
 
-type PostPageProps = {
-  params: {
-    postId: string;
-  };
-};
-
-export default async function PostPage({ params }: PostPageProps) {
-  const { postId } = params;
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ postId: string }>;
+}) {
+  const { postId } = await params;
   const post = posts.find((post) => post.id === postId);
 
   if (!post) {

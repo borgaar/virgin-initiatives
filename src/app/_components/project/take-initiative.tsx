@@ -20,9 +20,9 @@ export default function ProjectTakeInitiative() {
     inputRef.current!.value = "";
     confettiRef.current?.fire({});
     sumRef.current!.innerText = `€ 31,512`;
-    document.querySelector(
+    document!.querySelector<HTMLDivElement>(
       "body > nav > div > div > div.\\@container.flex.items-center.justify-end.space-x-4.text-neutral-400 > div.inline-flex.items-center.border.px-2\\.5.py-0\\.5.text-xs.font-semibold.transition-colors.focus\\:outline-none.focus\\:ring-2.focus\\:ring-ring.focus\\:ring-offset-2.text-foreground",
-    ).innerText = "1250 points";
+    )!.innerText = "1250 points";
   };
 
   return (
