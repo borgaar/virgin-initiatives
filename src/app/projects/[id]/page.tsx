@@ -19,7 +19,7 @@ export default async function ProjectPage({
     return <div>404 not found</div>;
   }
   return (
-    <PageContainer className="mx-auto flex flex-col gap-6 py-6 pt-20">
+    <PageContainer className="mx-auto flex flex-col gap-6 px-10 py-6 pt-20">
       <div className="flex gap-6">
         <ProjectCard {...project} />
         <ProjectTakeInitiative />

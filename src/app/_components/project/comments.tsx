@@ -32,7 +32,7 @@ export default function CommentSection({
   const [userComments, setUserComments] = useState<Project["comments"]>([]);
 
   return (
-    <Card className="mb-64 bg-neutral-500/5 p-0 backdrop-blur-sm">
+    <Card className="mb-64 mt-20 bg-neutral-500/5 p-10 backdrop-blur-sm">
       <CardTitle className="text-white">Comments</CardTitle>
       <CardDescription className="text-md mt-1.5 text-neutral-500">
         {subLabel ? subLabel : "Make a difference by sharing your opinions!"}
@@ -132,7 +132,7 @@ function AddComment({
         />
       </div>
       <div className="relative min-w-0 flex-1">
-        <div className="rounded-lg bg-black text-white outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
+        <div className="rounded-lg bg-black text-white outline outline-1 -outline-offset-1 outline-neutral-700 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
           <label htmlFor="comment" className="sr-only">
             Add your comment
           </label>

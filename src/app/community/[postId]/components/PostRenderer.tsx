@@ -23,7 +23,7 @@ export default function PostRenderer({ post }: { post: Post }) {
   return (
     <>
       <h1 className="text-5xl">{post.title}</h1>
-      <div className="mb-4 mt-4 flex flex-row gap-2 rounded-lg bg-neutral-500/5 p-2 backdrop-blur-sm">
+      <div className="mb-6 mt-6 flex flex-row gap-2 rounded-lg bg-neutral-500/5 p-2 backdrop-blur-sm">
         <Button
           variant={"ghost"}
           className="bg-neutral-500/10 hover:bg-neutral-800 hover:text-white"
@@ -54,7 +54,13 @@ export default function PostRenderer({ post }: { post: Post }) {
         </Button>
       </div>
       <section className="flex flex-col gap-5">
-        <p className="text-neutral-400">{post.description}</p>
+        <div>
+          <h3 className="mb-3 text-xl font-medium text-white">
+            Fuel from an old world
+          </h3>
+          <p className="text-neutral-400">{post.description}</p>
+        </div>
+
         <Voting
           className="rounded-lg"
           question="What do you think we should focus on?"
@@ -78,28 +84,35 @@ export default function PostRenderer({ post }: { post: Post }) {
           votedFor={undefined}
         />
         <div className="flex flex-row gap-7 text-neutral-400">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem,
-            totam excepturi iste voluptatum maiores labore voluptate quod
-            nostrum architecto inventore. Voluptatem minus voluptas alias
-            delectus autem deleniti accusantium recusandae vel perferendis.
-            <br />
-            <br />
-            Debitis nesciunt non alias similique illum molestiae asperiores rem
-            a. Tempora, velit cupiditate exercitationem ipsa numquam temporibus
-            id laborum repellat molestiae excepturi quae facilis aut dignissimos
-            deleniti tenetur enim, vero eligendi ex est illo? Dicta dolorem
-            facilis cumque facere, voluptatem itaque unde illo, recusandae
-            maiores optio provident amet incidunt quas voluptas veniam adipisci.
-            Vel temporibus, eius autem animi labore consequuntur totam, fugit
-            tenetur ut, explicabo quis eum minus. Quae accusamus, sapiente error
-            corrupti blanditiis delectus deserunt.
-            <br />
-            <br /> Amet cumque nesciunt nam modi praesentium doloribus quo
-            necessitatibus eum.
-          </p>
+          <div>
+            <h3 className="mb-3 text-xl font-medium text-white">
+              A future for us
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+              dolorem, totam excepturi iste voluptatum maiores labore voluptate
+              quod nostrum architecto inventore. Voluptatem minus voluptas alias
+              delectus autem deleniti accusantium recusandae vel perferendis.
+              <br />
+              <br />
+              Debitis nesciunt non alias similique illum molestiae asperiores
+              rem a. Tempora, velit cupiditate exercitationem ipsa numquam
+              temporibus id laborum repellat molestiae excepturi quae facilis
+              aut dignissimos deleniti tenetur enim, vero eligendi ex est illo?
+              Dicta dolorem facilis cumque facere, voluptatem itaque unde illo,
+              recusandae maiores optio provident amet incidunt quas voluptas
+              veniam adipisci. Vel temporibus, eius autem animi labore
+              consequuntur totam, fugit tenetur ut, explicabo quis eum minus.
+              Quae accusamus, sapiente error corrupti blanditiis delectus
+              deserunt.
+              <br />
+              <br /> Amet cumque nesciunt nam modi praesentium doloribus quo
+              necessitatibus eum.
+            </p>
+          </div>
+
           <img
-            className="mx-auto aspect-square size-64 rounded-xl bg-muted-foreground object-cover object-top brightness-75"
+            className="mx-auto aspect-square size-80 rounded-xl bg-muted-foreground object-cover object-top brightness-75"
             src="/projects/t7.jpg"
             alt="Content image"
           />
