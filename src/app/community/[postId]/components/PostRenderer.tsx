@@ -54,11 +54,10 @@ export default function PostRenderer({ post }: { post: Post }) {
         </Button>
       </div>
       <section className="flex flex-col gap-5">
-        <p>{post.description}</p>
-
+        <p className="text-neutral-400">{post.description}</p>
         <Voting
           className="rounded-lg"
-          question="Vote for your favorite!"
+          question="What do you think we should focus on?"
           options={[
             {
               icon: <SproutIcon />,
@@ -78,12 +77,14 @@ export default function PostRenderer({ post }: { post: Post }) {
           ]}
           votedFor={0}
         />
-        <div className="flex flex-row gap-7">
+        <div className="flex flex-row gap-7 text-neutral-400">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem,
             totam excepturi iste voluptatum maiores labore voluptate quod
             nostrum architecto inventore. Voluptatem minus voluptas alias
             delectus autem deleniti accusantium recusandae vel perferendis.
+            <br />
+            <br />
             Debitis nesciunt non alias similique illum molestiae asperiores rem
             a. Tempora, velit cupiditate exercitationem ipsa numquam temporibus
             id laborum repellat molestiae excepturi quae facilis aut dignissimos
@@ -92,21 +93,14 @@ export default function PostRenderer({ post }: { post: Post }) {
             maiores optio provident amet incidunt quas voluptas veniam adipisci.
             Vel temporibus, eius autem animi labore consequuntur totam, fugit
             tenetur ut, explicabo quis eum minus. Quae accusamus, sapiente error
-            corrupti blanditiis delectus deserunt. Officiis distinctio, quo
-            tempora autem suscipit perferendis consequatur laudantium nobis,
-            culpa eaque praesentium amet nihil tempore quidem nam repudiandae
-            quibusdam sed ipsam accusantium. Similique tempore totam asperiores
-            facere autem sunt at non? Numquam, earum nisi voluptatum optio
-            commodi recusandae tempore unde libero iste. In labore blanditiis
-            illum, nam vitae tempore optio quisquam amet eum quod eveniet velit
-            dolorum laudantium eaque. Eius ea exercitationem neque mollitia sint
-            asperiores quo ut earum omnis quam est fuga totam maxime quos
-            eligendi dolorem tempore, quidem magni! Amet cumque nesciunt nam
-            modi praesentium doloribus quo necessitatibus eum.
+            corrupti blanditiis delectus deserunt.
+            <br />
+            <br /> Amet cumque nesciunt nam modi praesentium doloribus quo
+            necessitatibus eum.
           </p>
           <img
-            className="mx-auto aspect-square size-96 rounded-xl bg-muted-foreground"
-            src="/placeholder.svg"
+            className="mx-auto aspect-square size-64 rounded-xl bg-muted-foreground object-cover object-top brightness-75"
+            src="/projects/t7.jpg"
             alt="Content image"
           />
         </div>

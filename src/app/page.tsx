@@ -18,7 +18,7 @@ export default async function Home() {
     <HydrateClient>
       <main className="flex flex-col items-center text-white">
         <div className="h-[calc(100vh-100px)] pt-[calc(20vh-100px)]">
-          <div className="animate-fade-in flex flex-col items-center gap-[calc(16vh-100px)] px-4 py-[calc(14vh-100px)]">
+          <div className="flex animate-fade-in flex-col items-center gap-[calc(16vh-100px)] px-4 py-[calc(14vh-100px)]">
             <h1 className="text-center font-[merriweather] text-5xl leading-[1.4]">
               How do <span className="italic text-primary">you</span> want to{" "}
               <br />
@@ -58,16 +58,16 @@ export default async function Home() {
         <section className="mt-32 flex flex-col gap-10">
           <div className="flex items-center justify-center gap-6">
             <div
-              className="relative h-[2px] w-96 bg-neutral-600"
+              className="relative h-[2px] w-96 bg-neutral-800"
               style={{
                 clipPath: "polygon(100% 0, 100% 100%, 0 100%, 0 100%)",
               }}
             />
             <h2 className="text-center text-3xl text-neutral-200">
-              All projects
+              All our projects
             </h2>
             <div
-              className="relative h-[2px] w-96 bg-neutral-600"
+              className="relative h-[2px] w-96 bg-neutral-800"
               style={{
                 clipPath: "polygon(0 0, 0 100%, 100% 100%, 100% 100%)",
               }}
@@ -75,11 +75,11 @@ export default async function Home() {
           </div>
 
           <PageContainer>
-            <div className="grid grid-cols-1 gap-7 md:grid-cols-3 lg:grid-cols-3">
-              {projects.slice(0, 6).map((project, idx) => (
-                <ProjectTile {...project} key={project.title} idx={idx} />
-              ))}
-            </div>
+          <div className="mt-10 grid max-w-screen-2xl grid-cols-1 gap-7 md:grid-cols-3 lg:grid-cols-4">
+            {projects.slice(0, 6).map((project, idx) => (
+              <ProjectTile {...project} key={project.title} idx={idx} />
+            ))}
+          </div>
           </PageContainer>
         </section>
       </main>

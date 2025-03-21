@@ -76,13 +76,18 @@ export default function Navbar() {
               Feed
             </Link>
           </div>
-          <div className="@container flex items-center justify-end space-x-4 text-neutral-400">
-            <Badge variant={"outline"}>1450 points</Badge>
-            <Avatar>
+          <div className="flex items-center justify-end space-x-4 text-neutral-400 @container">
+            <Badge variant={"outline"} className="border-none py-2 text-sm">
+              1450
+              <span className="text-neutral-500"> points</span>
+            </Badge>
+            <Avatar className="size-6">
               <AvatarImage src="https://randomuser.me/api/portraits/thumb/men/40.jpg" />
               <AvatarFallback>PN</AvatarFallback>
             </Avatar>
-            <div className="hidden xl:block">Peter Normann</div>
+            <div className="hidden text-sm font-medium xl:block">
+              Peter Normann
+            </div>
           </div>
         </div>
       </PageContainer>
