@@ -41,7 +41,7 @@ export default function Navbar() {
               INITIATIVES
             </span>
           </Link>
-          <div className="flex justify-between space-x-10 text-center font-medium text-neutral-500">
+          <div className="mt-4 flex justify-between space-x-10 text-center font-medium text-neutral-500">
             <Link
               href="/"
               className={cn(
@@ -79,7 +79,7 @@ export default function Navbar() {
               Feed
             </Link>
           </div>
-          <div className="flex items-center justify-end space-x-4 text-neutral-400 @container">
+          <div className="mt-4 flex items-center justify-end space-x-4 text-neutral-400 @container">
             <span>
               <span>1450</span>
               <span className="text-neutral-500">{" points"}</span>
