@@ -61,10 +61,10 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <Card className="relative flex w-full flex-col justify-end gap-4 text-white">
-      <div className="absolute z-10 h-full w-full bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="absolute z-10 h-full w-full bg-gradient-to-t from-black/90 to-transparent" />
       <CardHeader className="relative z-10">
         <Badge
-          className="pointer-events-none mb-4 w-fit gap-2 rounded-full bg-neutral-200 px-2.5 py-1 text-black"
+          className="pointer-events-none mb-4 w-fit gap-2 rounded-full bg-neutral-300 px-2.5 py-1 text-black"
           variant={"secondary"}
         >
           {tagToIcon(tag)} {tag}
