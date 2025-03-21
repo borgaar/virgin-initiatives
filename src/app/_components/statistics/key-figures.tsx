@@ -1,3 +1,4 @@
+import { Card } from "@/components/ui/card";
 import { NumberTicker } from "../../../components/ui/number-ticker";
 import { cn } from "../../../lib/utils";
 
@@ -37,14 +38,15 @@ const stats: Stat[] = [
 export default function KeyFigures() {
   return (
     <div className="mt-16 flex w-full flex-col items-center justify-center gap-4">
-      <div className="w-96 font-[merriweather] text-5xl font-bold">
-        <span className="text-primary">2024</span> Wrapped
+      <div className="my-5 flex w-96 items-center gap-2 font-[merriweather] text-5xl font-bold">
+        <span className="ml-auto text-primary">2024</span>{" "}
+        <span className="mr-auto">Wrapped</span>
       </div>
-      <dl className="mx-auto grid grid-cols-1 gap-px bg-gray-900/5 sm:grid-cols-2 lg:grid-cols-3">
+      <dl className="mx-auto grid grid-cols-1 gap-2 bg-gray-900/5 sm:grid-cols-2 lg:grid-cols-3">
         {stats.map((stat) => (
-          <div
+          <Card
             key={stat.name}
-            className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-transparent px-4 py-10 sm:px-6 xl:px-8"
+            className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-[1px] border-white/10 bg-white/5 px-4 py-10 sm:px-6 xl:px-8"
           >
             <dt className="text-sm/6 font-medium text-gray-300">{stat.name}</dt>
             <dd
@@ -62,7 +64,7 @@ export default function KeyFigures() {
               <NumberTicker value={stat.value} />
               {stat.postfix && stat.postfix}
             </dd>
-          </div>
+          </Card>
         ))}
       </dl>
     </div>
