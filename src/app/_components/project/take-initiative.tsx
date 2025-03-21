@@ -20,9 +20,9 @@ export default function ProjectTakeInitiative() {
     inputRef.current!.value = "";
     confettiRef.current?.fire({});
     sumRef.current!.innerText = `€ 31,512`;
-    document!.querySelector<HTMLDivElement>(
-      "body > nav > div > div > div.\\@container.flex.items-center.justify-end.space-x-4.text-neutral-400 > div.inline-flex.items-center.border.px-2\\.5.py-0\\.5.text-xs.font-semibold.transition-colors.focus\\:outline-none.focus\\:ring-2.focus\\:ring-ring.focus\\:ring-offset-2.text-foreground",
-    )!.innerText = "1250 points";
+    document.querySelector<HTMLSpanElement>(
+      "body > nav > div > div > div.flex.items-center.justify-end.space-x-4.text-neutral-400.\\@container > span:nth-child(1) > span:nth-child(1)",
+    )!.innerText = "1250";
   };
 
   return (
@@ -40,7 +40,7 @@ export default function ProjectTakeInitiative() {
           </h1>
           <Confetti
             ref={confettiRef}
-            className="absolute right-[-90px] top-0 z-0 size-full"
+            className="absolute right-[-90px] top-0 z-0 size-full overflow-visible"
           />
           <p className="text-neutral-500">€ 25k target</p>
         </div>
