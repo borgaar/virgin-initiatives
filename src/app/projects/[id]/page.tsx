@@ -1,5 +1,5 @@
 import ProjectCard from "../../_components/project/card";
-import ProjectComments from "../../_components/project/comments";
+import CommentSection from "../../_components/project/comments";
 import ProjectParticipation from "../../_components/project/participation";
 import ProjectRoadmap from "../../_components/project/roadmap";
 import InitiativeReference from "@/app/_components/project/initiative-reference";
@@ -27,7 +27,7 @@ export default async function ProjectPage({
       <ProjectRoadmap timeline={project.roadmap} />
       <ProjectParticipation companies={project.participants} />
       <InitiativeReference initiatives={project.initiatives} />
-      <ProjectComments comments={project.comments} />
+      <CommentSection comments={project.comments} />
     </PageContainer>
   );
 }

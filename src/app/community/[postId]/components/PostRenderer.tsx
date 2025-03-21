@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import Voting from "./Voting";
-import { PostComments } from "@/app/_components/project/comments";
+import CommentSection from "@/app/_components/project/comments";
 import type { posts } from "@/lib/community";
 
 type Post = (typeof posts)[number];
@@ -105,7 +105,10 @@ export default function PostRenderer({ post }: { post: Post }) {
           />
         </div>
         {/* Comment section */}
-        <PostComments comments={post.comments} />
+        <CommentSection
+          comments={post.comments}
+          subLabel="Share your opinion on this post!"
+        />
       </section>
     </>
   );
