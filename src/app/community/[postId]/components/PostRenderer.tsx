@@ -75,7 +75,7 @@ export default function PostRenderer({ post }: { post: Post }) {
               totalVotes: 2,
             },
           ]}
-          votedFor={0}
+          votedFor={undefined}
         />
         <div className="flex flex-row gap-7 text-neutral-400">
           <p>

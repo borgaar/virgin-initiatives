@@ -77,10 +77,10 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="flex items-center justify-end space-x-4 text-neutral-400 @container">
-            <Badge variant={"outline"} className="border-none py-2 text-sm">
-              1450
-              <span className="text-neutral-500"> points</span>
-            </Badge>
+            <span>
+              <span>1450</span>
+              <span className="text-neutral-500">{" points"}</span>
+            </span>
             <Avatar className="size-6">
               <AvatarImage src="https://randomuser.me/api/portraits/thumb/men/40.jpg" />
               <AvatarFallback>PN</AvatarFallback>
