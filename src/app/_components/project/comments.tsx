@@ -32,7 +32,7 @@ export default function CommentSection({
   const [userComments, setUserComments] = useState<Project["comments"]>([]);
 
   return (
-    <Card className="mb-64 bg-neutral-500/5 px-6 py-6 backdrop-blur-sm">
+    <Card className="mb-64 bg-neutral-500/5 p-0 backdrop-blur-sm">
       <CardTitle className="text-white">Comments</CardTitle>
       <CardDescription className="text-md mt-1.5 text-neutral-500">
         {subLabel ? subLabel : "Make a difference by sharing your opinions!"}
@@ -47,7 +47,7 @@ export default function CommentSection({
 
 function CommentsList({ comments }: ProjectCommentsProps) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-2">
       {comments.map((c) => (
         <Comment {...c} key={c.content} />
       ))}
@@ -61,23 +61,23 @@ function Comment({
   mood,
 }: ProjectCommentsProps["comments"][number]) {
   return (
-    <div className="flex items-start space-x-4">
+    <div className="flex items-center space-x-4 px-0">
       <div className="shrink-0">
         <PersonAvatar person={author} />
       </div>
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 rounded-lg bg-black/40 px-4 py-4">
         <div className="flex items-center space-x-2">
           <h3 className="text-lg font-bold text-white">{fullName(author)}</h3>
           {Boolean(mood) && (
             <>
-              <span className="text-neutral-200"> is feeling </span>
+              <span className="text-neutral-600"> is feeling </span>
               <span className={cn(moods.find((m) => m.value === mood)!.text)}>
                 {mood}
               </span>
             </>
           )}
         </div>
-        <p className="mt-1 text-gray-200">{content}</p>
+        <p className="mt-1 text-neutral-300">{content}</p>
       </div>
     </div>
   );
