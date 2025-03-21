@@ -16,7 +16,7 @@ export default async function PostPage({
   }
 
   return (
-    <PageContainer className="mt-20">
+    <PageContainer className="mt-10">
       <PostRenderer post={post} />
     </PageContainer>
   );
