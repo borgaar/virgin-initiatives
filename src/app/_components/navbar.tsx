@@ -38,7 +38,7 @@ export default function Navbar() {
           <Link href={"/"} className="relative">
             <Image src="/logo.png" alt="Workflow" width={50} height={50} />
             <span className="font-french-canon-sc absolute bottom-0 left-11 select-none">
-              INITIATIVE
+              INITIATIVES
             </span>
           </Link>
           <div className="flex justify-between space-x-10 text-center font-medium text-neutral-500">
