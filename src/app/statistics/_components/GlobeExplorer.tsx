@@ -405,7 +405,7 @@ export default function GlobeExplorer() {
   function handleAnimationEnd(e: MapEvent) {
     if (exploring) return;
 
-    const secondsPerRevolution = 200;
+    const secondsPerRevolution = 100;
 
     let distancePerSecond = 360 / secondsPerRevolution;
 
